@@ -9,16 +9,27 @@ enum class Cases
 	Nominative, Genetive, Dative, Accusative, Instrumental, Prepositional
 };
 
+enum class Number 
+{
+	Singular, Paucal, Plural
+};
+
 class Noun
 {
 public:
 	std::string word;
-	Cases word_case;
 	Noun(std::string word_noun_only);
-	Noun(std::string word_noun_only, Cases noun_case);
+	Noun(std::string word_noun_only, Cases noun_case, Number noun_number);
 	~Noun();
-private:
 
+	void change_case(Cases case_to);
+
+	std::string to_string();
+private:
+	Cases word_case;
+	Number word_number;
+
+	void to_nominative();
 };
 
 
