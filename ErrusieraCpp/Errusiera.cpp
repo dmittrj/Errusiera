@@ -28,6 +28,19 @@ void Noun::change_case(Cases case_to) {
 	case Cases::Dative:
 		if (word[word.size() - 1] == 'й') {
 			word[word.size() - 1] = 'ю';
+		} 
+		else if (word[word.size() - 1] == 'а') {
+			word[word.size() - 1] = 'е';
+		}
+		else if (word.substr(word.size() - 2, 2) == "мя") {
+			word[word.size() - 1] = 'е';
+			word = word + "ни";
+		}
+		else if (word[word.size() - 1] == 'я') {
+			word[word.size() - 1] = 'е';
+		}
+		else {
+			word = word + 'у';
 		}
 		break;
 	case Cases::Accusative:

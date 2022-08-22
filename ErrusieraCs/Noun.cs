@@ -43,6 +43,22 @@ namespace ErrusieraCs
 					{
 						Word = Word[0..^1] + "ю";
 					}
+					else if(Word[^1] == 'а')
+					{
+						Word = Word[0..^1] + "е";
+					}
+					else if (Word[^2..] == "мя")
+					{
+						Word = Word[0..^1] + "ени";
+					}
+					else if (Word[^1] == 'я')
+					{
+						Word = Word[0..^1] + "е";
+					}
+					else
+					{
+						Word += "у";
+					}
 					break;
 				case Cases.Accusative:
 					break;
