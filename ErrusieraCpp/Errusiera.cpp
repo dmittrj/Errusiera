@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.0-beta1
+// Errusiera 1.0.0-beta4
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -32,131 +32,131 @@ std::string Noun::change_case(Cases case_to) {
 	switch (case_to)
 	{
 	case Cases::Genetive:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'я';
+		if (word[word.size() - 1] == 'Р№') {
+			word[word.size() - 1] = 'СЏ';
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'ы';
+		else if (word[word.size() - 1] == 'Р°') {
+			word[word.size() - 1] = 'С‹';
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "ни";
+		else if (word.substr(word.size() - 2, 2) == "РјСЏ") {
+			word[word.size() - 1] = 'Рµ';
+			word = word + "РЅРё";
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'и';
+		else if (word[word.size() - 1] == 'СЏ') {
+			word[word.size() - 1] = 'Рё';
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-				word[word.size() - 1] = 'и';
+		else if (word[word.size() - 1] == 'СЊ') {
+			if (word[word.size() - 2] == 'Р¶' || word[word.size() - 2] == 'С€') {
+				word[word.size() - 1] = 'Рё';
 			}
 			else {
-				word[word.size() - 1] = 'я';
+				word[word.size() - 1] = 'СЏ';
 			}
 		}
 		else {
-			word = word + 'а';
+			word = word + 'Р°';
 		}
 		break;
 	case Cases::Dative:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'ю';
+		if (word[word.size() - 1] == 'Р№') {
+			word[word.size() - 1] = 'СЋ';
 		} 
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'е';
+		else if (word[word.size() - 1] == 'Р°') {
+			word[word.size() - 1] = 'Рµ';
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "ни";
+		else if (word.substr(word.size() - 2, 2) == "РјСЏ") {
+			word[word.size() - 1] = 'Рµ';
+			word = word + "РЅРё";
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'е';
+		else if (word[word.size() - 1] == 'СЏ') {
+			word[word.size() - 1] = 'Рµ';
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-				word[word.size() - 1] = 'и';
+		else if (word[word.size() - 1] == 'СЊ') {
+			if (word[word.size() - 2] == 'Р¶' || word[word.size() - 2] == 'С€') {
+				word[word.size() - 1] = 'Рё';
 			}
 			else {
-				word[word.size() - 1] = 'ю';
+				word[word.size() - 1] = 'СЋ';
 			}
 		}
 		else {
-			word = word + 'у';
+			word = word + 'Сѓ';
 		}
 		break;
 	case Cases::Accusative:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'я';
+		if (word[word.size() - 1] == 'Р№') {
+			word[word.size() - 1] = 'СЏ';
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'у';
+		else if (word[word.size() - 1] == 'Р°') {
+			word[word.size() - 1] = 'Сѓ';
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
+		else if (word.substr(word.size() - 2, 2) == "РјСЏ") {
 
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'ю';
+		else if (word[word.size() - 1] == 'СЏ') {
+			word[word.size() - 1] = 'СЋ';
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
+		else if (word[word.size() - 1] == 'СЊ') {
+			if (word[word.size() - 2] == 'Р¶' || word[word.size() - 2] == 'С€') {
 
 			}
 			else {
-				word[word.size() - 1] = 'я';
+				word[word.size() - 1] = 'СЏ';
 			}
 		}
 		break;
 	case Cases::Instrumental:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'е';
-			word = word + 'м';
+		if (word[word.size() - 1] == 'Р№') {
+			word[word.size() - 1] = 'Рµ';
+			word = word + 'Рј';
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'о';
-			word = word + 'й';
+		else if (word[word.size() - 1] == 'Р°') {
+			word[word.size() - 1] = 'Рѕ';
+			word = word + 'Р№';
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "нем";
+		else if (word.substr(word.size() - 2, 2) == "РјСЏ") {
+			word[word.size() - 1] = 'Рµ';
+			word = word + "РЅРµРј";
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'е';
-			word = word + 'й';
+		else if (word[word.size() - 1] == 'СЏ') {
+			word[word.size() - 1] = 'Рµ';
+			word = word + 'Р№';
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-				word = word + 'ю';
-			} else if (word[word.size() - 2] == 'р' || word[word.size() - 2] == 'л' || word[word.size() - 2] == 'с') {
-				word[word.size() - 1] = 'е';
-				word = word + 'м';
+		else if (word[word.size() - 1] == 'СЊ') {
+			if (word[word.size() - 2] == 'Р¶' || word[word.size() - 2] == 'С€') {
+				word = word + 'СЋ';
+			} else if (word[word.size() - 2] == 'СЂ' || word[word.size() - 2] == 'Р»' || word[word.size() - 2] == 'СЃ') {
+				word[word.size() - 1] = 'Рµ';
+				word = word + 'Рј';
 			}
 			else {
-				word[word.size() - 1] = 'ё';
-				word = word + 'м';
+				word[word.size() - 1] = 'С‘';
+				word = word + 'Рј';
 			}
 		}
 		else {
-			word = word + "ом";
+			word = word + "РѕРј";
 		}
 		break;
 	case Cases::Prepositional:
-		if (word.substr(word.size() - 2, 2) == "ий") {
-			word[word.size() - 1] = 'и';
+		if (word.substr(word.size() - 2, 2) == "РёР№") {
+			word[word.size() - 1] = 'Рё';
 		}
-		else if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'е';
+		else if (word[word.size() - 1] == 'Р№') {
+			word[word.size() - 1] = 'Рµ';
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'е';
+		else if (word[word.size() - 1] == 'Р°') {
+			word[word.size() - 1] = 'Рµ';
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "ни";
+		else if (word.substr(word.size() - 2, 2) == "РјСЏ") {
+			word[word.size() - 1] = 'Рµ';
+			word = word + "РЅРё";
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'е';
+		else if (word[word.size() - 1] == 'СЏ') {
+			word[word.size() - 1] = 'Рµ';
 		}
 		else {
-			word = word + "е";
+			word = word + "Рµ";
 		}
 		break;
 	default:
@@ -173,6 +173,12 @@ std::string Noun::change_number(Number number_to) {
 
 Cases Noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
+}
+
+std::string Noun::change_word(Cases case_to, Number number_to) {
+	change_case(case_to);
+	change_number(number_to);
+	return word;
 }
 
 std::string Noun::to_string() {
