@@ -8,6 +8,8 @@ Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number) {
 	word = word_noun_only;
 	word_case = noun_case;
 	word_number = noun_number;
+
+	if (word_case == Cases::Nominative) word_nominative = word;
 }
 
 Noun::~Noun() {
@@ -95,6 +97,25 @@ void Noun::change_case(Cases case_to) {
 		}
 		break;
 	case Cases::Prepositional:
+		if (word.substr(word.size() - 2, 2) == "ий") {
+			word[word.size() - 1] = 'и';
+		}
+		else if (word[word.size() - 1] == 'й') {
+			word[word.size() - 1] = 'е';
+		}
+		else if (word[word.size() - 1] == 'а') {
+			word[word.size() - 1] = 'е';
+		}
+		else if (word.substr(word.size() - 2, 2) == "мя") {
+			word[word.size() - 1] = 'е';
+			word = word + "ни";
+		}
+		else if (word[word.size() - 1] == 'я') {
+			word[word.size() - 1] = 'е';
+		}
+		else {
+			word = word + "е";
+		}
 		break;
 	default:
 		break;

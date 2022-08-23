@@ -27,6 +27,8 @@ namespace ErrusieraCs
 			Word = word_noun_only;
 			WordCase = noun_case;
 			WordNumber = noun_number;
+
+			WordNominative = Word;
 		}
 		~Noun() { }
 
@@ -121,6 +123,31 @@ namespace ErrusieraCs
 					}
 					break;
 				case Cases.Prepositional:
+					if (Word[^2..^1] == "ий")
+					{
+						Word = Word[0..^2] + "ии";
+					} else
+					if (Word[^1] == 'й')
+					{
+						Word = Word[0..^1] + "е";
+					}
+					else
+					if (Word[^1] == 'а')
+					{
+						Word = Word[0..^1] + "е";
+					}
+					else if (Word[^2..] == "мя")
+					{
+						Word = Word[0..^1] + "ене";
+					}
+					else if (Word[^1] == 'я')
+					{
+						Word = Word[0..^1] + "е";
+					}
+					else
+					{
+						Word += "е";
+					}
 					break;
 				default:
 					break;
@@ -132,6 +159,7 @@ namespace ErrusieraCs
 			return Word;
 		}
 
+		private string WordNominative;
 
 		private void ToNominative()
         {

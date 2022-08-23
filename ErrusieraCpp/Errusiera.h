@@ -39,6 +39,7 @@ public:
 private:
 	Cases word_case;
 	Number word_number;
+	std::string word_nominative;
 
 	void to_nominative();
 };
