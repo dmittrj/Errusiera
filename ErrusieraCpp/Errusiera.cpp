@@ -38,7 +38,7 @@ void Noun::change_case(Cases case_to) {
 			word[word.size() - 1] = 'и';
 		}
 		else {
-			word = word + 'у';
+			word = word + 'а';
 		}
 		break;
 	case Cases::Dative:
@@ -60,6 +60,18 @@ void Noun::change_case(Cases case_to) {
 		}
 		break;
 	case Cases::Accusative:
+		if (word[word.size() - 1] == 'й') {
+			word[word.size() - 1] = 'я';
+		}
+		else if (word[word.size() - 1] == 'а') {
+			word[word.size() - 1] = 'у';
+		}
+		else if (word.substr(word.size() - 2, 2) == "мя") {
+
+		}
+		else if (word[word.size() - 1] == 'я') {
+			word[word.size() - 1] = 'ю';
+		}
 		break;
 	case Cases::Instrumental:
 		break;

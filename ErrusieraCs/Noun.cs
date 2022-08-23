@@ -55,7 +55,7 @@ namespace ErrusieraCs
 					}
 					else
 					{
-						Word += "у";
+						Word += "а";
 					}
 					break;
 				case Cases.Dative:
@@ -81,6 +81,22 @@ namespace ErrusieraCs
 					}
 					break;
 				case Cases.Accusative:
+					if (Word[^1] == 'й')
+					{
+						Word = Word[0..^1] + "я";
+					}
+					else if (Word[^1] == 'а')
+					{
+						Word = Word[0..^1] + "у";
+					}
+					else if (Word[^2..] == "мя")
+					{
+
+					}
+					else if (Word[^1] == 'я')
+					{
+						Word = Word[0..^1] + "ю";
+					}
 					break;
 				case Cases.Instrumental:
 					break;
