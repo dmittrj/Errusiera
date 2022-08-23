@@ -20,45 +20,47 @@ public:
 	std::string word;
 
 	/// <summary>
-	/// <para>RUS: Конструктор с параметром строки. После создания требуется вызвать detect_params()</para>
+	/// <para>RUS: РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј СЃС‚СЂРѕРєРё. РџРѕСЃР»Рµ СЃРѕР·РґР°РЅРёСЏ С‚СЂРµР±СѓРµС‚СЃСЏ РІС‹Р·РІР°С‚СЊ detect_params()</para>
 	/// <para>ENG: Constructor with string parameter only. Calling detect_params() requires</para>
 	/// </summary>
-	/// <param name="word_noun_only">| Слово</param>
+	/// <param name="word_noun_only">| РЎР»РѕРІРѕ</param>
 	Noun(std::string word_noun_only);
 
 	/// <summary>
-	/// <para>RUS: Конструктор со всеми параметрами. После объявления можно пользоваться</para>
+	/// <para>RUS: РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРѕ РІСЃРµРјРё РїР°СЂР°РјРµС‚СЂР°РјРё. РџРѕСЃР»Рµ РѕР±СЉСЏРІР»РµРЅРёСЏ РјРѕР¶РЅРѕ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ</para>
 	/// <para>ENG: Constructor with all parameters. You can use all functions after declaration</para>
 	/// </summary>
-	/// <param name="word_noun_only">| Слово</param>
-	/// <param name="noun_case">| Падеж</param>
-	/// <param name="noun_number">| Число</param>
+	/// <param name="word_noun_only">| РЎР»РѕРІРѕ</param>
+	/// <param name="noun_case">| РџР°РґРµР¶</param>
+	/// <param name="noun_number">| Р§РёСЃР»Рѕ</param>
 	Noun(std::string word_noun_only, Cases noun_case, Number noun_number);
 	
 	~Noun();
 
 	/// <summary>
-	/// <para>RUS: Меняет падеж имени существительного</para>
+	/// <para>RUS: РњРµРЅСЏРµС‚ РїР°РґРµР¶ РёРјРµРЅРё СЃСѓС‰РµСЃС‚РІРёС‚РµР»СЊРЅРѕРіРѕ</para>
 	/// <para>ENG: The function changes the case of the noun</para>
 	/// </summary>
-	/// <param name="case_to">| Падеж</param>
-	/// <returns>Слово в заказанном падеже</returns>
+	/// <param name="case_to">| РџР°РґРµР¶</param>
+	/// <returns>РЎР»РѕРІРѕ РІ Р·Р°РєР°Р·Р°РЅРЅРѕРј РїР°РґРµР¶Рµ</returns>
 	std::string change_case(Cases case_to);
 
 	/// <summary>
-	/// <para>RUS: Меняет число имени существительного</para>
+	/// <para>RUS: РњРµРЅСЏРµС‚ С‡РёСЃР»Рѕ РёРјРµРЅРё СЃСѓС‰РµСЃС‚РІРёС‚РµР»СЊРЅРѕРіРѕ</para>
 	/// <para>ENG: The function changes the number of the noun</para>
 	/// </summary>
-	/// <param name="number_to">| Число</param>
-	/// <returns>Слово в заказанном числе</returns>
+	/// <param name="number_to">| Р§РёСЃР»Рѕ</param>
+	/// <returns>РЎР»РѕРІРѕ РІ Р·Р°РєР°Р·Р°РЅРЅРѕРј С‡РёСЃР»Рµ</returns>
 	std::string change_number(Number number_to);
 
 	/// <summary>
-	/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
+	/// <para>RUS: РћРїСЂРµРґРµР»СЏРµС‚ РїР°РґРµР¶, РµСЃР»Рё РѕРЅ РЅРµ Р±С‹Р» Р·Р°РґР°РЅ РІСЂСѓС‡РЅСѓСЋ</para>
 	/// <para>ENG: Determines the case if it was not set manually</para>
 	/// </summary>
 	/// <returns>Case of the noun</returns>
 	Cases detect_case();
+
+	std::string change_word(Cases case_to, Number number_to);
 
 	std::string to_string();
 private:
