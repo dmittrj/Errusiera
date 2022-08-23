@@ -17,11 +17,13 @@ Noun::~Noun() {
 }
 
 void Noun::to_nominative() {
-
+	if (word_nominative != "") {
+		word = word_nominative;
+	}
 }
 
-void Noun::change_case(Cases case_to) {
-	if (case_to == word_case) { return; }
+std::string Noun::change_case(Cases case_to) {
+	if (case_to == word_case) { return word; }
 	to_nominative();
 	switch (case_to)
 	{
@@ -156,6 +158,8 @@ void Noun::change_case(Cases case_to) {
 	default:
 		break;
 	}
+	word_case = case_to;
+	return word;
 }
 
 Cases Noun::detect_case() {

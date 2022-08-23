@@ -26,7 +26,8 @@ public:
 	/// <para>ENG: The function changes the case of the noun</para>
 	/// </summary>
 	/// <param name="case_to">| Падеж</param>
-	void change_case(Cases case_to);
+	/// <returns>Слово в заказанном падеже</returns>
+	std::string change_case(Cases case_to);
 
 	/// <summary>
 	/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
@@ -39,7 +40,7 @@ public:
 private:
 	Cases word_case;
 	Number word_number;
-	std::string word_nominative;
+	std::string word_nominative = "";
 
 	void to_nominative();
 };
