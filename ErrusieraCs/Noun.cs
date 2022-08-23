@@ -55,6 +55,16 @@ namespace ErrusieraCs
 					{
 						Word = Word[0..^1] + "и";
 					}
+					else if (Word[^1] == 'ь')
+					{
+						if (Word[^2] == 'ш' || Word[^2] == 'ж')
+						{
+							Word = Word[0..^1] + "и";
+						} else
+                        {
+							Word = Word[0..^1] + "я";
+						}
+					}
 					else
 					{
 						Word += "а";
@@ -76,6 +86,17 @@ namespace ErrusieraCs
 					else if (Word[^1] == 'я')
 					{
 						Word = Word[0..^1] + "е";
+					}
+					else if (Word[^1] == 'ь')
+					{
+						if (Word[^2] == 'ш' || Word[^2] == 'ж')
+						{
+							Word = Word[0..^1] + "и";
+						}
+						else
+						{
+							Word = Word[0..^1] + "ю";
+						}
 					}
 					else
 					{
@@ -99,6 +120,16 @@ namespace ErrusieraCs
 					{
 						Word = Word[0..^1] + "ю";
 					}
+					else if (Word[^1] == 'ь')
+					{
+						if (Word[^2] == 'ш' || Word[^2] == 'ж')
+						{
+						}
+						else
+						{
+							Word = Word[0..^1] + "я";
+						}
+					}
 					break;
 				case Cases.Instrumental:
 					if (Word[^1] == 'й')
@@ -116,6 +147,21 @@ namespace ErrusieraCs
 					else if (Word[^1] == 'я')
 					{
 						Word = Word[0..^1] + "ей";
+					}
+					else if (Word[^1] == 'ь')
+					{
+						if (Word[^2] == 'ш' || Word[^2] == 'ж')
+						{
+							Word = Word[0..^1] + "ю";
+						}
+						else if (Word[^2] == 'р' || Word[^2] == 'л' || Word[^2] == 'с')
+						{
+							Word = Word[0..^1] + "ем";
+						}
+						else
+						{
+							Word = Word[0..^1] + "ём";
+						}
 					}
 					else
 					{

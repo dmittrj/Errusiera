@@ -39,6 +39,14 @@ void Noun::change_case(Cases case_to) {
 		else if (word[word.size() - 1] == 'я') {
 			word[word.size() - 1] = 'и';
 		}
+		else if (word[word.size() - 1] == 'ь') {
+			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
+				word[word.size() - 1] = 'и';
+			}
+			else {
+				word[word.size() - 1] = 'я';
+			}
+		}
 		else {
 			word = word + 'а';
 		}
@@ -57,6 +65,14 @@ void Noun::change_case(Cases case_to) {
 		else if (word[word.size() - 1] == 'я') {
 			word[word.size() - 1] = 'е';
 		}
+		else if (word[word.size() - 1] == 'ь') {
+			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
+				word[word.size() - 1] = 'и';
+			}
+			else {
+				word[word.size() - 1] = 'ю';
+			}
+		}
 		else {
 			word = word + 'у';
 		}
@@ -73,6 +89,14 @@ void Noun::change_case(Cases case_to) {
 		}
 		else if (word[word.size() - 1] == 'я') {
 			word[word.size() - 1] = 'ю';
+		}
+		else if (word[word.size() - 1] == 'ь') {
+			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
+
+			}
+			else {
+				word[word.size() - 1] = 'я';
+			}
 		}
 		break;
 	case Cases::Instrumental:
@@ -91,6 +115,18 @@ void Noun::change_case(Cases case_to) {
 		else if (word[word.size() - 1] == 'я') {
 			word[word.size() - 1] = 'е';
 			word = word + 'й';
+		}
+		else if (word[word.size() - 1] == 'ь') {
+			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
+				word = word + 'ю';
+			} else if (word[word.size() - 2] == 'р' || word[word.size() - 2] == 'л' || word[word.size() - 2] == 'с') {
+				word[word.size() - 1] = 'е';
+				word = word + 'м';
+			}
+			else {
+				word[word.size() - 1] = 'ё';
+				word = word + 'м';
+			}
 		}
 		else {
 			word = word + "ом";
