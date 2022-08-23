@@ -74,6 +74,25 @@ void Noun::change_case(Cases case_to) {
 		}
 		break;
 	case Cases::Instrumental:
+		if (word[word.size() - 1] == 'й') {
+			word[word.size() - 1] = 'е';
+			word = word + 'м';
+		}
+		else if (word[word.size() - 1] == 'а') {
+			word[word.size() - 1] = 'о';
+			word = word + 'й';
+		}
+		else if (word.substr(word.size() - 2, 2) == "мя") {
+			word[word.size() - 1] = 'е';
+			word = word + "нем";
+		}
+		else if (word[word.size() - 1] == 'я') {
+			word[word.size() - 1] = 'е';
+			word = word + 'й';
+		}
+		else {
+			word = word + "ом";
+		}
 		break;
 	case Cases::Prepositional:
 		break;

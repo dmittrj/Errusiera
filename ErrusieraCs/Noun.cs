@@ -99,6 +99,26 @@ namespace ErrusieraCs
 					}
 					break;
 				case Cases.Instrumental:
+					if (Word[^1] == 'й')
+					{
+						Word = Word[0..^1] + "ем";
+					}
+					else if (Word[^1] == 'а')
+					{
+						Word = Word[0..^1] + "ой";
+					}
+					else if (Word[^2..] == "мя")
+					{
+						Word = Word[0..^1] + "енем";
+					}
+					else if (Word[^1] == 'я')
+					{
+						Word = Word[0..^1] + "ей";
+					}
+					else
+					{
+						Word += "ом";
+					}
 					break;
 				case Cases.Prepositional:
 					break;
