@@ -1,5 +1,9 @@
 #include "Errusiera.h"
 
+// Errusiera 1.0.0-beta1
+// Dmitry Balabanov | github.com/dmittrj/Errusiera
+
+
 Noun::Noun(std::string word_noun_only) {
 	word = word_noun_only;
 }
@@ -159,6 +163,11 @@ std::string Noun::change_case(Cases case_to) {
 		break;
 	}
 	word_case = case_to;
+	return word;
+}
+
+std::string Noun::change_number(Number number_to) {
+	if (number_to == word_number) { return word; }
 	return word;
 }
 
