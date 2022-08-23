@@ -37,6 +37,26 @@ namespace ErrusieraCs
 			switch (case_to)
 			{
 				case Cases.Genetive:
+					if (Word[^1] == 'й')
+					{
+						Word = Word[0..^1] + "я";
+					}
+					else if (Word[^1] == 'а')
+					{
+						Word = Word[0..^1] + "ы";
+					}
+					else if (Word[^2..] == "мя")
+					{
+						Word = Word[0..^1] + "ени";
+					}
+					else if (Word[^1] == 'я')
+					{
+						Word = Word[0..^1] + "и";
+					}
+					else
+					{
+						Word += "у";
+					}
 					break;
 				case Cases.Dative:
 					if (Word[^1] == 'й')

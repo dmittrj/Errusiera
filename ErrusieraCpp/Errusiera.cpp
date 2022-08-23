@@ -24,6 +24,22 @@ void Noun::change_case(Cases case_to) {
 	switch (case_to)
 	{
 	case Cases::Genetive:
+		if (word[word.size() - 1] == 'й') {
+			word[word.size() - 1] = 'я';
+		}
+		else if (word[word.size() - 1] == 'а') {
+			word[word.size() - 1] = 'ы';
+		}
+		else if (word.substr(word.size() - 2, 2) == "мя") {
+			word[word.size() - 1] = 'е';
+			word = word + "ни";
+		}
+		else if (word[word.size() - 1] == 'я') {
+			word[word.size() - 1] = 'и';
+		}
+		else {
+			word = word + 'у';
+		}
 		break;
 	case Cases::Dative:
 		if (word[word.size() - 1] == 'й') {
@@ -54,6 +70,14 @@ void Noun::change_case(Cases case_to) {
 	}
 }
 
+Cases Noun::detect_case() {
+	if (word_case != Cases::None) { return word_case; }
+}
+
 std::string Noun::to_string() {
 	return word;
+}
+
+Word::Word(std::string russian_word) {
+	word = russian_word;
 }
