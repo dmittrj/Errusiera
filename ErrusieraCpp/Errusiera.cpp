@@ -29,7 +29,7 @@ void Noun::to_nominative() {
 std::string Noun::change_case(Cases case_to) {
 	if (case_to == word_case) { return word; }
 	to_nominative();
-	pattern("корона", "[ ]011");
+	pattern(word, "[ ]011");
 	switch (case_to)
 	{
 	case Cases::Genetive:
@@ -186,20 +186,25 @@ std::string Noun::to_string() {
 	return word;
 }
 
-bool pattern(std::string str_to_compare, std::string pattern) {
-	int _triple_counter = 0;
-	char _triplet[4];
+bool pattern(std::string str_to_compare, std::string _pattern) {
+	char _triplet[4] = {};
+	_triplet[0] = _pattern[0];
+	_triplet[1] = _pattern[1];
+	_triplet[2] = _pattern[2];
 	_triplet[3] = '\0';
-	for (auto _pattern_item : pattern)
-	{
-		if (_triple_counter == 2) {
-			_triplet[_triple_counter] = _pattern_item;
-			_triple_counter = 0;
-			std::cout << _triplet << " ";
-
+	if (!strcmp(_triplet, "[ ]")) {
+		// Any number of letters
+		int _str_length = str_to_compare.size();
+		for (int i = _str_length; i >= 0; i--)
+		{
+			if (pattern(str_to_compare.substr(i), _pattern.substr(3))) {
+				return true;
+			}
 		}
-		else {
-			_triplet[_triple_counter++] = _pattern_item;
+	} else if (!strcmp(_triplet, "011")) {
+		// Й
+		if (pattern(str_to_compare.substr(1), _pattern.substr(3)) && (int)str_to_compare[0] == -23) {
+			return true;
 		}
 	}
 	return false;
