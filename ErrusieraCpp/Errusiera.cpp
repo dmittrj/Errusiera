@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.0-beta5
+// Errusiera 1.0.0-beta6
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -306,7 +306,6 @@ bool pattern(std::string str_to_compare, std::string _pattern) {
 	std::string _trash = "";
 	return pattern(str_to_compare, _pattern, _trash);
 }
-
 
 Word::Word(std::string russian_word) {
 	word = russian_word;
