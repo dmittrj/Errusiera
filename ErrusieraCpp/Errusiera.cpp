@@ -35,8 +35,8 @@ std::string Noun::change_case(Cases case_to) {
 	switch (case_to)
 	{
 	case Cases::Genetive:
-		if (word[word.size() - 1] == (char)-23) {
-			word[word.size() - 1] = 'я';
+		if (pattern(word, "[ ]011")) {
+			word[word.size() - 1] = (char)char_code("033");
 		}
 		else if (word[word.size() - 1] == (char)-32) {
 			word[word.size() - 1] = (char)-5;
@@ -190,10 +190,24 @@ std::string Noun::to_string() {
 
 int char_code(std::string _internal_code) {
 	if (_internal_code == "011") return -23;
+	if (_internal_code == "033") return -1;
+	return 0;
+}
+
+int char_code(const char* _internal_code) {
+	std::string _temp = _internal_code;
+	return char_code(_temp);
 }
 
 bool pattern(std::string str_to_compare, std::string _pattern) {
-	if (_pattern == "") return true;
+	if (_pattern == "") {
+		if (str_to_compare == "") {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	char _triplet[4] = {};
 	_triplet[0] = _pattern[0];
 	_triplet[1] = _pattern[1];

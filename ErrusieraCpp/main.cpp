@@ -13,7 +13,7 @@ int main() {
 	std::string my_name1;
 	std::cin >> my_name1;
 	Noun E_my_name_1(my_name1, Cases::Nominative, Number::Singular);
-	E_my_name_1.change_case(Cases::Dative);
+	E_my_name_1.change_case(Cases::Genetive);
 	my_name1 = E_my_name_1.to_string();
 	std::cout << my_name1 << " нравится Errusiera" << std::endl;
 

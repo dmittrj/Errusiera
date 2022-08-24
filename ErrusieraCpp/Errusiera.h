@@ -16,7 +16,9 @@ enum class Number
 
 bool pattern(std::string str_to_compare, std::string pattern);
 
-int char_code(int _internal_code);
+int char_code(std::string _internal_code);
+
+int char_code(const char* _internal_code);
 
 class Noun
 {
