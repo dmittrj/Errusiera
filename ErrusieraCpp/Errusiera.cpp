@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.0-beta4
+// Errusiera 1.0.0-beta5
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -34,7 +34,6 @@ std::string Noun::change_case(Cases case_to) {
 	case Cases::Genetive:
 		if (pattern(word, "[ ]011")) {
 			pattern(word, "[ ]!--011--!!++033++!", word);
-			word[word.size() - 1] = (char)char_code("033");
 		}
 		else if (pattern(word, "[ ]001")) {
 			pattern(word, "[ ]!--001--!!++029++!", word);
@@ -55,7 +54,7 @@ std::string Noun::change_case(Cases case_to) {
 			pattern(word, "[ ]!--030--!!++033++!", word);
 		}
 		else {
-			word = word + "а";
+			pattern(word, "[_]!++001++!", word);
 		}
 		break;
 	case Cases::Dative:
@@ -253,6 +252,14 @@ bool pattern(std::string str_to_compare, std::string _pattern, std::string& chan
 				changed_string = str_to_compare.substr(0, i) + _new_temp_string;
 				return true;
 			}
+		}
+	} 
+	else if (!strcmp(_triplet, "[_]")) {
+		// All the rest letters
+		int _str_length = str_to_compare.size();
+		if (pattern(str_to_compare.substr(_str_length), _pattern.substr(3), _new_temp_string, _eraser_mode)) {
+			changed_string = str_to_compare.substr(0, _str_length) + _new_temp_string;
+			return true;
 		}
 	}
 	else if (!strcmp(_triplet, "!--")) {
