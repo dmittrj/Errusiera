@@ -4,19 +4,85 @@
 #ifndef ERRUSIERA_H
 #define ERRUSIERA_H
 
+/// <summary>
+/// Падежи
+/// </summary>
 enum class Cases
 {
-	None, Nominative, Genetive, Dative, Accusative, Instrumental, Prepositional
+	/// <summary>
+	/// <para>RUS: Нет падежа или неизвестен. Не используйте сами этот падеж</para>
+	/// <para>ENG: No case or case is unknown. Please do not use it by your own</para>
+	/// </summary>
+	None, 
+	/// <summary>
+	/// Именительный падеж
+	/// </summary>
+	Nominative, 
+	/// <summary>
+	/// Родительный падеж
+	/// </summary>
+	Genetive, 
+	/// <summary>
+	/// Дательный падеж
+	/// </summary>
+	Dative, 
+	/// <summary>
+	/// Винительный падеж
+	/// </summary>
+	Accusative, 
+	/// <summary>
+	/// Творительный падеж
+	/// </summary>
+	Instrumental, 
+	/// <summary>
+	/// Предложный падеж
+	/// </summary>
+	Prepositional
 };
 
+/// <summary>
+/// Числа
+/// </summary>
 enum class Number 
 {
-	None, Singular, Paucal, Plural
+	/// <summary>
+	/// <para>RUS: Нет числа или неизвестно. Не используйте сами этот параметр</para>
+	/// <para>ENG: No number or number is unknown. Please do not use it by your own</para>
+	/// </summary>
+	None, 
+	/// <summary>
+	/// Единственное число
+	/// </summary>
+	Singular, 
+	/// <summary>
+	/// Паукальное (двойственное) число
+	/// </summary>
+	Paucal, 
+	/// <summary>
+	/// Множественное число
+	/// </summary>
+	Plural
 };
 
+bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
+
+bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string);
+
+bool pattern(std::string str_to_compare, std::string _pattern);
+
+int char_code(std::string _internal_code);
+
+int char_code(const char* _internal_code);
+
+/// <summary>
+/// Имя существительное
+/// </summary>
 class Noun
 {
 public:
+	/// <summary>
+	/// Слово
+	/// </summary>
 	std::string word;
 
 	/// <summary>
@@ -60,8 +126,20 @@ public:
 	/// <returns>Case of the noun</returns>
 	Cases detect_case();
 
+	/// <summary>
+	/// <para>RUS: Меняет все параметры имени существительного</para>
+	/// <para>ENG: The function changes all parameters of the noun</para>
+	/// </summary>
+	/// <param name="case_to">| Падеж</param>
+	/// <param name="number_to">| Число</param>
+	/// <returns>Изменённое слово</returns>
 	std::string change_word(Cases case_to, Number number_to);
 
+	/// <summary>
+	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
+	/// <para>ENG: Convert class to string</para>
+	/// </summary>
+	/// <returns>Слово</returns>
 	std::string to_string();
 private:
 	Cases word_case;
