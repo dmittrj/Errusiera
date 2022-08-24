@@ -282,6 +282,34 @@ namespace Errusiera
 			return "";
 		}
 
+		/// <summary>
+		/// <para>RUS: Меняет число имени существительного</para>
+		/// <para>ENG: The function changes the number of the noun</para>
+		/// </summary>
+		/// <param name="number_to">| Число</param>
+		/// <returns>Слово в заказанном числе</returns>
+		public string ChangeNumber(Number number_to)
+		{
+			if (number_to == WordNumber) { return Word; }
+			return Word;
+		}
+
+		/// <summary>
+		/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
+		/// <para>ENG: Determines the case if it was not set manually</para>
+		/// </summary>
+		/// <returns>Определённый падеж или None, если возникла неоднозначность</returns>
+		public Cases DetectCase()
+		{
+			if (WordCase != Cases.None) { return WordCase; }
+			return WordCase;
+		}
+
+		/// <summary>
+		/// <para>RUS: Привести класс к строке, т.е. вернуть слово</para>
+		/// <para>ENG: Convert class to string</para>
+		/// </summary>
+		/// <returns>Слово</returns>
 		public override string ToString()
 		{
 			return Word;
