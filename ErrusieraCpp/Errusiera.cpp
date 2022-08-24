@@ -139,24 +139,23 @@ std::string Noun::change_case(Cases case_to) {
 		}
 		break;
 	case Cases::Prepositional:
-		if (word.substr(word.size() - 2, 2) == "ий") {
-			word[word.size() - 1] = 'и';
+		if (pattern(word, "[ ]010011")) {
+			pattern(word, "[ ]010!--011--!!++010++!", word);
 		}
-		else if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'е';
+		else if (pattern(word, "[ ]011")) {
+			pattern(word, "[ ]!--011--!!++006++!", word);
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'е';
+		else if (pattern(word, "[ ]001")) {
+			pattern(word, "[ ]!--001--!!++006++!", word);
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "ни";
+		else if (pattern(word, "[ ]014033")) {
+			pattern(word, "[ ]014!--033--!!++006015010++!", word);
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'е';
+		else if (pattern(word, "[ ]033")) {
+			pattern(word, "[ ]!--033--!!++006++!", word);
 		}
 		else {
-			word = word + "е";
+			pattern(word, "[_]!++006++!", word);
 		}
 		break;
 	default:
