@@ -14,6 +14,8 @@ enum class Number
 	None, Singular, Paucal, Plural
 };
 
+bool pattern(std::string str_to_compare, std::string pattern);
+
 class Noun
 {
 public:

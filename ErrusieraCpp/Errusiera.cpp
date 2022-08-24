@@ -29,6 +29,7 @@ void Noun::to_nominative() {
 std::string Noun::change_case(Cases case_to) {
 	if (case_to == word_case) { return word; }
 	to_nominative();
+	pattern("корона", "[ ]011");
 	switch (case_to)
 	{
 	case Cases::Genetive:
@@ -183,6 +184,25 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 
 std::string Noun::to_string() {
 	return word;
+}
+
+bool pattern(std::string str_to_compare, std::string pattern) {
+	int _triple_counter = 0;
+	char _triplet[4];
+	_triplet[3] = '\0';
+	for (auto _pattern_item : pattern)
+	{
+		if (_triple_counter == 2) {
+			_triplet[_triple_counter] = _pattern_item;
+			_triple_counter = 0;
+			std::cout << _triplet << " ";
+
+		}
+		else {
+			_triplet[_triple_counter++] = _pattern_item;
+		}
+	}
+	return false;
 }
 
 Word::Word(std::string russian_word) {
