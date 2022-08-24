@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.1
+// Errusiera 1.0.1-alpha1
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -306,6 +306,15 @@ bool pattern(std::string str_to_compare, std::string _pattern) {
 	std::string _trash = "";
 	return pattern(str_to_compare, _pattern, _trash);
 }
+
+Adjective::Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender) {
+	word = word_adj_only;
+	word_case = adj_case;
+	word_number = adj_number;
+	word_gender = adj_gender;
+}
+
+
 
 Word::Word(std::string russian_word) {
 	word = russian_word;

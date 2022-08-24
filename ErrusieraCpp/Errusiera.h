@@ -64,6 +64,25 @@ enum class Number
 	Plural
 };
 
+/// <summary>
+/// Рода
+/// </summary>
+enum class Gender
+{
+	/// <summary>
+	/// Мужской род
+	/// </summary>
+	Masculine,
+	/// <summary>
+	/// Женский род
+	/// </summary>
+	Feminine, 
+	/// <summary>
+	/// Средний род
+	/// </summary>
+	Neuter
+};
+
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
 
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string);
@@ -148,6 +167,28 @@ private:
 
 	void to_nominative();
 };
+
+/// <summary>
+/// Имя прилагательное
+/// </summary>
+class Adjective
+{
+public:
+	/// <summary>
+	/// Слово
+	/// </summary>
+	std::string word;
+	Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender);
+
+	~Adjective();
+
+private:
+	Cases word_case;
+	Number word_number;
+	Gender word_gender;
+	std::string word_nominative = "";
+};
+
 
 class Word
 {
