@@ -29,21 +29,18 @@ void Noun::to_nominative() {
 std::string Noun::change_case(Cases case_to) {
 	if (case_to == word_case) { return word; }
 	to_nominative();
-	if (pattern(word, "[ ]011")) {
-		std::cout << "Okay";
-	}
 	switch (case_to)
 	{
 	case Cases::Genetive:
 		if (pattern(word, "[ ]011")) {
 			word[word.size() - 1] = (char)char_code("033");
 		}
-		else if (word[word.size() - 1] == (char)-32) {
-			word[word.size() - 1] = (char)-5;
+		else if (pattern(word, "[ ]001")) {
+			word[word.size() - 1] = (char)char_code("029");
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "ни";
+		else if (pattern(word, "[ ]014033")) {
+			word[word.size() - 1] = (char)char_code("006");
+			word = word + (char)char_code("015") + (char)char_code("010");
 		}
 		else if (word[word.size() - 1] == 'я') {
 			word[word.size() - 1] = 'и';
@@ -189,7 +186,13 @@ std::string Noun::to_string() {
 }
 
 int char_code(std::string _internal_code) {
+	if (_internal_code == "001") return -32;
+	if (_internal_code == "006") return -27;
+	if (_internal_code == "010") return -24;
 	if (_internal_code == "011") return -23;
+	if (_internal_code == "014") return -20;
+	if (_internal_code == "015") return -19;
+	if (_internal_code == "029") return -5;
 	if (_internal_code == "033") return -1;
 	return 0;
 }
