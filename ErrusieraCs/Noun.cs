@@ -32,9 +32,9 @@ namespace ErrusieraCs
 		}
 		~Noun() { }
 
-		public void ChangeCase(Cases case_to)
+		public string ChangeCase(Cases case_to)
 		{
-			if (case_to == WordCase) { return; }
+			if (case_to == WordCase) { return ""; }
 			ToNominative();
 			switch (case_to)
 			{
@@ -197,7 +197,9 @@ namespace ErrusieraCs
 					break;
 				default:
 					break;
+					
 			}
+			return "";
 		}
 
 		public override string ToString()
