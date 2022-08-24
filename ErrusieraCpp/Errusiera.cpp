@@ -29,7 +29,9 @@ void Noun::to_nominative() {
 std::string Noun::change_case(Cases case_to) {
 	if (case_to == word_case) { return word; }
 	to_nominative();
-	pattern(word, "[ ]011");
+	if (pattern(word, "[ ]011")) {
+		std::cout << "Okay";
+	}
 	switch (case_to)
 	{
 	case Cases::Genetive:
@@ -186,7 +188,12 @@ std::string Noun::to_string() {
 	return word;
 }
 
+int char_code(std::string _internal_code) {
+	if (_internal_code == "011") return -23;
+}
+
 bool pattern(std::string str_to_compare, std::string _pattern) {
+	if (_pattern == "") return true;
 	char _triplet[4] = {};
 	_triplet[0] = _pattern[0];
 	_triplet[1] = _pattern[1];
@@ -201,11 +208,9 @@ bool pattern(std::string str_to_compare, std::string _pattern) {
 				return true;
 			}
 		}
-	} else if (!strcmp(_triplet, "011")) {
-		// Й
-		if (pattern(str_to_compare.substr(1), _pattern.substr(3)) && (int)str_to_compare[0] == -23) {
-			return true;
-		}
+	} 
+	else if (((int)str_to_compare[0] == char_code(_triplet)) && pattern(str_to_compare.substr(1), _pattern.substr(3))) {
+		return true;
 	}
 	return false;
 }
