@@ -58,84 +58,84 @@ std::string Noun::change_case(Cases case_to) {
 		}
 		break;
 	case Cases::Dative:
-		if (word[word.size() - 1] == (char)-23) {
-			word[word.size() - 1] = (char)-2;
+		if (pattern(word, "[ ]011")) {
+			pattern(word, "[ ]!--011--!!++032++!", word);
 		} 
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'е';
+		else if (pattern(word, "[ ]001")) {
+			pattern(word, "[ ]!--001--!!++006++!", word);
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "ни";
+		else if (pattern(word, "[ ]014033")) {
+			pattern(word, "[ ]014!--033--!!++006015010++!", word);
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'е';
+		else if (pattern(word, "[ ]033")) {
+			pattern(word, "[ ]!--033--!!++006++!", word);
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-				word[word.size() - 1] = 'и';
-			}
-			else {
-				word[word.size() - 1] = 'ю';
-			}
+		else if (pattern(word, "[ ]008030")) {
+			pattern(word, "[ ]008!--030--!!++010++!", word);
+		}
+		else if (pattern(word, "[ ]026030")) {
+			pattern(word, "[ ]026!--030--!!++010++!", word);
+		}
+		else if (pattern(word, "[ ]030")) {
+			pattern(word, "[ ]!--030--!!++032++!", word);
 		}
 		else {
-			word = word + "у";
+			pattern(word, "[_]!++021++!", word);
 		}
 		break;
 	case Cases::Accusative:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'я';
+		if (pattern(word, "[ ]011")) {
+			pattern(word, "[ ]!--011--!!++033++!", word);
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'у';
+		else if (pattern(word, "[ ]001")) {
+			pattern(word, "[ ]!--001--!!++021++!", word);
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-
+		else if (pattern(word, "[ ]033")) {
+			pattern(word, "[ ]!--033--!!++032++!", word);
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'ю';
+		else if (pattern(word, "[ ]008030")) {
+			
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-
-			}
-			else {
-				word[word.size() - 1] = 'я';
-			}
+		else if (pattern(word, "[ ]026030")) {
+			
+		}
+		else if (pattern(word, "[ ]030")) {
+			pattern(word, "[ ]!--030--!!++033++!", word);
 		}
 		break;
 	case Cases::Instrumental:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'е';
-			word = word + "м";
+		if (pattern(word, "[ ]011")) {
+			pattern(word, "[ ]!--011--!!++006014++!", word);
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'о';
-			word = word + "й";
+		else if (pattern(word, "[ ]001")) {
+			pattern(word, "[ ]!--001--!!++016011++!", word);
 		}
-		else if (word.substr(word.size() - 2, 2) == "мя") {
-			word[word.size() - 1] = 'е';
-			word = word + "нем";
+		else if (pattern(word, "[ ]014033")) {
+			pattern(word, "[ ]014!--033--!!++006015006014++!", word);
 		}
-		else if (word[word.size() - 1] == 'я') {
-			word[word.size() - 1] = 'е';
-			word = word + "й";
+		else if (pattern(word, "[ ]033")) {
+			pattern(word, "[ ]!--033--!!++006011++!", word);
 		}
-		else if (word[word.size() - 1] == 'ь') {
-			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-				word = word + "ю";
-			} else if (word[word.size() - 2] == 'р' || word[word.size() - 2] == 'л' || word[word.size() - 2] == 'с') {
-				word[word.size() - 1] = 'е';
-				word = word + "м";
-			}
-			else {
-				word[word.size() - 1] = 'ё';
-				word = word + "м";
-			}
+		else if (pattern(word, "[ ]008030")) {
+			pattern(word, "[ ]008030!++032++!", word);
+		}
+		else if (pattern(word, "[ ]026030")) {
+			pattern(word, "[ ]026030!++032++!", word);
+		}
+		else if (pattern(word, "[ ]018030")) {
+			pattern(word, "[ ]018!--030--!!++006014++!", word);
+		}
+		else if (pattern(word, "[ ]013030")) {
+			pattern(word, "[ ]013!--030--!!++006014++!", word);
+		}
+		else if (pattern(word, "[ ]019030")) {
+			pattern(word, "[ ]019!--030--!!++006014++!", word);
+		}
+		else if (pattern(word, "[ ]030")) {
+			pattern(word, "[ ]!--030--!!++007014++!", word);
 		}
 		else {
-			word = word + "ом";
+			pattern(word, "[_]!++016014++!", word);
 		}
 		break;
 	case Cases::Prepositional:
