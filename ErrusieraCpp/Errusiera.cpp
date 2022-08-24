@@ -32,11 +32,11 @@ std::string Noun::change_case(Cases case_to) {
 	switch (case_to)
 	{
 	case Cases::Genetive:
-		if (word[word.size() - 1] == 'й') {
+		if (word[word.size() - 1] == (char)-23) {
 			word[word.size() - 1] = 'я';
 		}
-		else if (word[word.size() - 1] == 'а') {
-			word[word.size() - 1] = 'ы';
+		else if (word[word.size() - 1] == (char)-32) {
+			word[word.size() - 1] = (char)-5;
 		}
 		else if (word.substr(word.size() - 2, 2) == "мя") {
 			word[word.size() - 1] = 'е';
@@ -54,12 +54,12 @@ std::string Noun::change_case(Cases case_to) {
 			}
 		}
 		else {
-			word = word + 'а';
+			word = word + "а";
 		}
 		break;
 	case Cases::Dative:
-		if (word[word.size() - 1] == 'й') {
-			word[word.size() - 1] = 'ю';
+		if (word[word.size() - 1] == (char)-23) {
+			word[word.size() - 1] = (char)-2;
 		} 
 		else if (word[word.size() - 1] == 'а') {
 			word[word.size() - 1] = 'е';
@@ -80,7 +80,7 @@ std::string Noun::change_case(Cases case_to) {
 			}
 		}
 		else {
-			word = word + 'у';
+			word = word + "у";
 		}
 		break;
 	case Cases::Accusative:
@@ -108,11 +108,11 @@ std::string Noun::change_case(Cases case_to) {
 	case Cases::Instrumental:
 		if (word[word.size() - 1] == 'й') {
 			word[word.size() - 1] = 'е';
-			word = word + 'м';
+			word = word + "м";
 		}
 		else if (word[word.size() - 1] == 'а') {
 			word[word.size() - 1] = 'о';
-			word = word + 'й';
+			word = word + "й";
 		}
 		else if (word.substr(word.size() - 2, 2) == "мя") {
 			word[word.size() - 1] = 'е';
@@ -120,18 +120,18 @@ std::string Noun::change_case(Cases case_to) {
 		}
 		else if (word[word.size() - 1] == 'я') {
 			word[word.size() - 1] = 'е';
-			word = word + 'й';
+			word = word + "й";
 		}
 		else if (word[word.size() - 1] == 'ь') {
 			if (word[word.size() - 2] == 'ж' || word[word.size() - 2] == 'ш') {
-				word = word + 'ю';
+				word = word + "ю";
 			} else if (word[word.size() - 2] == 'р' || word[word.size() - 2] == 'л' || word[word.size() - 2] == 'с') {
 				word[word.size() - 1] = 'е';
-				word = word + 'м';
+				word = word + "м";
 			}
 			else {
 				word[word.size() - 1] = 'ё';
-				word = word + 'м';
+				word = word + "м";
 			}
 		}
 		else {
