@@ -14,6 +14,16 @@ enum class Number
 	None, Singular, Paucal, Plural
 };
 
+bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
+
+bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string);
+
+bool pattern(std::string str_to_compare, std::string _pattern);
+
+int char_code(std::string _internal_code);
+
+int char_code(const char* _internal_code);
+
 class Noun
 {
 public:
