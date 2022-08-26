@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Errusiera.h"
 
 int main() {
@@ -35,8 +36,11 @@ int main() {
 	std::cout << "Введите время в формате ЧЧ:ММ > ";
 	std::string time3;
 	std::cin >> time3;
-	std::string hours3 = time3.substr(0, 2);
-	std::string minutes3 = time3.substr(3, 2);
+	int hours3 = std::stoi(time3.substr(0, 2));
+	int minutes3 = std::stoi(time3.substr(3, 2));
+	Numeral E_numh3(hours3);
+	Numeral E_numm3(minutes3);
+	E_numh3.to_string();
 	Noun E_hours3("час", Cases::Nominative, Number::Singular);
 	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);

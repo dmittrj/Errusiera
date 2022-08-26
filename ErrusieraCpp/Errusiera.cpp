@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.1-alpha1
+// Errusiera 1.0.1-alpha2
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -458,6 +458,468 @@ std::string Adjective::change_case(Cases case_to) {
 		break;
 	}
 	word_case = case_to;
+	return word;
+}
+
+std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber) {
+	int _ones = _number % 10;
+	int _tens = _number % 100 / 10;
+	int _hundreds = _number / 100;
+	std::string _numstr = "";
+	switch (_hundreds)
+	{
+	case 1:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "сто";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Instrumental:
+		case Cases::Prepositional:
+			_numstr += "ста";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 2:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "двести";
+			break;
+		case Cases::Genetive:
+			_numstr += "двухсот";
+			break;
+		case Cases::Dative:
+			_numstr += "двумстам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "двумястами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "двухстах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 3:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "триста";
+			break;
+		case Cases::Genetive:
+			_numstr += "трёхсот";
+			break;
+		case Cases::Dative:
+			_numstr += "трёмстам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "тремястами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "трёхстах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 4:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "четыреста";
+			break;
+		case Cases::Genetive:
+			_numstr += "четырёхсот";
+			break;
+		case Cases::Dative:
+			_numstr += "четырёмстам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "четырьмястами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "четырёхстах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 5:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "пятьсот";
+			break;
+		case Cases::Genetive:
+			_numstr += "пятисот";
+			break;
+		case Cases::Dative:
+			_numstr += "пятистам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "пятьюстами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "пятистах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 6:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "шестьсот";
+			break;
+		case Cases::Genetive:
+			_numstr += "шестисот";
+			break;
+		case Cases::Dative:
+			_numstr += "шестистам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "шестьюстами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "шестистах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 7:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "семьсот";
+			break;
+		case Cases::Genetive:
+			_numstr += "семисот";
+			break;
+		case Cases::Dative:
+			_numstr += "семистам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "семьюстами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "семистах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 8:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "восемьсот";
+			break;
+		case Cases::Genetive:
+			_numstr += "восьмисот";
+			break;
+		case Cases::Dative:
+			_numstr += "восьмистам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "восемьюстами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "восьмистах";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 9:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "девятьсот";
+			break;
+		case Cases::Genetive:
+			_numstr += "девятисот";
+			break;
+		case Cases::Dative:
+			_numstr += "девятистам";
+			break;
+		case Cases::Instrumental:
+			_numstr += "девятьюстами";
+			break;
+		case Cases::Prepositional:
+			_numstr += "девятистах";
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+	switch (_tens)
+	{
+	case 1:
+		_numstr += "сто";
+		break;
+	case 2:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "двадцать";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "двадцати";
+			break;
+		case Cases::Instrumental:
+			_numstr += "двадцатью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 3:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "тридцать";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "тридцати";
+			break;
+		case Cases::Instrumental:
+			_numstr += "тридцатью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 4:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "сорок";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+		case Cases::Instrumental:
+			_numstr += "сорока";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 5:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "пятьдесят";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "пятидесяти";
+			break;
+		case Cases::Instrumental:
+			_numstr += "пятьюдесятью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 6:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "шестьдесят";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "шестидесяти";
+			break;
+		case Cases::Instrumental:
+			_numstr += "шестьюдесятью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 7:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "семьдесят";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "семидесяти";
+			break;
+		case Cases::Instrumental:
+			_numstr += "семьюдесятью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 8:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "восемьдесят";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "восьмидесяти";
+			break;
+		case Cases::Instrumental:
+			_numstr += "восемьюдесятью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 9:
+		switch (_case)
+		{
+		case Cases::Nominative:
+		case Cases::Accusative:
+			_numstr += "девяносто";
+			break;
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+		case Cases::Instrumental:
+			_numstr += "девяноста";
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+	switch (_ones)
+	{
+	case 1:
+		switch (_case)
+		{
+		case Cases::Nominative:
+			if (_gnumber == Number::Plural) {
+				_numstr += "одни";
+			}
+			else {
+				switch (_gender)
+				{
+				case Gender::Masculine:
+					_numstr += "один";
+					break;
+				case Gender::Feminine:
+					_numstr += "одна";
+					break;
+				case Gender::Neuter:
+					_numstr += "одно";
+					break;
+				default:
+					break;
+				}
+			}
+			break;
+		case Cases::Accusative:
+			if (_gnumber == Number::Plural) {
+				_numstr += "одних";
+			}
+			else {
+				switch (_gender)
+				{
+				case Gender::Masculine:
+					_numstr += "один";
+					break;
+				case Gender::Feminine:
+					_numstr += "одну";
+					break;
+				case Gender::Neuter:
+					_numstr += "одно";
+					break;
+				default:
+					break;
+				}
+			}
+		case Cases::Genetive:
+		case Cases::Dative:
+		case Cases::Prepositional:
+			_numstr += "двадцати";
+			break;
+		case Cases::Instrumental:
+			_numstr += "двадцатью";
+			break;
+		default:
+			break;
+		}
+		break;
+	case 2:
+		_numstr += "два";
+		break;
+	case 3:
+		_numstr += "три";
+		break;
+	case 4:
+		_numstr += "четыре";
+		break;
+	case 5:
+		_numstr += "пять";
+		break;
+	case 6:
+		_numstr += "шесть";
+		break;
+	case 7:
+		_numstr += "семь";
+		break;
+	case 8:
+		_numstr += "восемь";
+		break;
+	case 9:
+		_numstr += "девять";
+		break;
+	default:
+		break;
+	}
+}
+
+Numeral::Numeral(int number) {
+
+}
+
+std::string Numeral::to_string() {
 	return word;
 }
 

@@ -205,6 +205,31 @@ private:
 	void to_nominative();
 };
 
+class Numeral
+{
+public:
+	/// <summary>
+	/// Слово
+	/// </summary>
+	std::string word;
+	Numeral(std::string word_num_only, Cases num_case, Number num_number, Gender num_gender);
+
+	Numeral(int number);
+
+	~Numeral()
+	{
+	}
+
+	/// <summary>
+	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
+	/// <para>ENG: Convert class to string</para>
+	/// </summary>
+	/// <returns>Слово</returns>
+	std::string to_string();
+private:
+	static std::string num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber);
+};
+
 
 class Word
 {
