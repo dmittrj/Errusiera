@@ -32,7 +32,7 @@ int main() {
 
 
 	//Example 3. Time
-	std::cout << "Введите время в формате ЧЧ:ММ > ";
+	std::cout << "Введите текущее время в формате ЧЧ:ММ > ";
 	std::string time3;
 	std::cin >> time3;
 	std::string hours3 = time3.substr(0, 2);
