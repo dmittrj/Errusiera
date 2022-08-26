@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.0-beta2
+	// Errusiera for C# 1.0.0-beta5
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
