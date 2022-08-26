@@ -9,36 +9,36 @@ int main() {
 	//These are some examples of using Errusiera
 
 	//Example 1. Enter your name
-	std::cout << "Ââåäèòå âàøå èìÿ > ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ²Ğ°ÑˆĞµ Ğ¸Ğ¼Ñ > ";
 	std::string my_name1;
 	std::cin >> my_name1;
 	Noun E_my_name_1(my_name1, Cases::Nominative, Number::Singular);
 	E_my_name_1.change_case(Cases::Dative);
 	my_name1 = E_my_name_1.to_string();
-	std::cout << my_name1 << " íğàâèòñÿ Errusiera" << std::endl;
+	std::cout << my_name1 << " Ğ½Ñ€Ğ°Ğ²Ğ¸Ñ‚ÑÑ Errusiera" << std::endl;
 
 
 	//Example 2. Wedding
-	std::cout << "Ââåäèòå èìÿ ìóæà > ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ Ğ¼ÑƒĞ¶Ğ° > ";
 	std::string husband_name2;
 	std::cin >> husband_name2;
-	std::cout << "Ââåäèòå èìÿ æåíû > ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ Ğ¶ĞµĞ½Ñ‹ > ";
 	std::string wife_name2;
 	std::cin >> wife_name2;
 	Noun E_husband_name2(husband_name2, Cases::Nominative, Number::Singular);
 	Noun E_wife_name2(wife_name2, Cases::Nominative, Number::Singular);
-	std::cout << E_husband_name2.to_string() << " æåíàò íà " << E_wife_name2.change_case(Cases::Prepositional) << std::endl;
-	std::cout << E_wife_name2.change_case(Cases::Nominative) << " çàìóæåì çà " << E_husband_name2.change_case(Cases::Instrumental) << std::endl;
+	std::cout << E_husband_name2.to_string() << " Ğ¶ĞµĞ½Ğ°Ñ‚ Ğ½Ğ° " << E_wife_name2.change_case(Cases::Prepositional) << std::endl;
+	std::cout << E_wife_name2.change_case(Cases::Nominative) << " Ğ·Ğ°Ğ¼ÑƒĞ¶ĞµĞ¼ Ğ·Ğ° " << E_husband_name2.change_case(Cases::Instrumental) << std::endl;
 
 
 	//Example 3. Time
-	std::cout << "Ââåäèòå âğåìÿ â ôîğìàòå ××:ÌÌ > ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ²Ñ€ĞµĞ¼Ñ Ğ² Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ‚Ğµ Ğ§Ğ§:ĞœĞœ > ";
 	std::string time3;
 	std::cin >> time3;
 	std::string hours3 = time3.substr(0, 2);
 	std::string minutes3 = time3.substr(3, 2);
-	Noun E_hours3("÷àñ", Cases::Nominative, Number::Singular);
-	Noun E_minutes3("ìèíóòà", Cases::Nominative, Number::Singular);
+	Noun E_hours3("Ñ‡Ğ°Ñ", Cases::Nominative, Number::Singular);
+	Noun E_minutes3("Ğ¼Ğ¸Ğ½ÑƒÑ‚Ğ°", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
 	E_minutes3.change_case(Cases::Genetive);
 }
