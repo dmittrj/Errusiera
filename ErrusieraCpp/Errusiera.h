@@ -13,27 +13,27 @@ enum class Cases
 	/// <para>RUS: Нет падежа или неизвестен. Не используйте сами этот падеж</para>
 	/// <para>ENG: No case or case is unknown. Please do not use it by your own</para>
 	/// </summary>
-	None, 
+	None,
 	/// <summary>
 	/// Именительный падеж
 	/// </summary>
-	Nominative, 
+	Nominative,
 	/// <summary>
 	/// Родительный падеж
 	/// </summary>
-	Genetive, 
+	Genetive,
 	/// <summary>
 	/// Дательный падеж
 	/// </summary>
-	Dative, 
+	Dative,
 	/// <summary>
 	/// Винительный падеж
 	/// </summary>
-	Accusative, 
+	Accusative,
 	/// <summary>
 	/// Творительный падеж
 	/// </summary>
-	Instrumental, 
+	Instrumental,
 	/// <summary>
 	/// Предложный падеж
 	/// </summary>
@@ -43,25 +43,44 @@ enum class Cases
 /// <summary>
 /// Числа
 /// </summary>
-enum class Number 
+enum class Number
 {
 	/// <summary>
 	/// <para>RUS: Нет числа или неизвестно. Не используйте сами этот параметр</para>
 	/// <para>ENG: No number or number is unknown. Please do not use it by your own</para>
 	/// </summary>
-	None, 
+	None,
 	/// <summary>
 	/// Единственное число
 	/// </summary>
-	Singular, 
+	Singular,
 	/// <summary>
 	/// Паукальное (двойственное) число
 	/// </summary>
-	Paucal, 
+	Paucal,
 	/// <summary>
 	/// Множественное число
 	/// </summary>
 	Plural
+};
+
+/// <summary>
+/// Рода
+/// </summary>
+enum class Gender
+{
+	/// <summary>
+	/// Мужской род
+	/// </summary>
+	Masculine,
+	/// <summary>
+	/// Женский род
+	/// </summary>
+	Feminine,
+	/// <summary>
+	/// Средний род
+	/// </summary>
+	Neuter
 };
 
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
@@ -100,7 +119,7 @@ public:
 	/// <param name="noun_case">| Падеж</param>
 	/// <param name="noun_number">| Число</param>
 	Noun(std::string word_noun_only, Cases noun_case, Number noun_number);
-	
+
 	~Noun();
 
 	/// <summary>
@@ -148,6 +167,28 @@ private:
 
 	void to_nominative();
 };
+
+/// <summary>
+/// Имя прилагательное
+/// </summary>
+class Adjective
+{
+public:
+	/// <summary>
+	/// Слово
+	/// </summary>
+	std::string word;
+	Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender);
+
+	~Adjective();
+
+private:
+	Cases word_case;
+	Number word_number;
+	Gender word_gender;
+	std::string word_nominative = "";
+};
+
 
 class Word
 {
