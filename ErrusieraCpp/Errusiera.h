@@ -179,14 +179,30 @@ public:
 	/// </summary>
 	std::string word;
 	Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender);
-
 	~Adjective();
+
+	/// <summary>
+	/// <para>RUS: Меняет падеж имени прилагательного</para>
+	/// <para>ENG: The function changes the case of the adjective</para>
+	/// </summary>
+	/// <param name="case_to">| Падеж</param>
+	/// <returns>Слово в заказанном падеже</returns>
+	std::string change_case(Cases case_to);
+
+	/// <summary>
+	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
+	/// <para>ENG: Convert class to string</para>
+	/// </summary>
+	/// <returns>Слово</returns>
+	std::string to_string();
 
 private:
 	Cases word_case;
 	Number word_number;
 	Gender word_gender;
 	std::string word_nominative = "";
+
+	void to_nominative();
 };
 
 
