@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ErrusieraCs
+namespace Errusiera
 {
 	// Errusiera for C# 1.0.0-beta5
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
@@ -10,6 +10,7 @@ namespace ErrusieraCs
     {
 		public static bool Pattern(string str_to_compare, string _pattern, ref string changed_string, bool _eraser_mode)
 		{
+			str_to_compare = str_to_compare.Trim();
 			if (_pattern == "")
 			{
 				if (str_to_compare == "")
@@ -21,8 +22,10 @@ namespace ErrusieraCs
 					return false;
 				}
 			}
-			string _new_string = "";
-			string _symbol = _pattern.Substring(0, 2);
+			if (str_to_compare.Length < 2) str_to_compare += "  ";
+			//string _new_string = "";
+			string _symbol;
+			_symbol = _pattern.Length >= 2 ? _pattern.Substring(0, 2) : _pattern;
 			string _new_temp_string = "";
 			if (_symbol == "**")
 			{
@@ -61,9 +64,9 @@ namespace ErrusieraCs
 				while (true)
 				{
 					_symbol = _pattern.Substring(_counter, 1);
-					if (_symbol == "+!")
+					if (_symbol == "+")
 					{
-						bool _tmp_add = Pattern(str_to_compare, _pattern[(_counter + 1)..], ref changed_string, _eraser_mode);
+						bool _tmp_add = Pattern(str_to_compare, _pattern.Substring(_counter + 2), ref changed_string, _eraser_mode);
 						changed_string = _new_temp_string + changed_string;
 						return _tmp_add;
 					}
