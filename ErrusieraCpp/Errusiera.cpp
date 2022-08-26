@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.1
+// Errusiera 1.0.1-alpha1
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -60,7 +60,7 @@ std::string Noun::change_case(Cases case_to) {
 	case Cases::Dative:
 		if (pattern(word, "[ ]011")) {
 			pattern(word, "[ ]!--011--!!++032++!", word);
-		} 
+		}
 		else if (pattern(word, "[ ]001")) {
 			pattern(word, "[ ]!--001--!!++006++!", word);
 		}
@@ -94,10 +94,10 @@ std::string Noun::change_case(Cases case_to) {
 			pattern(word, "[ ]!--033--!!++032++!", word);
 		}
 		else if (pattern(word, "[ ]008030")) {
-			
+
 		}
 		else if (pattern(word, "[ ]026030")) {
-			
+
 		}
 		else if (pattern(word, "[ ]030")) {
 			pattern(word, "[ ]!--030--!!++033++!", word);
@@ -200,7 +200,7 @@ int char_code(std::string _internal_code) {
 	if (_internal_code == "013") return -21;
 	if (_internal_code == "014") return -20;
 	if (_internal_code == "015") return -19;
-	if (_internal_code == "016") return -18; 
+	if (_internal_code == "016") return -18;
 	if (_internal_code == "017") return -17;
 	if (_internal_code == "018") return -16;
 	if (_internal_code == "019") return -15;
@@ -252,7 +252,7 @@ bool pattern(std::string str_to_compare, std::string _pattern, std::string& chan
 				return true;
 			}
 		}
-	} 
+	}
 	else if (!strcmp(_triplet, "[_]")) {
 		// All the rest letters
 		int _str_length = str_to_compare.size();
@@ -306,6 +306,15 @@ bool pattern(std::string str_to_compare, std::string _pattern) {
 	std::string _trash = "";
 	return pattern(str_to_compare, _pattern, _trash);
 }
+
+Adjective::Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender) {
+	word = word_adj_only;
+	word_case = adj_case;
+	word_number = adj_number;
+	word_gender = adj_gender;
+}
+
+
 
 Word::Word(std::string russian_word) {
 	word = russian_word;
