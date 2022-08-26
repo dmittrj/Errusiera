@@ -24,8 +24,8 @@ namespace Errusiera
 			string wife_name2 = Console.ReadLine();
 			Noun E_husband_name2 = new Noun(husband_name2, Cases.Nominative, Number.Singular);
 			Noun E_wife_name2 = new Noun(wife_name2, Cases.Nominative, Number.Singular);
-			Console.Write(E_husband_name2.ToString() + " женат на " + E_wife_name2.ChangeCase(Cases.Prepositional));
-			Console.Write(E_wife_name2.ChangeCase(Cases.Nominative) + " замужем за " + E_husband_name2.ChangeCase(Cases.Instrumental));
+			Console.WriteLine(E_husband_name2.ToString() + " женат на " + E_wife_name2.ChangeCase(Cases.Prepositional));
+			Console.WriteLine(E_wife_name2.ChangeCase(Cases.Nominative) + " замужем за " + E_husband_name2.ChangeCase(Cases.Instrumental));
 		}
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.0-beta2
+	// Errusiera for C# 1.0.0-beta6
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -114,172 +114,181 @@ namespace Errusiera
 		/// <returns>Слово в заказанном падеже</returns>
 		public string ChangeCase(Cases case_to)
 		{
-			if (case_to == WordCase) { return ""; }
+			if (case_to == WordCase) { return Word; }
 			ToNominative();
 			switch (case_to)
 			{
 				case Cases.Genetive:
-					if (Word[^1] == 'й')
+					if (Siera.Pattern(Word, "**й"))
 					{
-						Word = Word[0..^1] + "я";
+						Siera.Pattern(Word, "**!-й-!!+я+!", ref Word);
 					}
-					else if (Word[^1] == 'а')
+					else if (Siera.Pattern(Word, "**а"))
 					{
-						Word = Word[0..^1] + "ы";
+						Siera.Pattern(Word, "**!-а-!!+ы+!", ref Word);
 					}
-					else if (Word[^2..] == "мя")
+					else if (Siera.Pattern(Word, "**мя"))
 					{
-						Word = Word[0..^1] + "ени";
+						Siera.Pattern(Word, "**м!-я-!!+ени+!", ref Word);
 					}
-					else if (Word[^1] == 'я')
+					else if (Siera.Pattern(Word, "**я"))
 					{
-						Word = Word[0..^1] + "и";
+						Siera.Pattern(Word, "**!-я-!!+и+!", ref Word);
 					}
-					else if (Word[^1] == 'ь')
+					else if (Siera.Pattern(Word, "**жь"))
 					{
-						if (Word[^2] == 'ш' || Word[^2] == 'ж')
-						{
-							Word = Word[0..^1] + "и";
-						} else
-                        {
-							Word = Word[0..^1] + "я";
-						}
+						Siera.Pattern(Word, "**ж!-ь-!!+и+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**шь"))
+					{
+						Siera.Pattern(Word, "**ш!-ь-!!+и+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**ь"))
+					{
+						Siera.Pattern(Word, "**!-ь-!!+я+!", ref Word);
 					}
 					else
 					{
-						Word += "а";
+						Siera.Pattern(Word, "*_!+а+!", ref Word);
 					}
 					break;
 				case Cases.Dative:
-					if (Word[^1] == 'й')
+					if (Siera.Pattern(Word, "**й"))
 					{
-						Word = Word[0..^1] + "ю";
+						Siera.Pattern(Word, "**!-й-!!+ю+!", ref Word);
 					}
-					else if(Word[^1] == 'а')
+					else if (Siera.Pattern(Word, "**а"))
 					{
-						Word = Word[0..^1] + "е";
+						Siera.Pattern(Word, "**!-а-!!+е+!", ref Word);
 					}
-					else if (Word[^2..] == "мя")
+					else if (Siera.Pattern(Word, "**мя"))
 					{
-						Word = Word[0..^1] + "ени";
+						Siera.Pattern(Word, "**м!-я-!!+ени+!", ref Word);
 					}
-					else if (Word[^1] == 'я')
+					else if (Siera.Pattern(Word, "**я"))
 					{
-						Word = Word[0..^1] + "е";
+						Siera.Pattern(Word, "**!-я-!!+е+!", ref Word);
 					}
-					else if (Word[^1] == 'ь')
+					else if (Siera.Pattern(Word, "**жь"))
 					{
-						if (Word[^2] == 'ш' || Word[^2] == 'ж')
-						{
-							Word = Word[0..^1] + "и";
-						}
-						else
-						{
-							Word = Word[0..^1] + "ю";
-						}
+						Siera.Pattern(Word, "**ж!-ь-!!+и+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**шь"))
+					{
+						Siera.Pattern(Word, "**ш!-ь-!!+и+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**ь"))
+					{
+						Siera.Pattern(Word, "**!-ь-!!+ю+!", ref Word);
 					}
 					else
 					{
-						Word += "у";
+						Siera.Pattern(Word, "*_!+у+!", ref Word);
 					}
 					break;
 				case Cases.Accusative:
-					if (Word[^1] == 'й')
+					if (Siera.Pattern(Word, "**й"))
 					{
-						Word = Word[0..^1] + "я";
+						Siera.Pattern(Word, "**!-й-!!+я+!", ref Word);
 					}
-					else if (Word[^1] == 'а')
+					else if (Siera.Pattern(Word, "**а"))
 					{
-						Word = Word[0..^1] + "у";
+						Siera.Pattern(Word, "**!-а-!!+у+!", ref Word);
 					}
-					else if (Word[^2..] == "мя")
+					else if (Siera.Pattern(Word, "**я"))
+					{
+						Siera.Pattern(Word, "**!-я-!!+ю+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**жь"))
 					{
 
 					}
-					else if (Word[^1] == 'я')
+					else if (Siera.Pattern(Word, "**шь"))
 					{
-						Word = Word[0..^1] + "ю";
+
 					}
-					else if (Word[^1] == 'ь')
+					else if (Siera.Pattern(Word, "**ь"))
 					{
-						if (Word[^2] == 'ш' || Word[^2] == 'ж')
-						{
-						}
-						else
-						{
-							Word = Word[0..^1] + "я";
-						}
+						Siera.Pattern(Word, "**!-ь-!!+я+!", ref Word);
 					}
 					break;
 				case Cases.Instrumental:
-					if (Word[^1] == 'й')
+					if (Siera.Pattern(Word, "**й"))
 					{
-						Word = Word[0..^1] + "ем";
+						Siera.Pattern(Word, "**!-й-!!+ем+!", ref Word);
 					}
-					else if (Word[^1] == 'а')
+					else if (Siera.Pattern(Word, "**а"))
 					{
-						Word = Word[0..^1] + "ой";
+						Siera.Pattern(Word, "**!-а-!!+ой+!", ref Word);
 					}
-					else if (Word[^2..] == "мя")
+					else if (Siera.Pattern(Word, "**мя"))
 					{
-						Word = Word[0..^1] + "енем";
+						Siera.Pattern(Word, "**м!-я-!!+енем+!", ref Word);
 					}
-					else if (Word[^1] == 'я')
+					else if (Siera.Pattern(Word, "**я"))
 					{
-						Word = Word[0..^1] + "ей";
+						Siera.Pattern(Word, "**!-я-!!+ей+!", ref Word);
 					}
-					else if (Word[^1] == 'ь')
+					else if (Siera.Pattern(Word, "**жь"))
 					{
-						if (Word[^2] == 'ш' || Word[^2] == 'ж')
-						{
-							Word = Word[0..^1] + "ю";
-						}
-						else if (Word[^2] == 'р' || Word[^2] == 'л' || Word[^2] == 'с')
-						{
-							Word = Word[0..^1] + "ем";
-						}
-						else
-						{
-							Word = Word[0..^1] + "ём";
-						}
+						Siera.Pattern(Word, "**жь!+ю+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**шь"))
+					{
+						Siera.Pattern(Word, "**шь!+ю+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**рь"))
+					{
+						Siera.Pattern(Word, "**р!-ь-!!+ем+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**ль"))
+					{
+						Siera.Pattern(Word, "**л!-ь-!!+ем+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**сь"))
+					{
+						Siera.Pattern(Word, "**с!-ь-!!+ем+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**ь"))
+					{
+						Siera.Pattern(Word, "**!-ь-!!+ём+!", ref Word);
 					}
 					else
 					{
-						Word += "ом";
+						Siera.Pattern(Word, "*_!+ом+!", ref Word);
 					}
 					break;
 				case Cases.Prepositional:
-					if (Word[^2..^1] == "ий")
+					if (Siera.Pattern(Word, "**ий"))
 					{
-						Word = Word[0..^2] + "ии";
-					} else
-					if (Word[^1] == 'й')
+						Siera.Pattern(Word, "**и!-й-!!+и+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**й"))
 					{
-						Word = Word[0..^1] + "е";
+						Siera.Pattern(Word, "**!-й-!!+е+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**а"))
+					{
+						Siera.Pattern(Word, "**!-а-!!+е+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**мя"))
+					{
+						Siera.Pattern(Word, "**м!-я-!!+ени+!", ref Word);
+					}
+					else if (Siera.Pattern(Word, "**я"))
+					{
+						Siera.Pattern(Word, "**!-я-!!+е+!", ref Word);
 					}
 					else
-					if (Word[^1] == 'а')
 					{
-						Word = Word[0..^1] + "е";
-					}
-					else if (Word[^2..] == "мя")
-					{
-						Word = Word[0..^1] + "ене";
-					}
-					else if (Word[^1] == 'я')
-					{
-						Word = Word[0..^1] + "е";
-					}
-					else
-					{
-						Word += "е";
+						Siera.Pattern(Word, "*_!+е+!", ref Word);
 					}
 					break;
 				default:
 					break;
-					
 			}
-			return "";
+			WordCase = case_to;
+			return Word;
 		}
 
 		/// <summary>
@@ -319,7 +328,10 @@ namespace Errusiera
 
 		private void ToNominative()
         {
-
-        }
+			if (WordNominative != "")
+			{
+				Word = WordNominative;
+			}
+		}
 	}
 }
