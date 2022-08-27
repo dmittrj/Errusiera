@@ -7,6 +7,12 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
 
+	//Alpha testing
+	std::string a;
+	std::cin >> a;
+	Noun alpha(a, Cases::Nominative, Number::Singular);
+	std::cout << alpha.change_word(Cases::Nominative, Number::Plural) << "\n";
+
 	//These are some examples of using Errusiera
 
 	//Example 1. Enter your name
@@ -45,10 +51,4 @@ int main() {
 	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
 	E_minutes3.change_case(Cases::Genetive);*/
-
-	//Alpha testing
-	std::string a;
-	std::cin >> a;
-	Noun alpha(a, Cases::Nominative, Number::Singular);
-	std::cout << alpha.change_word(Cases::Nominative, Number::Plural);
 }
