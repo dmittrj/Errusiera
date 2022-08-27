@@ -2,7 +2,7 @@
 #include <utility>
 #include <algorithm>
 
-// Errusiera 1.0.1-alpha5
+// Errusiera 1.0.1-alpha6
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -260,25 +260,25 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 					pattern(word, "[ ]!--011--!!++033014++!", word);
 				}
 				else if (pattern(word, "[ ]012001")) {
-					pattern(word, "[ ]!--012001--!!++016012++!", word);
+					pattern(word, "[ ]012001!++014++!", word);
 				}
 				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!", word);
+					pattern(word, "[ ]001!++014++!", word);
 				}
 				else if (pattern(word, "[ ]016012")) {
-					pattern(word, "[ ]!--016012--!!++012016003++!", word);
+					pattern(word, "[ ]!--016012--!!++012001014++!", word);
 				}
 				else if (pattern(word, "[ ]006012")) {
-					pattern(word, "[ ]!--006012--!!++012016003++!", word);
+					pattern(word, "[ ]!--006012--!!++012001014++!", word);
 				}
 				else if (pattern(word, "[ ]012")) {
-					pattern(word, "[ ]!++016003++!", word);
+					pattern(word, "[ ]!++001014++!", word);
 				}
 				else if (pattern(word, "[ ]006")) {
-					pattern(word, "[ ]!++003++!", word);
+					pattern(word, "[ ]!--006--!!++033014++!", word);
 				}
 				else {
-					pattern(word, "[_]!++016003++!", word);
+					pattern(word, "[_]!++001014++!", word);
 				}
 				break;
 			case Cases::Accusative:
@@ -298,7 +298,7 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 		}
 	}
 	catch (std::exception& _exception) {
-		std::cout << "[Alert] " << _exception.what() << "\n";
+		return (std::string)"[Alert] " + _exception.what() + "\n";
 	}
 	
 	word_case = case_to;
