@@ -2,7 +2,7 @@
 #include <utility>
 #include <algorithm>
 
-// Errusiera 1.0.1-alpha4
+// Errusiera 1.0.1-alpha5
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -412,8 +412,8 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		Noun _exception_no_word("");
 		return _exception_no_word;
 	}
-	Noun nfesrkjsjkldh("");
-	return nfesrkjsjkldh;
+	Noun _return_no_word("");
+	return _return_no_word;
 }
 
 int char_code(std::string _internal_code) {
