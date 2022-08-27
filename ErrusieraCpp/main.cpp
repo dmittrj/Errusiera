@@ -11,7 +11,7 @@ int main() {
 	std::string a;
 	std::cin >> a;
 	Noun alpha(a, Cases::Nominative, Number::Singular);
-	std::cout << alpha.change_word(Cases::Genetive, Number::Plural) << "\n";
+	std::cout << alpha.change_word(Cases::Dative, Number::Plural) << "\n";
 
 	//These are some examples of using Errusiera
 
@@ -39,7 +39,7 @@ int main() {
 
 
 	//Example 3. Time
-	/*std::cout << "Введите время в формате ЧЧ:ММ > ";
+	std::cout << "Введите время в формате ЧЧ:ММ > ";
 	std::string time3;
 	std::cin >> time3;
 	int hours3 = std::stoi(time3.substr(0, 2));
@@ -50,5 +50,10 @@ int main() {
 	Noun E_hours3("час", Cases::Nominative, Number::Singular);
 	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
-	E_minutes3.change_case(Cases::Genetive);*/
+	E_minutes3.change_case(Cases::Genetive);
+	if (hours3 >= 10 && hours3 <= 20) E_hours3.change_number(Number::Plural);
+	else if (hours3 % 10 == 1) E_hours3.change_word(Cases::Nominative, Number::Singular);
+	else if (hours3 % 10 > 4 || hours3 % 10 == 0) E_hours3.change_number(Number::Plural);
+	else E_hours3.change_number(Number::Singular);
+	std::cout << "Время: " << hours3 << " " << E_hours3.to_string();
 }
