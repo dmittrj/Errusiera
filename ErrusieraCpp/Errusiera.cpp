@@ -212,6 +212,7 @@ std::string Noun::serialize() {
 		_serialized += "Prepositional";
 		break;
 	default:
+		_serialized += "None";
 		break;
 	}
 	_serialized += "\",\"word_number\":\"";
@@ -230,6 +231,7 @@ std::string Noun::serialize() {
 		_serialized += "Plural";
 		break;
 	default:
+		_serialized += "None";
 		break;
 	}
 	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";

@@ -48,6 +48,6 @@ int main() {
 
 
 	//Alpha testing (only for developers)
-	Noun _test_srlz("TEST_WORD", Cases::Nominative, Number::Plural);
+	Noun _test_srlz("TEST_WORD");
 	std::cout << _test_srlz.serialize();
 }
