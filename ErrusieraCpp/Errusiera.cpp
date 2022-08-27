@@ -216,11 +216,41 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]012")) {
 					pattern(word, "[ ]!++010++!", word);
 				}
+				else if (pattern(word, "[ ]006")) {
+					pattern(word, "[ ]!--006--!!++033++!", word);
+				}
+				else if (pattern(word, "[ ]007")) {
+					pattern(word, "[ ]!--007--!!++033++!", word);
+				}
 				else {
 					pattern(word, "[_]!++029++!", word);
 				}
 				break;
 			case Cases::Genetive:
+				if (pattern(word, "[ ]011")) {
+					pattern(word, "[ ]!--011--!!++006003++!", word);
+				}
+				else if (pattern(word, "[ ]012001")) {
+					pattern(word, "[ ]!--012001--!!++016012++!", word);
+				}
+				else if (pattern(word, "[ ]001")) {
+					pattern(word, "[ ]!--001--!", word);
+				}
+				else if (pattern(word, "[ ]016012")) {
+					pattern(word, "[ ]!--016012--!!++012016003++!", word);
+				}
+				else if (pattern(word, "[ ]006012")) {
+					pattern(word, "[ ]!--006012--!!++012016003++!", word);
+				}
+				else if (pattern(word, "[ ]012")) {
+					pattern(word, "[ ]!++016003++!", word);
+				}
+				else if (pattern(word, "[ ]006")) {
+					pattern(word, "[ ]!++003++!", word);
+				}
+				else {
+					pattern(word, "[_]!++016003++!", word);
+				}
 				break;
 			case Cases::Dative:
 				break;
