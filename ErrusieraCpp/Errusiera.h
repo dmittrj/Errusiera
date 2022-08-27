@@ -160,6 +160,13 @@ public:
 	/// </summary>
 	/// <returns>Слово</returns>
 	std::string to_string();
+
+	/// <summary>
+	/// <para>RUS: Сериализует объект класса Noun в формате JSON</para>
+	/// <para>ENG: JSON serializing</para> 
+	/// </summary>
+	/// <returns>Сериализованная строка</returns>
+	std::string serialize();
 private:
 	Cases word_case;
 	Number word_number;

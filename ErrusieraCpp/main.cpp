@@ -45,4 +45,9 @@ int main() {
 	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
 	E_minutes3.change_case(Cases::Genetive);
+
+
+	//Alpha testing (only for developers)
+	Noun _test_srlz("TEST_WORD", Cases::Nominative, Number::Plural);
+	std::cout << _test_srlz.serialize();
 }

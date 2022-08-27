@@ -184,6 +184,59 @@ std::string Noun::to_string() {
 	return word;
 }
 
+std::string Noun::serialize() {
+	std::string _serialized = (std::string)"{" +
+		"\"word\":\"" + this->word + "\"," +
+		"\"word_case\":\"";
+	switch (word_case)
+	{
+	case Cases::None:
+		_serialized += "None";
+		break;
+	case Cases::Nominative:
+		_serialized += "Nominative";
+		break;
+	case Cases::Genetive:
+		_serialized += "Genetive";
+		break;
+	case Cases::Dative:
+		_serialized += "Dative";
+		break;
+	case Cases::Accusative:
+		_serialized += "Accusative";
+		break;
+	case Cases::Instrumental:
+		_serialized += "Instrumental";
+		break;
+	case Cases::Prepositional:
+		_serialized += "Prepositional";
+		break;
+	default:
+		break;
+	}
+	_serialized += "\",\"word_number\":\"";
+	switch (word_number)
+	{
+	case Number::None:
+		_serialized += "None";
+		break;
+	case Number::Singular:
+		_serialized += "Singular";
+		break;
+	case Number::Paucal:
+		_serialized += "Paucal";
+		break;
+	case Number::Plural:
+		_serialized += "Plural";
+		break;
+	default:
+		break;
+	}
+	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";
+	_serialized += "}";
+	return _serialized;
+}
+
 int char_code(std::string _internal_code) {
 	if (_internal_code == "001") return -32;
 	if (_internal_code == "002") return -31;
@@ -913,6 +966,7 @@ std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number
 	default:
 		break;
 	}
+	return _numstr;
 }
 
 Numeral::Numeral(int number) {
