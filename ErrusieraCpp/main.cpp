@@ -33,7 +33,7 @@ int main() {
 
 
 	//Example 3. Time
-	std::cout << "Введите время в формате ЧЧ:ММ > ";
+	/*std::cout << "Введите время в формате ЧЧ:ММ > ";
 	std::string time3;
 	std::cin >> time3;
 	int hours3 = std::stoi(time3.substr(0, 2));
@@ -44,5 +44,11 @@ int main() {
 	Noun E_hours3("час", Cases::Nominative, Number::Singular);
 	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
-	E_minutes3.change_case(Cases::Genetive);
+	E_minutes3.change_case(Cases::Genetive);*/
+
+	//Alpha testing
+	std::string a;
+	std::cin >> a;
+	Noun alpha(a, Cases::Nominative, Number::Singular);
+	std::cout << alpha.change_word(Cases::Nominative, Number::Plural);
 }
