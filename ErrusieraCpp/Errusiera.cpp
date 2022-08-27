@@ -243,12 +243,34 @@ std::string Noun::serialize() {
 
 Noun Noun::deserialize(std::string _serialized_string) {
 	std::string _reading_str = _serialized_string;
+	std::string _word = "";
 	try {
 		if (_reading_str.size() < 9) throw std::invalid_argument("Not a JSON format");
-		if (_serialized_string.substr() != "{\"word\":\"") throw "[Alert]";
+		if (_serialized_string.substr() != "{\"word\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(9);
+		while (true)
+		{
+			if (_reading_str.size() == 0) {
+				throw std::invalid_argument("\'word\' argument is not recognized properly");
+			}
+			else {
+				if (_reading_str[0] == (char)34) {
+					break;
+				}
+				else {
+					_word += _reading_str[0];
+				}
+				_reading_str = _reading_str.substr(1);
+			}
+		}
+
+		Noun _return_noun(_word);
+		return _return_noun;
 	} 
 	catch (std::invalid_argument const& _exception) {
 		std::cout << "[Alert] " << _exception.what() << std::endl;
+		Noun _exception_no_word("");
+		return _exception_no_word;
 	}
 	Noun nfesrkjsjkldh("");
 	return nfesrkjsjkldh;
