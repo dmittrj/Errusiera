@@ -50,4 +50,5 @@ int main() {
 	//Alpha testing (only for developers)
 	Noun _test_srlz("TEST_WORD");
 	std::cout << _test_srlz.serialize();
+	Noun _test_desrl = Noun::deserialize("k");
 }

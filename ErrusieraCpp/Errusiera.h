@@ -167,6 +167,13 @@ public:
 	/// </summary>
 	/// <returns>Сериализованная строка</returns>
 	std::string serialize();
+
+	/// <summary>
+	/// <para>RUS: Десериализует строку формата JSON в объект класса Noun</para>
+	/// <para>ENG: JSON deserializing</para> 
+	/// </summary>
+	/// <returns>Объект класса Noun</returns>
+	static Noun deserialize(std::string _serialized_string);
 private:
 	Cases word_case;
 	Number word_number;

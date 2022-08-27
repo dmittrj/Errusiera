@@ -1,6 +1,8 @@
 #include "Errusiera.h"
+#include <utility>
+#include <algorithm>
 
-// Errusiera 1.0.1-alpha2
+// Errusiera 1.0.1-alpha3
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -237,6 +239,19 @@ std::string Noun::serialize() {
 	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";
 	_serialized += "}";
 	return _serialized;
+}
+
+Noun Noun::deserialize(std::string _serialized_string) {
+	std::string _reading_str = _serialized_string;
+	try {
+		if (_reading_str.size() < 9) throw std::invalid_argument("Not a JSON format");
+		if (_serialized_string.substr() != "{\"word\":\"") throw "[Alert]";
+	} 
+	catch (std::invalid_argument const& _exception) {
+		std::cout << "[Alert] " << _exception.what() << std::endl;
+	}
+	Noun nfesrkjsjkldh("");
+	return nfesrkjsjkldh;
 }
 
 int char_code(std::string _internal_code) {
