@@ -50,5 +50,6 @@ int main() {
 	//Alpha testing (only for developers)
 	Noun _test_srlz("TEST_WORD");
 	std::cout << _test_srlz.serialize();
-	Noun _test_desrl = Noun::deserialize("k");
+	Noun _test_desrl = Noun::deserialize("{\"word\":\"Test\",\"word_case\":\"Instru\"");
+	std::cout << std::endl;
 }

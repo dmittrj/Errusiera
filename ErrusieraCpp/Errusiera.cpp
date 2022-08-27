@@ -246,7 +246,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 	std::string _word = "";
 	try {
 		if (_reading_str.size() < 9) throw std::invalid_argument("Not a JSON format");
-		if (_serialized_string.substr() != "{\"word\":\"") throw std::invalid_argument("Not a JSON format");
+		if (_serialized_string.substr(0, 9) != "{\"word\":\"") throw std::invalid_argument("Not a JSON format");
 		_reading_str = _reading_str.substr(9);
 		while (true)
 		{
@@ -255,12 +255,81 @@ Noun Noun::deserialize(std::string _serialized_string) {
 			}
 			else {
 				if (_reading_str[0] == (char)34) {
+					_reading_str = _reading_str.substr(1);
 					break;
 				}
 				else {
 					_word += _reading_str[0];
+					_reading_str = _reading_str.substr(1);
 				}
-				_reading_str = _reading_str.substr(1);
+			}
+		}
+
+		if (_reading_str.size() < 14) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 14) != ",\"word_case\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(14);
+
+		if (_reading_str.size() < 4) {
+			throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+		}
+		std::string _case_string = _reading_str.substr(0, 4);
+		Cases _case = Cases::None;
+		if (_case_string == "None") {
+			_reading_str = _reading_str.substr(4);
+			_case = Cases::None;
+		} 
+		else if (_case_string == "Nomi") {
+			if (_reading_str.size() >= 10 && _reading_str.substr(0, 10) == "Nominative") {
+				_reading_str = _reading_str.substr(10);
+				_case = Cases::Nominative;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Gene") {
+			if (_reading_str.size() >= 8 && _reading_str.substr(0, 8) == "Genetive") {
+				_reading_str = _reading_str.substr(8);
+				_case = Cases::Genetive;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Dati") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Dative") {
+				_reading_str = _reading_str.substr(6);
+				_case = Cases::Dative;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Accu") {
+			if (_reading_str.size() >= 10 && _reading_str.substr(0, 10) == "Accusative") {
+				_reading_str = _reading_str.substr(10);
+				_case = Cases::Accusative;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Inst") {
+			if (_reading_str.size() >= 12 && _reading_str.substr(0, 12) == "Instrumental") {
+				_reading_str = _reading_str.substr(12);
+				_case = Cases::Instrumental;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Prep") {
+			if (_reading_str.size() >= 13 && _reading_str.substr(0, 13) == "Prepositional") {
+				_reading_str = _reading_str.substr(13);
+				_case = Cases::Prepositional;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
 			}
 		}
 
