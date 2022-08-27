@@ -55,5 +55,10 @@ int main() {
 	else if (hours3 % 10 == 1) E_hours3.change_word(Cases::Nominative, Number::Singular);
 	else if (hours3 % 10 > 4 || hours3 % 10 == 0) E_hours3.change_number(Number::Plural);
 	else E_hours3.change_number(Number::Singular);
-	std::cout << "Время: " << hours3 << " " << E_hours3.to_string();
+	if (minutes3 >= 10 && minutes3 <= 20) E_minutes3.change_number(Number::Plural);
+	else if (minutes3 % 10 == 1) E_minutes3.change_word(Cases::Nominative, Number::Singular);
+	else if (minutes3 % 10 > 4 || minutes3 % 10 == 0) E_minutes3.change_number(Number::Plural);
+	else E_minutes3.change_number(Number::Singular);
+	std::cout << "Время: " << hours3 << " " << E_hours3.to_string() << " " 
+		<< minutes3 << " " << E_minutes3.to_string();
 }
