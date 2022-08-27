@@ -1,6 +1,8 @@
 #include "Errusiera.h"
+#include <utility>
+#include <algorithm>
 
-// Errusiera 1.0.1-alpha2
+// Errusiera 1.0.1-alpha4
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -182,6 +184,236 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 
 std::string Noun::to_string() {
 	return word;
+}
+
+std::string Noun::serialize() {
+	std::string _serialized = (std::string)"{" +
+		"\"word\":\"" + this->word + "\"," +
+		"\"word_case\":\"";
+	switch (word_case)
+	{
+	case Cases::None:
+		_serialized += "None";
+		break;
+	case Cases::Nominative:
+		_serialized += "Nominative";
+		break;
+	case Cases::Genetive:
+		_serialized += "Genetive";
+		break;
+	case Cases::Dative:
+		_serialized += "Dative";
+		break;
+	case Cases::Accusative:
+		_serialized += "Accusative";
+		break;
+	case Cases::Instrumental:
+		_serialized += "Instrumental";
+		break;
+	case Cases::Prepositional:
+		_serialized += "Prepositional";
+		break;
+	default:
+		_serialized += "None";
+		break;
+	}
+	_serialized += "\",\"word_number\":\"";
+	switch (word_number)
+	{
+	case Number::None:
+		_serialized += "None";
+		break;
+	case Number::Singular:
+		_serialized += "Singular";
+		break;
+	case Number::Paucal:
+		_serialized += "Paucal";
+		break;
+	case Number::Plural:
+		_serialized += "Plural";
+		break;
+	default:
+		_serialized += "None";
+		break;
+	}
+	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";
+	_serialized += "}";
+	return _serialized;
+}
+
+Noun Noun::deserialize(std::string _serialized_string) {
+	std::string _reading_str = _serialized_string;
+	std::string _word = "";
+	std::string _word_nominative = "";
+	Cases _case = Cases::None;
+	Number _number = Number::None;
+	try {
+		if (_reading_str.size() < 9) throw std::invalid_argument("Not a JSON format");
+		if (_serialized_string.substr(0, 9) != "{\"word\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(9);
+		while (true)
+		{
+			if (_reading_str.size() == 0) {
+				throw std::invalid_argument("\'word\' argument is not recognized properly");
+			}
+			else {
+				if (_reading_str[0] == (char)34) {
+					_reading_str = _reading_str.substr(1);
+					break;
+				}
+				else {
+					_word += _reading_str[0];
+					_reading_str = _reading_str.substr(1);
+				}
+			}
+		}
+
+		if (_reading_str.size() < 14) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 14) != ",\"word_case\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(14);
+
+		if (_reading_str.size() < 4) {
+			throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+		}
+		std::string _case_string = _reading_str.substr(0, 4);
+		if (_case_string == "None") {
+			_reading_str = _reading_str.substr(4);
+			_case = Cases::None;
+		} 
+		else if (_case_string == "Nomi") {
+			if (_reading_str.size() >= 10 && _reading_str.substr(0, 10) == "Nominative") {
+				_reading_str = _reading_str.substr(10);
+				_case = Cases::Nominative;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Gene") {
+			if (_reading_str.size() >= 8 && _reading_str.substr(0, 8) == "Genetive") {
+				_reading_str = _reading_str.substr(8);
+				_case = Cases::Genetive;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Dati") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Dative") {
+				_reading_str = _reading_str.substr(6);
+				_case = Cases::Dative;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Accu") {
+			if (_reading_str.size() >= 10 && _reading_str.substr(0, 10) == "Accusative") {
+				_reading_str = _reading_str.substr(10);
+				_case = Cases::Accusative;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Inst") {
+			if (_reading_str.size() >= 12 && _reading_str.substr(0, 12) == "Instrumental") {
+				_reading_str = _reading_str.substr(12);
+				_case = Cases::Instrumental;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else if (_case_string == "Prep") {
+			if (_reading_str.size() >= 13 && _reading_str.substr(0, 13) == "Prepositional") {
+				_reading_str = _reading_str.substr(13);
+				_case = Cases::Prepositional;
+			}
+			else {
+				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+			}
+		}
+		else {
+			throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+		}
+
+		if (_reading_str.size() < 17) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 17) != "\",\"word_number\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(17);
+
+		if (_reading_str.size() < 4) {
+			throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+		}
+		std::string _number_string = _reading_str.substr(0, 4);
+		if (_number_string == "None") {
+			_reading_str = _reading_str.substr(4);
+			_number = Number::None;
+		}
+		else if (_number_string == "Sing") {
+			if (_reading_str.size() >= 8 && _reading_str.substr(0, 8) == "Singular") {
+				_reading_str = _reading_str.substr(8);
+				_number = Number::Singular;
+			}
+			else {
+				throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+			}
+		}
+		else if (_number_string == "Pauc") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Paucal") {
+				_reading_str = _reading_str.substr(6);
+				_number = Number::Paucal;
+			}
+			else {
+				throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+			}
+		}
+		else if (_number_string == "Plur") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Plural") {
+				_reading_str = _reading_str.substr(6);
+				_number = Number::Plural;
+			}
+			else {
+				throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+			}
+		}
+		else {
+			throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+		}
+
+		if (_reading_str.size() < 21) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 21) != "\",\"word_nominative\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(21);
+		while (true)
+		{
+			if (_reading_str.size() == 0) {
+				throw std::invalid_argument("\'word_nominative\' argument is not recognized properly");
+			}
+			else {
+				if (_reading_str[0] == (char)34) {
+					_reading_str = _reading_str.substr(1);
+					break;
+				}
+				else {
+					_word_nominative += _reading_str[0];
+					_reading_str = _reading_str.substr(1);
+				}
+			}
+		}
+		if (_reading_str.size() < 1) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str != "}") throw std::invalid_argument("Not a JSON format");
+
+		Noun _return_noun(_word, _case, _number);
+		_return_noun.word_nominative = _word_nominative;
+		return _return_noun;
+	} 
+	catch (std::invalid_argument const& _exception) {
+		std::cout << "[Alert] " << _exception.what() << std::endl;
+		Noun _exception_no_word("");
+		return _exception_no_word;
+	}
+	Noun nfesrkjsjkldh("");
+	return nfesrkjsjkldh;
 }
 
 int char_code(std::string _internal_code) {
@@ -913,6 +1145,7 @@ std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number
 	default:
 		break;
 	}
+	return _numstr;
 }
 
 Numeral::Numeral(int number) {
