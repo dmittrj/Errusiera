@@ -2,7 +2,7 @@
 #include <utility>
 #include <algorithm>
 
-// Errusiera 1.0.1-alpha3
+// Errusiera 1.0.1-alpha4
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -244,6 +244,9 @@ std::string Noun::serialize() {
 Noun Noun::deserialize(std::string _serialized_string) {
 	std::string _reading_str = _serialized_string;
 	std::string _word = "";
+	std::string _word_nominative = "";
+	Cases _case = Cases::None;
+	Number _number = Number::None;
 	try {
 		if (_reading_str.size() < 9) throw std::invalid_argument("Not a JSON format");
 		if (_serialized_string.substr(0, 9) != "{\"word\":\"") throw std::invalid_argument("Not a JSON format");
@@ -273,7 +276,6 @@ Noun Noun::deserialize(std::string _serialized_string) {
 			throw std::invalid_argument("\'word_case\' argument is not recognized properly");
 		}
 		std::string _case_string = _reading_str.substr(0, 4);
-		Cases _case = Cases::None;
 		if (_case_string == "None") {
 			_reading_str = _reading_str.substr(4);
 			_case = Cases::None;
@@ -332,8 +334,77 @@ Noun Noun::deserialize(std::string _serialized_string) {
 				throw std::invalid_argument("\'word_case\' argument is not recognized properly");
 			}
 		}
+		else {
+			throw std::invalid_argument("\'word_case\' argument is not recognized properly");
+		}
 
-		Noun _return_noun(_word);
+		if (_reading_str.size() < 17) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 17) != "\",\"word_number\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(17);
+
+		if (_reading_str.size() < 4) {
+			throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+		}
+		std::string _number_string = _reading_str.substr(0, 4);
+		if (_number_string == "None") {
+			_reading_str = _reading_str.substr(4);
+			_number = Number::None;
+		}
+		else if (_number_string == "Sing") {
+			if (_reading_str.size() >= 8 && _reading_str.substr(0, 8) == "Singular") {
+				_reading_str = _reading_str.substr(8);
+				_number = Number::Singular;
+			}
+			else {
+				throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+			}
+		}
+		else if (_number_string == "Pauc") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Paucal") {
+				_reading_str = _reading_str.substr(6);
+				_number = Number::Paucal;
+			}
+			else {
+				throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+			}
+		}
+		else if (_number_string == "Plur") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Plural") {
+				_reading_str = _reading_str.substr(6);
+				_number = Number::Plural;
+			}
+			else {
+				throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+			}
+		}
+		else {
+			throw std::invalid_argument("\'word_number\' argument is not recognized properly");
+		}
+
+		if (_reading_str.size() < 21) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 21) != "\",\"word_nominative\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(21);
+		while (true)
+		{
+			if (_reading_str.size() == 0) {
+				throw std::invalid_argument("\'word_nominative\' argument is not recognized properly");
+			}
+			else {
+				if (_reading_str[0] == (char)34) {
+					_reading_str = _reading_str.substr(1);
+					break;
+				}
+				else {
+					_word_nominative += _reading_str[0];
+					_reading_str = _reading_str.substr(1);
+				}
+			}
+		}
+		if (_reading_str.size() < 1) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str != "}") throw std::invalid_argument("Not a JSON format");
+
+		Noun _return_noun(_word, _case, _number);
+		_return_noun.word_nominative = _word_nominative;
 		return _return_noun;
 	} 
 	catch (std::invalid_argument const& _exception) {
