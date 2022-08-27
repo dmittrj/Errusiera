@@ -29,6 +29,18 @@ void Noun::to_nominative() {
 }
 
 std::string Noun::change_case(Cases case_to) {
+	return change_word(case_to, word_number);
+}
+
+std::string Noun::change_number(Number number_to) {
+	return change_word(word_case, number_to);
+}
+
+Cases Noun::detect_case() {
+	if (word_case != Cases::None) { return word_case; }
+}
+
+std::string Noun::change_word(Cases case_to, Number number_to) {
 	if (case_to == word_case) { return word; }
 	to_nominative();
 	switch (case_to)
@@ -164,21 +176,6 @@ std::string Noun::change_case(Cases case_to) {
 		break;
 	}
 	word_case = case_to;
-	return word;
-}
-
-std::string Noun::change_number(Number number_to) {
-	if (number_to == word_number) { return word; }
-	return word;
-}
-
-Cases Noun::detect_case() {
-	if (word_case != Cases::None) { return word_case; }
-}
-
-std::string Noun::change_word(Cases case_to, Number number_to) {
-	change_case(case_to);
-	change_number(number_to);
 	return word;
 }
 
