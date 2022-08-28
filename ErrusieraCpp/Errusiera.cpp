@@ -74,6 +74,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]030")) {
 					pattern(word, "[ ]!--030--!!++033++!", word);
 				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024001++!", word);
+				}
 				else {
 					pattern(word, "[_]!++001++!", word);
 				}
@@ -100,6 +103,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]030")) {
 					pattern(word, "[ ]!--030--!!++032++!", word);
 				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024021++!", word);
+				}
 				else {
 					pattern(word, "[_]!++021++!", word);
 				}
@@ -122,6 +128,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				}
 				else if (pattern(word, "[ ]030")) {
 					pattern(word, "[ ]!--030--!!++033++!", word);
+				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024001++!", word);
 				}
 				break;
 			case Cases::Instrumental:
@@ -155,6 +164,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]030")) {
 					pattern(word, "[ ]!--030--!!++007014++!", word);
 				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024006014++!", word);
+				}
 				else {
 					pattern(word, "[_]!++016014++!", word);
 				}
@@ -177,6 +189,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				}
 				else if (pattern(word, "[ ]033")) {
 					pattern(word, "[ ]!--033--!!++006++!", word);
+				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024006++!", word);
 				}
 				else {
 					pattern(word, "[_]!++006++!", word);
@@ -223,6 +238,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]007")) {
 					pattern(word, "[ ]!--007--!!++033++!", word);
 				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024029++!", word);
+				}
 				else {
 					pattern(word, "[_]!++029++!", word);
 				}
@@ -249,6 +267,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]006")) {
 					pattern(word, "[ ]!++003++!", word);
 				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024006003++!", word);
+				}
 				else {
 					pattern(word, "[_]!++016003++!", word);
 				}
@@ -274,6 +295,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				}
 				else if (pattern(word, "[ ]006")) {
 					pattern(word, "[ ]!--006--!!++033014++!", word);
+				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024001014++!", word);
 				}
 				else {
 					pattern(word, "[_]!++001014++!", word);
@@ -303,6 +327,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]006")) {
 					pattern(word, "[ ]!--006--!!++033014010++!", word);
 				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024001014010++!", word);
+				}
 				else {
 					pattern(word, "[_]!++001014010++!", word);
 				}
@@ -325,6 +352,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				}
 				else if (pattern(word, "[ ]006")) {
 					pattern(word, "[ ]!--006--!!++033023++!", word);
+				}
+				else if (pattern(word, "[ ]006024")) {
+					pattern(word, "[ ]!--006024--!!++024001023++!", word);
 				}
 				else {
 					pattern(word, "[_]!++001023++!", word);
