@@ -323,115 +323,115 @@ namespace Errusiera
 						switch (case_to)
 						{
 							case Cases.None:
-								throw new Exception("Case of the Word is undefind. Please call DetectCase()");
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
 							case Cases.Nominative:
 								if (Regex.IsMatch(Word, "й$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--й--!!++и++!", Word);
+									Word = Regex.Replace(Word, "й$", "и");
 								}
 								else if (Regex.IsMatch(Word, "ка$"))
 								{
-									Regex.IsMatch(Word, "[ ]к!--а--!!++и++!", Word);
+									Word = Regex.Replace(Word, "ка$", "ка");
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--а--!!++ы++!", Word);
+									Word = Regex.Replace(Word, "а$", "ы");
 								}
 								else if (Regex.IsMatch(Word, "я$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--я--!!++и++!", Word);
+									Word = Regex.Replace(Word, "я$", "и");
 								}
 								else if (Regex.IsMatch(Word, "ок$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ок--!!++ки++!", Word);
+									Word = Regex.Replace(Word, "ок$", "ки");
 								}
 								else if (Regex.IsMatch(Word, "ек$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ек--!!++ки++!", Word);
+									Word = Regex.Replace(Word, "ек$", "ки");
 								}
 								else if (Regex.IsMatch(Word, "к$"))
 								{
-									Regex.IsMatch(Word, "[ ]!++и++!", Word);
+									Word += "и";
 								}
 								else if (Regex.IsMatch(Word, "е$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--е--!!++я++!", Word);
+									Word = Regex.Replace(Word, "е$", "я");
 								}
 								else if (Regex.IsMatch(Word, "ё$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ё--!!++я++!", Word);
+									Word = Regex.Replace(Word, "ё$", "я");
 								}
 								else
 								{
-									Regex.IsMatch(Word, "[_]!++ы++!", Word);
+									Word += "ы";
 								}
 								break;
 							case Cases.Genetive:
 								if (Regex.IsMatch(Word, "й$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--й--!!++ев++!", Word);
+									Word = Regex.Replace(Word, "й$", "ев");
 								}
 								else if (Regex.IsMatch(Word, "ка$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ка--!!++ок++!", Word);
+									Word = Regex.Replace(Word, "ка$", "ок");
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--а--!", Word);
+									Word = Regex.Replace(Word, "а$", "");
 								}
 								else if (Regex.IsMatch(Word, "ок$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ок--!!++ков++!", Word);
+									Word = Regex.Replace(Word, "ок$", "ков");
 								}
 								else if (Regex.IsMatch(Word, "ек$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ек--!!++ков++!", Word);
+									Word = Regex.Replace(Word, "ек$", "ков");
 								}
 								else if (Regex.IsMatch(Word, "к$"))
 								{
-									Regex.IsMatch(Word, "[ ]!++ов++!", Word);
+									Word += "ов";
 								}
 								else if (Regex.IsMatch(Word, "е$"))
 								{
-									Regex.IsMatch(Word, "[ ]!++в++!", Word);
+									Word += "в";
 								}
 								else
 								{
-									Regex.IsMatch(Word, "[_]!++ов++!", Word);
+									Word += "ов";
 								}
 								break;
 							case Cases.Dative:
 								if (Regex.IsMatch(Word, "й$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--й--!!++ям++!", Word);
+									Word = Regex.Replace(Word, "й$", "ям");
 								}
 								else if (Regex.IsMatch(Word, "ка$"))
 								{
-									Regex.IsMatch(Word, "[ ]ка!++м++!", Word);
+									Word += "м";
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
-									Regex.IsMatch(Word, "[ ]а!++м++!", Word);
+									Word += "м";
 								}
 								else if (Regex.IsMatch(Word, "ок$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ок--!!++кам++!", Word);
+									Word = Regex.Replace(Word, "ок$", "кам");
 								}
 								else if (Regex.IsMatch(Word, "ек$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ек--!!++кам++!", Word);
+									Word = Regex.Replace(Word, "ек$", "кам");
 								}
 								else if (Regex.IsMatch(Word, "к$"))
 								{
-									Regex.IsMatch(Word, "[ ]!++ам++!", Word);
+									Word += "ам";
 								}
 								else if (Regex.IsMatch(Word, "е$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--е--!!++ям++!", Word);
+									Word = Regex.Replace(Word, "е$", "ям");
 								}
 								else
 								{
-									Regex.IsMatch(Word, "[_]!++ам++!", Word);
+									Word += "ам";
 								}
 								break;
 							case Cases.Accusative:
