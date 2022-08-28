@@ -8,6 +8,7 @@ namespace Errusiera
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 	class Siera
     {
+		[Obsolete]
 		public static bool Pattern(string str_to_compare, string _pattern, ref string changed_string, bool _eraser_mode)
 		{
 			str_to_compare = str_to_compare.Trim();
@@ -92,12 +93,12 @@ namespace Errusiera
 			}
 			return false;
 		}
-
+		[Obsolete]
 		public static bool Pattern(string str_to_compare, string _pattern, ref string changed_string)
 		{
 			return Pattern(str_to_compare, _pattern, ref changed_string, false);
 		}
-
+		[Obsolete]
 		public static bool Pattern(string str_to_compare, string _pattern)
 		{
 			string _trash = "";
