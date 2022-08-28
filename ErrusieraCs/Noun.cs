@@ -154,31 +154,31 @@ namespace Errusiera
 							case Cases.Genetive:
 								if (Regex.IsMatch(Word, "й$"))
 								{
-									Regex.Replace(Word, "й$", "я");
+									Word = Regex.Replace(Word, "й$", "я");
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
-									Regex.Replace(Word, "а$", "ы");
+									Word = Regex.Replace(Word, "а$", "ы");
 								}
 								else if (Regex.IsMatch(Word, "мя$"))
 								{
-									Regex.Replace(Word, "мя$", "мени");
+									Word = Regex.Replace(Word, "мя$", "мени");
 								}
 								else if (Regex.IsMatch(Word, "я$"))
 								{
-									Regex.Replace(Word, "я$", "и");
+									Word = Regex.Replace(Word, "я$", "и");
 								}
 								else if (Regex.IsMatch(Word, "жь$"))
 								{
-									Regex.Replace(Word, "жь$", "жи");
+									Word = Regex.Replace(Word, "жь$", "жи");
 								}
 								else if (Regex.IsMatch(Word, "шь$"))
 								{
-									Regex.Replace(Word, "шь$", "ши");
+									Word = Regex.Replace(Word, "шь$", "ши");
 								}
 								else if (Regex.IsMatch(Word, "ь$"))
 								{
-									Regex.Replace(Word, "ь$", "я");
+									Word = Regex.Replace(Word, "ь$", "я");
 								}
 								else
 								{
@@ -188,35 +188,35 @@ namespace Errusiera
 							case Cases.Dative:
 								if (Regex.IsMatch(Word, "й$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--й--!!++ю++!", Word);
+									Word = Regex.Replace(Word, "й$", "ю");
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--а--!!++е++!", Word);
+									Word = Regex.Replace(Word, "а$", "е");
 								}
 								else if (Regex.IsMatch(Word, "мя$"))
 								{
-									Regex.IsMatch(Word, "[ ]м!--я--!!++ени++!", Word);
+									Word = Regex.Replace(Word, "мя$", "мени");
 								}
 								else if (Regex.IsMatch(Word, "я$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--я--!!++е++!", Word);
+									Word = Regex.Replace(Word, "я$", "е");
 								}
 								else if (Regex.IsMatch(Word, "жь$"))
 								{
-									Regex.IsMatch(Word, "[ ]ж!--ь--!!++и++!", Word);
+									Word = Regex.Replace(Word, "жь$", "жи");
 								}
 								else if (Regex.IsMatch(Word, "шь$"))
 								{
-									Regex.IsMatch(Word, "[ ]ш!--ь--!!++и++!", Word);
+									Word = Regex.Replace(Word, "шь$", "ши");
 								}
 								else if (Regex.IsMatch(Word, "ь$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--ь--!!++ю++!", Word);
+									Word = Regex.Replace(Word, "ь$", "ю");
 								}
 								else
 								{
-									Regex.IsMatch(Word, "[_]!++у++!", Word);
+									Word += "у";
 								}
 								break;
 							case Cases.Accusative:
