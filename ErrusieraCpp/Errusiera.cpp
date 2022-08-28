@@ -1,6 +1,4 @@
 #include "Errusiera.h"
-#include <utility>
-#include <algorithm>
 
 // Errusiera 1.0.1-beta1
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
