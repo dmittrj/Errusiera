@@ -33,7 +33,7 @@ int main() {
 
 
 	//Example 3. Time
-	std::cout << "Введите время в формате ЧЧ:ММ > ";
+	std::cout << "\302\342\345\344\350\362\345 \342\360\345\354\377 \342 \364\356\360\354\340\362\345 \327\327:\314\314 > ";
 	std::string time3;
 	std::cin >> time3;
 	int hours3 = std::stoi(time3.substr(0, 2));
@@ -45,11 +45,14 @@ int main() {
 	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
 	E_minutes3.change_case(Cases::Genetive);
-
-
-	//Alpha testing (only for developers)
-	Noun _test_srlz("TEST_WORD", Cases::Nominative, Number::Plural);
-	std::cout << _test_srlz.serialize();
-	Noun _test_desrl = Noun::deserialize(_test_srlz.serialize());
-	std::cout << std::endl;
+	if (hours3 >= 10 && hours3 <= 20) E_hours3.change_number(Number::Plural);
+	else if (hours3 % 10 == 1) E_hours3.change_word(Cases::Nominative, Number::Singular);
+	else if (hours3 % 10 > 4 || hours3 % 10 == 0) E_hours3.change_number(Number::Plural);
+	else E_hours3.change_number(Number::Singular);
+	if (minutes3 >= 10 && minutes3 <= 20) E_minutes3.change_number(Number::Plural);
+	else if (minutes3 % 10 == 1) E_minutes3.change_word(Cases::Nominative, Number::Singular);
+	else if (minutes3 % 10 > 4 || minutes3 % 10 == 0) E_minutes3.change_number(Number::Plural);
+	else E_minutes3.change_number(Number::Singular);
+	std::cout << "Время: " << hours3 << " " << E_hours3.to_string() << " " 
+		<< minutes3 << " " << E_minutes3.to_string();
 }
