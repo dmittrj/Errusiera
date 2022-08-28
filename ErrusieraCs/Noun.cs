@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.0-beta6
+	// Errusiera for C# 1.0.2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -83,22 +84,22 @@ namespace Errusiera
 		/// <para>RUS: Конструктор с параметром строки. После создания требуется вызвать DetectParams()</para>
 		/// <para>ENG: Constructor with string parameter only. Calling DetectParams() requires</para>
 		/// </summary>
-		/// <param name="word_noun_only">Слово</param>
-		public Noun(string word_noun_only)
+		/// <param name="Word_noun_only">Слово</param>
+		public Noun(string Word_noun_only)
 		{
-			Word = word_noun_only;
+			Word = Word_noun_only;
 		}
 
 		/// <summary>
 		/// <para>RUS: Конструктор со всеми параметрами. После объявления можно пользоваться</para>
 		/// <para>ENG: Constructor with all parameters. You can use all functions after declaration</para>
 		/// </summary>
-		/// <param name="word_noun_only">Слово</param>
+		/// <param name="Word_noun_only">Слово</param>
 		/// <param name="noun_case">Падеж</param>
 		/// <param name="noun_number">Число</param>
-		public Noun(string word_noun_only, Cases noun_case, Number noun_number)
+		public Noun(string Word_noun_only, Cases noun_case, Number noun_number)
 		{
-			Word = word_noun_only;
+			Word = Word_noun_only;
 			WordCase = noun_case;
 			WordNumber = noun_number;
 
@@ -114,181 +115,7 @@ namespace Errusiera
 		/// <returns>Слово в заказанном падеже</returns>
 		public string ChangeCase(Cases case_to)
 		{
-			if (case_to == WordCase) { return Word; }
-			ToNominative();
-			switch (case_to)
-			{
-				case Cases.Genetive:
-					if (Siera.Pattern(Word, "**й"))
-					{
-						Siera.Pattern(Word, "**!-й-!!+я+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**а"))
-					{
-						Siera.Pattern(Word, "**!-а-!!+ы+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**мя"))
-					{
-						Siera.Pattern(Word, "**м!-я-!!+ени+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**я"))
-					{
-						Siera.Pattern(Word, "**!-я-!!+и+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**жь"))
-					{
-						Siera.Pattern(Word, "**ж!-ь-!!+и+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**шь"))
-					{
-						Siera.Pattern(Word, "**ш!-ь-!!+и+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**ь"))
-					{
-						Siera.Pattern(Word, "**!-ь-!!+я+!", ref Word);
-					}
-					else
-					{
-						Siera.Pattern(Word, "*_!+а+!", ref Word);
-					}
-					break;
-				case Cases.Dative:
-					if (Siera.Pattern(Word, "**й"))
-					{
-						Siera.Pattern(Word, "**!-й-!!+ю+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**а"))
-					{
-						Siera.Pattern(Word, "**!-а-!!+е+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**мя"))
-					{
-						Siera.Pattern(Word, "**м!-я-!!+ени+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**я"))
-					{
-						Siera.Pattern(Word, "**!-я-!!+е+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**жь"))
-					{
-						Siera.Pattern(Word, "**ж!-ь-!!+и+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**шь"))
-					{
-						Siera.Pattern(Word, "**ш!-ь-!!+и+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**ь"))
-					{
-						Siera.Pattern(Word, "**!-ь-!!+ю+!", ref Word);
-					}
-					else
-					{
-						Siera.Pattern(Word, "*_!+у+!", ref Word);
-					}
-					break;
-				case Cases.Accusative:
-					if (Siera.Pattern(Word, "**й"))
-					{
-						Siera.Pattern(Word, "**!-й-!!+я+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**а"))
-					{
-						Siera.Pattern(Word, "**!-а-!!+у+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**я"))
-					{
-						Siera.Pattern(Word, "**!-я-!!+ю+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**жь"))
-					{
-
-					}
-					else if (Siera.Pattern(Word, "**шь"))
-					{
-
-					}
-					else if (Siera.Pattern(Word, "**ь"))
-					{
-						Siera.Pattern(Word, "**!-ь-!!+я+!", ref Word);
-					}
-					break;
-				case Cases.Instrumental:
-					if (Siera.Pattern(Word, "**й"))
-					{
-						Siera.Pattern(Word, "**!-й-!!+ем+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**а"))
-					{
-						Siera.Pattern(Word, "**!-а-!!+ой+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**мя"))
-					{
-						Siera.Pattern(Word, "**м!-я-!!+енем+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**я"))
-					{
-						Siera.Pattern(Word, "**!-я-!!+ей+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**жь"))
-					{
-						Siera.Pattern(Word, "**жь!+ю+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**шь"))
-					{
-						Siera.Pattern(Word, "**шь!+ю+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**рь"))
-					{
-						Siera.Pattern(Word, "**р!-ь-!!+ем+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**ль"))
-					{
-						Siera.Pattern(Word, "**л!-ь-!!+ем+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**сь"))
-					{
-						Siera.Pattern(Word, "**с!-ь-!!+ем+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**ь"))
-					{
-						Siera.Pattern(Word, "**!-ь-!!+ём+!", ref Word);
-					}
-					else
-					{
-						Siera.Pattern(Word, "*_!+ом+!", ref Word);
-					}
-					break;
-				case Cases.Prepositional:
-					if (Siera.Pattern(Word, "**ий"))
-					{
-						Siera.Pattern(Word, "**и!-й-!!+и+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**й"))
-					{
-						Siera.Pattern(Word, "**!-й-!!+е+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**а"))
-					{
-						Siera.Pattern(Word, "**!-а-!!+е+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**мя"))
-					{
-						Siera.Pattern(Word, "**м!-я-!!+ени+!", ref Word);
-					}
-					else if (Siera.Pattern(Word, "**я"))
-					{
-						Siera.Pattern(Word, "**!-я-!!+е+!", ref Word);
-					}
-					else
-					{
-						Siera.Pattern(Word, "*_!+е+!", ref Word);
-					}
-					break;
-				default:
-					break;
-			}
-			WordCase = case_to;
-			return Word;
+			return ChangeWord(case_to, WordNumber);
 		}
 
 		/// <summary>
@@ -299,9 +126,396 @@ namespace Errusiera
 		/// <returns>Слово в заказанном числе</returns>
 		public string ChangeNumber(Number number_to)
 		{
-			if (number_to == WordNumber) { return Word; }
-			return Word;
+			return ChangeWord(WordCase, number_to);
 		}
+
+		/// <summary>
+		/// <para>RUS: Меняет все параметры имени существительного</para>
+		/// <para>ENG: The function changes all parameters of the noun</para>
+		/// </summary>
+		/// <param name="case_to">Падеж</param>
+		/// <param name="number_to">Число</param>
+		/// <returns>Изменённое слово</returns>
+		public string ChangeWord(Cases case_to, Number number_to)
+		{
+			if (case_to == WordCase && number_to == WordNumber) { return Word; }
+			ToNominative();
+			try
+			{
+				switch (number_to)
+				{
+					case Number.None:
+						throw new Exception("Number of the word is undefind. Please call DetectNumber()");
+					case Number.Singular:
+						switch (case_to)
+						{
+							case Cases.Nominative:
+								break;
+							case Cases.Genetive:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "я");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "ы");
+								}
+								else if (Regex.IsMatch(Word, "мя$"))
+								{
+									Word = Regex.Replace(Word, "мя$", "мени");
+								}
+								else if (Regex.IsMatch(Word, "я$"))
+								{
+									Word = Regex.Replace(Word, "я$", "и");
+								}
+								else if (Regex.IsMatch(Word, "жь$"))
+								{
+									Word = Regex.Replace(Word, "жь$", "жи");
+								}
+								else if (Regex.IsMatch(Word, "шь$"))
+								{
+									Word = Regex.Replace(Word, "шь$", "ши");
+								}
+								else if (Regex.IsMatch(Word, "ь$"))
+								{
+									Word = Regex.Replace(Word, "ь$", "я");
+								}
+								else
+								{
+									Word += "а";
+								}
+								break;
+							case Cases.Dative:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "ю");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "е");
+								}
+								else if (Regex.IsMatch(Word, "мя$"))
+								{
+									Word = Regex.Replace(Word, "мя$", "мени");
+								}
+								else if (Regex.IsMatch(Word, "я$"))
+								{
+									Word = Regex.Replace(Word, "я$", "е");
+								}
+								else if (Regex.IsMatch(Word, "жь$"))
+								{
+									Word = Regex.Replace(Word, "жь$", "жи");
+								}
+								else if (Regex.IsMatch(Word, "шь$"))
+								{
+									Word = Regex.Replace(Word, "шь$", "ши");
+								}
+								else if (Regex.IsMatch(Word, "ь$"))
+								{
+									Word = Regex.Replace(Word, "ь$", "ю");
+								}
+								else
+								{
+									Word += "у";
+								}
+								break;
+							case Cases.Accusative:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "я");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "у");
+								}
+								else if (Regex.IsMatch(Word, "я$"))
+								{
+									Word = Regex.Replace(Word, "я$", "ю");
+								}
+								else if (Regex.IsMatch(Word, "ь$"))
+								{
+									Word = Regex.Replace(Word, "ь$", "я");
+								}
+								break;
+							case Cases.Instrumental:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "ем");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "ой");
+								}
+								else if (Regex.IsMatch(Word, "мя$"))
+								{
+									Word = Regex.Replace(Word, "мя$", "менем");
+								}
+								else if (Regex.IsMatch(Word, "я$"))
+								{
+									Word = Regex.Replace(Word, "я$", "ей");
+								}
+								else if (Regex.IsMatch(Word, "жь$"))
+								{
+									Word = Regex.Replace(Word, "жь$", "жью");
+								}
+								else if (Regex.IsMatch(Word, "шь$"))
+								{
+									Word = Regex.Replace(Word, "шь$", "шью");
+								}
+								else if (Regex.IsMatch(Word, "рь$"))
+								{
+									Word = Regex.Replace(Word, "рь$", "рем");
+								}
+								else if (Regex.IsMatch(Word, "ль$"))
+								{
+									Word = Regex.Replace(Word, "ль$", "лем");
+								}
+								else if (Regex.IsMatch(Word, "сь$"))
+								{
+									Word = Regex.Replace(Word, "сь$", "сем");
+								}
+								else if (Regex.IsMatch(Word, "ь$"))
+								{
+									Word = Regex.Replace(Word, "ь$", "ём");
+								}
+								else
+								{
+									Word += "ом";
+								}
+								break;
+							case Cases.Prepositional:
+								if (Regex.IsMatch(Word, "ий$"))
+								{
+									Word = Regex.Replace(Word, "ий$", "ии");
+								}
+								else if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "е");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "е");
+								}
+								else if (Regex.IsMatch(Word, "мя$"))
+								{
+									Word = Regex.Replace(Word, "мя$", "мени");
+								}
+								else if (Regex.IsMatch(Word, "ия$"))
+								{
+									Word = Regex.Replace(Word, "ия$", "ии");
+								}
+								else if (Regex.IsMatch(Word, "я$"))
+								{
+									Word = Regex.Replace(Word, "я$", "е");
+								}
+								else
+								{
+									Word += "и";
+								}
+								break;
+							default:
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
+						}
+						break;
+					case Number.Paucal:
+						break;
+					case Number.Plural:
+						switch (case_to)
+						{
+							case Cases.None:
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
+							case Cases.Nominative:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "и");
+								}
+								else if (Regex.IsMatch(Word, "ка$"))
+								{
+									Word = Regex.Replace(Word, "ка$", "ка");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "ы");
+								}
+								else if (Regex.IsMatch(Word, "я$"))
+								{
+									Word = Regex.Replace(Word, "я$", "и");
+								}
+								else if (Regex.IsMatch(Word, "ок$"))
+								{
+									Word = Regex.Replace(Word, "ок$", "ки");
+								}
+								else if (Regex.IsMatch(Word, "ек$"))
+								{
+									Word = Regex.Replace(Word, "ек$", "ки");
+								}
+								else if (Regex.IsMatch(Word, "к$"))
+								{
+									Word += "и";
+								}
+								else if (Regex.IsMatch(Word, "е$"))
+								{
+									Word = Regex.Replace(Word, "е$", "я");
+								}
+								else if (Regex.IsMatch(Word, "ё$"))
+								{
+									Word = Regex.Replace(Word, "ё$", "я");
+								}
+								else
+								{
+									Word += "ы";
+								}
+								break;
+							case Cases.Genetive:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "ев");
+								}
+								else if (Regex.IsMatch(Word, "ка$"))
+								{
+									Word = Regex.Replace(Word, "ка$", "ок");
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word = Regex.Replace(Word, "а$", "");
+								}
+								else if (Regex.IsMatch(Word, "ок$"))
+								{
+									Word = Regex.Replace(Word, "ок$", "ков");
+								}
+								else if (Regex.IsMatch(Word, "ек$"))
+								{
+									Word = Regex.Replace(Word, "ек$", "ков");
+								}
+								else if (Regex.IsMatch(Word, "к$"))
+								{
+									Word += "ов";
+								}
+								else if (Regex.IsMatch(Word, "е$"))
+								{
+									Word += "в";
+								}
+								else
+								{
+									Word += "ов";
+								}
+								break;
+							case Cases.Dative:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "ям");
+								}
+								else if (Regex.IsMatch(Word, "ка$"))
+								{
+									Word += "м";
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word += "м";
+								}
+								else if (Regex.IsMatch(Word, "ок$"))
+								{
+									Word = Regex.Replace(Word, "ок$", "кам");
+								}
+								else if (Regex.IsMatch(Word, "ек$"))
+								{
+									Word = Regex.Replace(Word, "ек$", "кам");
+								}
+								else if (Regex.IsMatch(Word, "к$"))
+								{
+									Word += "ам";
+								}
+								else if (Regex.IsMatch(Word, "е$"))
+								{
+									Word = Regex.Replace(Word, "е$", "ям");
+								}
+								else
+								{
+									Word += "ам";
+								}
+								break;
+							case Cases.Accusative:
+								break;
+							case Cases.Instrumental:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "ями");
+								}
+								else if (Regex.IsMatch(Word, "ка$"))
+								{
+									Word += "ми";
+								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word += "ми";
+								}
+								else if (Regex.IsMatch(Word, "ок$"))
+								{
+									Word = Regex.Replace(Word, "ок$", "ками");
+								}
+								else if (Regex.IsMatch(Word, "ек$"))
+								{
+									Word = Regex.Replace(Word, "ек$", "ками");
+								}
+								else if (Regex.IsMatch(Word, "к$"))
+								{
+									Word += "ами";
+								}
+								else if (Regex.IsMatch(Word, "е$"))
+								{
+									Word = Regex.Replace(Word, "е$", "ями");
+								}
+								else
+								{
+									Word += "ами";
+								}
+								break;
+							case Cases.Prepositional:
+								if (Regex.IsMatch(Word, "й$"))
+								{
+									Word = Regex.Replace(Word, "й$", "ях");
+								}
+								else if (Regex.IsMatch(Word, "ка$"))
+								{
+									Word += "х";
+								}
+								else if (Regex.IsMatch(Word, "ок$"))
+								{
+									Word = Regex.Replace(Word, "ок$", "ках");
+								}
+								else if (Regex.IsMatch(Word, "ек$"))
+								{
+									Word = Regex.Replace(Word, "ек$", "ках");
+								}
+								else if (Regex.IsMatch(Word, "к$"))
+								{
+									Word += "ах";
+								}
+								else if (Regex.IsMatch(Word, "е$"))
+								{
+									Word = Regex.Replace(Word, "е$", "ях");
+								}
+								else
+								{
+									Word += "ах";
+								}
+								break;
+							default:
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
+						}
+						break;
+					default:
+						throw new Exception("Number of the word is undefind. Please call DetectNumber()");
+				}
+			}
+			catch (Exception _exception) {
+				return "[Alert] " + _exception.Message + "\n";
+			}
+
+			WordCase = case_to;
+			WordNumber = number_to;
+			return Word;
+			}
 
 		/// <summary>
 		/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
