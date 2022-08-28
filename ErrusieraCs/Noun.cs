@@ -145,7 +145,7 @@ namespace Errusiera
 				switch (number_to)
 				{
 					case Number.None:
-						throw new Exception("Number of the Word is undefind. Please call DetectNumber()");
+						throw new Exception("Number of the word is undefind. Please call DetectNumber()");
 					case Number.Singular:
 						switch (case_to)
 						{
@@ -286,35 +286,35 @@ namespace Errusiera
 							case Cases.Prepositional:
 								if (Regex.IsMatch(Word, "ий$"))
 								{
-									Regex.IsMatch(Word, "[ ]и!--й--!!++и++!", Word);
+									Word = Regex.Replace(Word, "ий$", "ии");
 								}
 								else if (Regex.IsMatch(Word, "й$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--й--!!++е++!", Word);
+									Word = Regex.Replace(Word, "й$", "е");
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--а--!!++е++!", Word);
+									Word = Regex.Replace(Word, "а$", "е");
 								}
 								else if (Regex.IsMatch(Word, "мя$"))
 								{
-									Regex.IsMatch(Word, "[ ]м!--я--!!++ени++!", Word);
+									Word = Regex.Replace(Word, "мя$", "мени");
 								}
 								else if (Regex.IsMatch(Word, "ия$"))
 								{
-									Regex.IsMatch(Word, "[ ]и!--я--!!++и++!", Word);
+									Word = Regex.Replace(Word, "ия$", "ии");
 								}
 								else if (Regex.IsMatch(Word, "я$"))
 								{
-									Regex.IsMatch(Word, "[ ]!--я--!!++е++!", Word);
+									Word = Regex.Replace(Word, "я$", "е");
 								}
 								else
 								{
-									Regex.IsMatch(Word, "[_]!++е++!", Word);
+									Word += "и";
 								}
 								break;
 							default:
-								throw new Exception("Case of the Word is undefind. Please call DetectCase()");
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
 						}
 						break;
 					case Number.Paucal:
