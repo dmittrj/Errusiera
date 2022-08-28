@@ -7,6 +7,10 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
 
+	//Alpha testing
+	Adjective adj("Красный", Cases::Nominative, Number::Singular, Gender::Masculine);
+	std::cout << adj.change_word();
+
 	//These are some examples of using Errusiera
 
 	//Example 1. Enter your name

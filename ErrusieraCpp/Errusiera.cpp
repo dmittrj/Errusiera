@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.2
+// Errusiera 1.0.2-alpha1
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -747,147 +747,24 @@ std::string Adjective::to_string() {
 	return word;
 }
 
-void Adjective::to_nominative() {
+void Adjective::to_default() {
 
 }
 
 std::string Adjective::change_case(Cases case_to) {
-	if (case_to == word_case) { return word; }
-	to_nominative();
-	switch (case_to)
-	{
-	case Cases::Genetive:
-		if (pattern(word, "[ ]011")) {
-			pattern(word, "[ ]!--011--!!++033++!", word);
-		}
-		else if (pattern(word, "[ ]001")) {
-			pattern(word, "[ ]!--001--!!++029++!", word);
-		}
-		else if (pattern(word, "[ ]014033")) {
-			pattern(word, "[ ]014!--033--!!++006015010++!", word);
-		}
-		else if (pattern(word, "[ ]033")) {
-			pattern(word, "[ ]!--033--!!++010++!", word);
-		}
-		else if (pattern(word, "[ ]008030")) {
-			pattern(word, "[ ]008!--030--!!++010++!", word);
-		}
-		else if (pattern(word, "[ ]026030")) {
-			pattern(word, "[ ]026!--030--!!++010++!", word);
-		}
-		else if (pattern(word, "[ ]030")) {
-			pattern(word, "[ ]!--030--!!++033++!", word);
-		}
-		else {
-			pattern(word, "[_]!++001++!", word);
-		}
-		break;
-	case Cases::Dative:
-		if (pattern(word, "[ ]011")) {
-			pattern(word, "[ ]!--011--!!++032++!", word);
-		}
-		else if (pattern(word, "[ ]001")) {
-			pattern(word, "[ ]!--001--!!++006++!", word);
-		}
-		else if (pattern(word, "[ ]014033")) {
-			pattern(word, "[ ]014!--033--!!++006015010++!", word);
-		}
-		else if (pattern(word, "[ ]033")) {
-			pattern(word, "[ ]!--033--!!++006++!", word);
-		}
-		else if (pattern(word, "[ ]008030")) {
-			pattern(word, "[ ]008!--030--!!++010++!", word);
-		}
-		else if (pattern(word, "[ ]026030")) {
-			pattern(word, "[ ]026!--030--!!++010++!", word);
-		}
-		else if (pattern(word, "[ ]030")) {
-			pattern(word, "[ ]!--030--!!++032++!", word);
-		}
-		else {
-			pattern(word, "[_]!++021++!", word);
-		}
-		break;
-	case Cases::Accusative:
-		if (pattern(word, "[ ]011")) {
-			pattern(word, "[ ]!--011--!!++033++!", word);
-		}
-		else if (pattern(word, "[ ]001")) {
-			pattern(word, "[ ]!--001--!!++021++!", word);
-		}
-		else if (pattern(word, "[ ]033")) {
-			pattern(word, "[ ]!--033--!!++032++!", word);
-		}
-		else if (pattern(word, "[ ]008030")) {
+	return change_word(case_to, word_number, word_gender);
+}
 
-		}
-		else if (pattern(word, "[ ]026030")) {
+std::string Adjective::change_number(Number number_to) {
+	return change_word(word_case, number_to, word_gender);
+}
 
-		}
-		else if (pattern(word, "[ ]030")) {
-			pattern(word, "[ ]!--030--!!++033++!", word);
-		}
-		break;
-	case Cases::Instrumental:
-		if (pattern(word, "[ ]011")) {
-			pattern(word, "[ ]!--011--!!++006014++!", word);
-		}
-		else if (pattern(word, "[ ]001")) {
-			pattern(word, "[ ]!--001--!!++016011++!", word);
-		}
-		else if (pattern(word, "[ ]014033")) {
-			pattern(word, "[ ]014!--033--!!++006015006014++!", word);
-		}
-		else if (pattern(word, "[ ]033")) {
-			pattern(word, "[ ]!--033--!!++006011++!", word);
-		}
-		else if (pattern(word, "[ ]008030")) {
-			pattern(word, "[ ]008030!++032++!", word);
-		}
-		else if (pattern(word, "[ ]026030")) {
-			pattern(word, "[ ]026030!++032++!", word);
-		}
-		else if (pattern(word, "[ ]018030")) {
-			pattern(word, "[ ]018!--030--!!++006014++!", word);
-		}
-		else if (pattern(word, "[ ]013030")) {
-			pattern(word, "[ ]013!--030--!!++006014++!", word);
-		}
-		else if (pattern(word, "[ ]019030")) {
-			pattern(word, "[ ]019!--030--!!++006014++!", word);
-		}
-		else if (pattern(word, "[ ]030")) {
-			pattern(word, "[ ]!--030--!!++007014++!", word);
-		}
-		else {
-			pattern(word, "[_]!++016014++!", word);
-		}
-		break;
-	case Cases::Prepositional:
-		if (pattern(word, "[ ]010011")) {
-			pattern(word, "[ ]010!--011--!!++010++!", word);
-		}
-		else if (pattern(word, "[ ]011")) {
-			pattern(word, "[ ]!--011--!!++006++!", word);
-		}
-		else if (pattern(word, "[ ]001")) {
-			pattern(word, "[ ]!--001--!!++006++!", word);
-		}
-		else if (pattern(word, "[ ]014033")) {
-			pattern(word, "[ ]014!--033--!!++006015010++!", word);
-		}
-		else if (pattern(word, "[ ]033")) {
-			pattern(word, "[ ]!--033--!!++006++!", word);
-		}
-		else {
-			pattern(word, "[_]!++006++!", word);
-		}
-		break;
-	default:
-		break;
-	}
-	word_case = case_to;
-	return word;
+std::string Adjective::change_gender(Gender gender_to) {
+	return change_word(word_case, word_number, gender_to);
+}
+
+std::string Adjective::change_word(Cases case_to, Number number_to, Gender gender_to) {
+
 }
 
 std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber) {

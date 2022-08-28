@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.2
+	// Errusiera for C# 1.0.2-alpha1
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -66,6 +66,25 @@ namespace Errusiera
 		/// Множественное число
 		/// </summary>
 		Plural
+	};
+
+	/// <summary>
+	/// Рода
+	/// </summary>
+	enum Gender
+	{
+		/// <summary>
+		/// Мужской род
+		/// </summary>
+		Masculine,
+		/// <summary>
+		/// Женский род
+		/// </summary>
+		Feminine,
+		/// <summary>
+		/// Средний род
+		/// </summary>
+		Neuter
 	};
 
 	/// <summary>
