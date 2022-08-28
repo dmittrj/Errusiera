@@ -310,6 +310,27 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				}
 				break;
 			case Cases::Prepositional:
+				if (pattern(word, "[ ]011")) {
+					pattern(word, "[ ]!--011--!!++033023++!", word);
+				}
+				else if (pattern(word, "[ ]012001")) {
+					pattern(word, "[ ]012001!++023++!", word);
+				}
+				else if (pattern(word, "[ ]016012")) {
+					pattern(word, "[ ]!--016012--!!++012001023++!", word);
+				}
+				else if (pattern(word, "[ ]006012")) {
+					pattern(word, "[ ]!--006012--!!++012001023++!", word);
+				}
+				else if (pattern(word, "[ ]012")) {
+					pattern(word, "[ ]!++001023++!", word);
+				}
+				else if (pattern(word, "[ ]006")) {
+					pattern(word, "[ ]!--006--!!++033023++!", word);
+				}
+				else {
+					pattern(word, "[_]!++001023++!", word);
+				}
 				break;
 			default:
 				throw std::exception("Case of the word is undefind. Please call detect_case()");
