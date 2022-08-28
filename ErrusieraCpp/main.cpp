@@ -9,7 +9,7 @@ int main() {
 
 	//Alpha testing
 	Adjective adj("Красный", Cases::Nominative, Number::Singular, Gender::Masculine);
-	std::cout << adj.change_word();
+	std::cout << adj.change_case(Cases::Genetive);
 
 	//These are some examples of using Errusiera
 

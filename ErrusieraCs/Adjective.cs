@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.2-alpha1
+	// Errusiera for C# 1.0.2-alpha2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	class Adjective
@@ -12,7 +13,10 @@ namespace Errusiera
 		public string Word;
 		public Adjective(string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender)
         {
-
+			Word = word_adj_only;
+			WordCase = adj_case;
+			WordNumber = adj_number;
+			WordGender = adj_gender;
         }
 		~Adjective()
         {
@@ -63,6 +67,64 @@ namespace Errusiera
 		public string ChangeWord(Cases case_to, Number number_to, Gender gender_to)
         {
 			ToDefault();
+			if (case_to == WordCase && number_to == WordNumber && gender_to == WordGender)
+			{
+				return Word;
+			}
+			try
+            {
+                switch (gender_to)
+                {
+                    case Gender.Masculine:
+                        switch (number_to)
+                        {
+                            case Number.None:
+								throw new Exception("Number of the word is undefind. Please call DetectNumber()");
+                            case Number.Singular:
+                                switch (case_to)
+                                {
+                                    case Cases.None:
+										throw new Exception("Case of the word is undefind. Please call DetectCase()");
+                                    case Cases.Nominative:
+                                        break;
+                                    case Cases.Genetive:
+										if (Regex.IsMatch(Word, "ый$"))
+                                        {
+											Word = Regex.Replace(Word, "ый$", "ого");
+                                        }
+                                        break;
+                                    case Cases.Dative:
+                                        break;
+                                    case Cases.Accusative:
+                                        break;
+                                    case Cases.Instrumental:
+                                        break;
+                                    case Cases.Prepositional:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case Number.Paucal:
+                                break;
+                            case Number.Plural:
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case Gender.Feminine:
+                        break;
+                    case Gender.Neuter:
+                        break;
+                    default:
+                        break;
+                }
+            }
+			catch (Exception _exception)
+			{
+				return "[Alert] " + _exception.Message + "\n";
+			}
 			return Word;
         }
 

@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.2-alpha1
+// Errusiera 1.0.2-alpha2
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -743,6 +743,10 @@ Adjective::Adjective(std::string word_adj_only, Cases adj_case, Number adj_numbe
 	word_gender = adj_gender;
 }
 
+Adjective::~Adjective() {
+
+}
+
 std::string Adjective::to_string() {
 	return word;
 }
@@ -764,7 +768,64 @@ std::string Adjective::change_gender(Gender gender_to) {
 }
 
 std::string Adjective::change_word(Cases case_to, Number number_to, Gender gender_to) {
-
+	to_default();
+	if (case_to == word_case && number_to == word_number && gender_to == word_gender) {
+		return word;
+	}
+	try {
+		switch (gender_to)
+		{
+		case Gender::Masculine:
+			switch (number_to)
+			{
+			case Number::None:
+				throw std::exception("Number of the word is undefind. Please call detect_number()");
+				break;
+			case Number::Singular:
+				switch (case_to)
+				{
+				case Cases::None:
+					throw std::exception("Case of the word is undefind. Please call detect_case()");
+					break;
+				case Cases::Nominative:
+					break;
+				case Cases::Genetive:
+					if (pattern(word, "[ ]029011")) {
+						pattern(word, "[ ]!--029011--!!++016004016++!", word);
+					}
+					break;
+				case Cases::Dative:
+					break;
+				case Cases::Accusative:
+					break;
+				case Cases::Instrumental:
+					break;
+				case Cases::Prepositional:
+					break;
+				default:
+					break;
+				}
+				break;
+			case Number::Paucal:
+				break;
+			case Number::Plural:
+				break;
+			default:
+				break;
+			}
+			break;
+		case Gender::Feminine:
+			break;
+		case Gender::Neuter:
+			break;
+		default:
+			break;
+		}
+	}
+	catch (std::exception& _exception) {
+		return (std::string)"[Alert] " + _exception.what() + "\n";
+	}
+	return word;
 }
 
 std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber) {
