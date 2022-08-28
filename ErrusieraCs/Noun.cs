@@ -331,7 +331,7 @@ namespace Errusiera
 								}
 								else if (Regex.IsMatch(Word, "ка$"))
 								{
-									Word = Regex.Replace(Word, "ка$", "ка");
+									Word = Regex.Replace(Word, "ка$", "ки");
 								}
 								else if (Regex.IsMatch(Word, "а$"))
 								{
