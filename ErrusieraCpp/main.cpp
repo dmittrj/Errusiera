@@ -11,7 +11,7 @@ int main() {
 	std::string a;
 	std::cin >> a;
 	Noun alpha(a, Cases::Nominative, Number::Singular);
-	std::cout << alpha.change_word(Cases::Dative, Number::Plural) << "\n";
+	std::cout << alpha.change_word(Cases::Instrumental, Number::Plural) << "\n";
 
 	//These are some examples of using Errusiera
 
