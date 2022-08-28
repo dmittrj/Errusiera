@@ -7,12 +7,6 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
 
-	//Alpha testing
-	std::string a;
-	std::cin >> a;
-	Noun alpha(a, Cases::Nominative, Number::Singular);
-	std::cout << alpha.change_word(Cases::Prepositional, Number::Plural) << "\n";
-
 	//These are some examples of using Errusiera
 
 	//Example 1. Enter your name
@@ -39,7 +33,7 @@ int main() {
 
 
 	//Example 3. Time
-	std::cout << "Введите время в формате ЧЧ:ММ > ";
+	std::cout << "\302\342\345\344\350\362\345 \342\360\345\354\377 \342 \364\356\360\354\340\362\345 \327\327:\314\314 > ";
 	std::string time3;
 	std::cin >> time3;
 	int hours3 = std::stoi(time3.substr(0, 2));
