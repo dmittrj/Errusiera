@@ -884,9 +884,51 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 				break;
 			}
 			break;
-		case Number::Paucal:
-			break;
 		case Number::Plural:
+			switch (case_to)
+			{
+			case Cases::None:
+				throw std::exception("Case of the word is undefind. Please call detect_case()");
+				break;
+			case Cases::Nominative:
+				break;
+			case Cases::Genetive:
+				if (pattern(word, "[ ]029006")) {
+					pattern(word, "[ ]!--029006--!!++029023++!", word);
+				}
+				else if (pattern(word, "[ ]010006")) {
+					pattern(word, "[ ]!--010006--!!++010023++!", word);
+				}
+				break;
+			case Cases::Dative:
+				if (pattern(word, "[ ]029006")) {
+					pattern(word, "[ ]!--029006--!!++029014++!", word);
+				}
+				else if (pattern(word, "[ ]010006")) {
+					pattern(word, "[ ]!--010006--!!++010014++!", word);
+				}
+				break;
+			case Cases::Accusative:
+				break;
+			case Cases::Instrumental:
+				if (pattern(word, "[ ]029006")) {
+					pattern(word, "[ ]!--029006--!!++029014010++!", word);
+				}
+				else if (pattern(word, "[ ]010006")) {
+					pattern(word, "[ ]!--010006--!!++010014010++!", word);
+				}
+				break;
+			case Cases::Prepositional:
+				if (pattern(word, "[ ]029006")) {
+					pattern(word, "[ ]!--029006--!!++029023++!", word);
+				}
+				else if (pattern(word, "[ ]010006")) {
+					pattern(word, "[ ]!--010006--!!++010023++!", word);
+				}
+				break;
+			default:
+				break;
+			}
 			break;
 		default:
 			break;

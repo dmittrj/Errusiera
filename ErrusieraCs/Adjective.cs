@@ -210,9 +210,58 @@ namespace Errusiera
 								break;
 						}
 						break;
-					case Number.Paucal:
-						break;
 					case Number.Plural:
+						switch (case_to)
+						{
+							case Cases.None:
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
+							case Cases.Nominative:
+								break;
+							case Cases.Genetive:
+								if (Regex.IsMatch(Word, "ые$"))
+								{
+									Word = Regex.Replace(Word, "ые$", "ых");
+								}
+								else if (Regex.IsMatch(Word, "ие$"))
+								{
+									Word = Regex.Replace(Word, "ие$", "их");
+								}
+								break;
+							case Cases.Dative:
+								if (Regex.IsMatch(Word, "ые$"))
+								{
+									Word = Regex.Replace(Word, "ые$", "ым");
+								}
+								else if (Regex.IsMatch(Word, "ие$"))
+								{
+									Word = Regex.Replace(Word, "ие$", "им");
+								}
+								break;
+							case Cases.Accusative:
+								break;
+							case Cases.Instrumental:
+								if (Regex.IsMatch(Word, "ые$"))
+								{
+									Word = Regex.Replace(Word, "ые$", "ыми");
+								}
+								else if (Regex.IsMatch(Word, "ие$"))
+								{
+									Word = Regex.Replace(Word, "ие$", "ими");
+								}
+								break;
+							case Cases.Prepositional:
+								if (Regex.IsMatch(Word, "ые$"))
+								{
+									Word = Regex.Replace(Word, "ые$", "ых");
+								}
+								else if (Regex.IsMatch(Word, "ие$"))
+								{
+									Word = Regex.Replace(Word, "ие$", "их");
+								}
+								break;
+							default:
+								break;
+						}
 						break;
 					default:
 						break;
