@@ -155,6 +155,15 @@ public:
 	std::string change_word(Cases case_to, Number number_to);
 
 	/// <summary>
+	/// <para>RUS: Склоняет существительное</para>
+	/// <para>ENG: Conjugates the noun</para>
+	/// </summary>
+	/// <param name="case_to">| Падеж</param>
+	/// <param name="number_to">| Число</param>
+	/// <returns>Изменённое слово</returns>
+	std::string conjugate(Cases case_to, Number number_to);
+
+	/// <summary>
 	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
 	/// <para>ENG: Convert class to string</para>
 	/// </summary>
