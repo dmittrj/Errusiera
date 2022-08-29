@@ -594,8 +594,8 @@ namespace Errusiera
 				return "[Alert] " + _exception.Message + "\n";
 			}
 
-			WordCase = case_to;
-			WordNumber = number_to;
+			//WordCase = case_to;
+			//WordNumber = number_to;
 			return Word;
 			}
 
