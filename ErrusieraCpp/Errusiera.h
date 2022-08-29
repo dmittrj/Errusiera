@@ -98,6 +98,7 @@ int char_code(const char* _internal_code);
 /// </summary>
 class Noun
 {
+	friend class Adjective;
 public:
 	/// <summary>
 	/// Слово
@@ -183,6 +184,8 @@ public:
 	/// </summary>
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
+
+	Gender define_gender();
 private:
 	Cases word_case;
 	Number word_number;
@@ -245,6 +248,7 @@ public:
 	/// <returns>Слово</returns>
 	std::string to_string();
 
+	std::string operator+(Noun _noun);
 private:
 	Cases word_case;
 	Number word_number;
@@ -277,6 +281,16 @@ public:
 	std::string to_string();
 private:
 	static std::string num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber);
+};
+
+
+
+class Phrase
+{
+public:
+
+private:
+
 };
 
 
