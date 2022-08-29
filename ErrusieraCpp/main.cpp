@@ -7,13 +7,6 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
 
-	//Alpha testing
-	Adjective adj(" расный", Cases::Nominative, Number::Singular, Gender::Masculine);
-	Noun ball("ћ€ч", Cases::Nominative, Number::Singular);
-	ball.change_case(Cases::Genetive);
-	std::cout << adj + ball;
-	std::cout << adj.change_case(Cases::Genetive);
-
 	//These are some examples of using Errusiera
 
 	//Example 1. Enter your name
@@ -48,8 +41,8 @@ int main() {
 	Numeral E_numh3(hours3);
 	Numeral E_numm3(minutes3);
 	E_numh3.to_string();
-	Noun E_hours3("час", Cases::Nominative, Number::Singular);
-	Noun E_minutes3("минута", Cases::Nominative, Number::Singular);
+	Noun E_hours3("\367\340\361", Cases::Nominative, Number::Singular);
+	Noun E_minutes3("\354\350\355\363\362\340", Cases::Nominative, Number::Singular);
 	E_hours3.change_case(Cases::Genetive);
 	E_minutes3.change_case(Cases::Genetive);
 	if (hours3 >= 10 && hours3 <= 20) E_hours3.change_number(Number::Plural);
@@ -60,6 +53,6 @@ int main() {
 	else if (minutes3 % 10 == 1) E_minutes3.change_word(Cases::Nominative, Number::Singular);
 	else if (minutes3 % 10 > 4 || minutes3 % 10 == 0) E_minutes3.change_number(Number::Plural);
 	else E_minutes3.change_number(Number::Singular);
-	std::cout << "¬рем€: " << hours3 << " " << E_hours3.to_string() << " " 
+	std::cout << "\302\360\345\354\377: " << hours3 << " " << E_hours3.to_string() << " " 
 		<< minutes3 << " " << E_minutes3.to_string();
 }
