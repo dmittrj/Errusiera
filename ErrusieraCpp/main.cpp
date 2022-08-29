@@ -9,6 +9,9 @@ int main() {
 
 	//Alpha testing
 	Adjective adj(" расный", Cases::Nominative, Number::Singular, Gender::Masculine);
+	Noun ball("ћ€ч", Cases::Nominative, Number::Singular);
+	ball.change_case(Cases::Genetive);
+	std::cout << adj + ball;
 	std::cout << adj.change_case(Cases::Genetive);
 
 	//These are some examples of using Errusiera

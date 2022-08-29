@@ -284,6 +284,12 @@ namespace Errusiera
             return base.ToString();
         }
 
+        public static string operator+(Adjective _adj, Noun _noun)
+        {
+			_adj.ChangeWord(_noun.WordCase, _noun.WordNumber, _noun.WordGender);
+			return _adj.Word + " " + _noun.Word;
+		}
+
 		private Cases WordCase;
 		private Number WordNumber;
 		private Gender WordGender;

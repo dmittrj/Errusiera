@@ -91,13 +91,36 @@ namespace Errusiera
 	/// Имя существительное
 	/// </summary>
 	class Noun
-    {
+	{
 		/// <summary>
 		/// Слово
 		/// </summary>
 		public string Word;
-		private Cases WordCase;
-		private Number WordNumber;
+		public readonly Cases WordCase;
+		public readonly Number WordNumber;
+		public Gender WordGender
+		{
+			get
+			{
+				string _old_word = Word;
+				ToNominative();
+				if (Regex.IsMatch(Word, "а$") || Regex.IsMatch(Word, "я$") || Regex.IsMatch(Word, "ь$"))
+				{
+					Word = _old_word;
+					return Gender.Feminine;
+				}
+				else if (Regex.IsMatch(Word, "о$") || Regex.IsMatch(Word, "е$"))
+				{
+					Word = _old_word;
+					return Gender.Neuter;
+				}
+				else
+				{
+					Word = _old_word;
+					return Gender.Masculine;
+				}
+			}
+		}
 
 		/// <summary>
 		/// <para>RUS: Конструктор с параметром строки. После создания требуется вызвать DetectParams()</para>
