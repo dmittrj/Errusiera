@@ -280,6 +280,16 @@ private:
 };
 
 
+
+class Phrase
+{
+public:
+
+private:
+
+};
+
+
 class Word
 {
 public:
