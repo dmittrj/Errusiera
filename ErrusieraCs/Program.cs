@@ -6,6 +6,10 @@ namespace Errusiera
     {
         static void Main()
         {
+			//Alpha testing
+			Adjective adj = new Adjective("Красный", Cases.Nominative, Number.Singular, Gender.Masculine);
+			Console.WriteLine(adj.ChangeCase(Cases.Genetive));
+
 			//These are some examples of using Errusiera
 
 			//Example 1. Enter your name

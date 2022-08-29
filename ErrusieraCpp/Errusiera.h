@@ -204,6 +204,32 @@ public:
 	std::string change_case(Cases case_to);
 
 	/// <summary>
+	/// <para>RUS: Меняет число имени прилагательного</para>
+	/// <para>ENG: The function changes the number of the adjective</para>
+	/// </summary>
+	/// <param name="number_to">| Число</param>
+	/// <returns>Слово в заказанном числе</returns>
+	std::string change_number(Number number_to);
+
+	/// <summary>
+	/// <para>RUS: Меняет род имени прилагательного</para>
+	/// <para>ENG: The function changes the gender of the adjective</para>
+	/// </summary>
+	/// <param name="gender_to">| Род</param>
+	/// <returns>Слово в заказанном роде</returns>
+	std::string change_gender(Gender gender_to);
+
+	/// <summary>
+	/// <para>RUS: Меняет все параметры имени прилагательного</para>
+	/// <para>ENG: The function changes all parameters of the adjective</para>
+	/// </summary>
+	/// <param name="case_to">| Падеж</param>
+	/// <param name="number_to">| Число</param>
+	/// <param name="gender_to">| Род</param>
+	/// <returns>Изменённое слово</returns>
+	std::string change_word(Cases case_to, Number number_to, Gender gender_to);
+
+	/// <summary>
 	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
 	/// <para>ENG: Convert class to string</para>
 	/// </summary>
@@ -214,9 +240,9 @@ private:
 	Cases word_case;
 	Number word_number;
 	Gender word_gender;
-	std::string word_nominative = "";
+	std::string word_default = "";
 
-	void to_nominative();
+	void to_default();
 };
 
 class Numeral
