@@ -73,54 +73,67 @@ namespace Errusiera
 			}
 			try
             {
-                switch (gender_to)
-                {
-                    case Gender.Masculine:
-                        switch (number_to)
-                        {
-                            case Number.None:
-								throw new Exception("Number of the word is undefind. Please call DetectNumber()");
-                            case Number.Singular:
-                                switch (case_to)
-                                {
-                                    case Cases.None:
-										throw new Exception("Case of the word is undefind. Please call DetectCase()");
-                                    case Cases.Nominative:
-                                        break;
-                                    case Cases.Genetive:
-										if (Regex.IsMatch(Word, "ый$"))
-                                        {
-											Word = Regex.Replace(Word, "ый$", "ого");
-                                        }
-                                        break;
-                                    case Cases.Dative:
-                                        break;
-                                    case Cases.Accusative:
-                                        break;
-                                    case Cases.Instrumental:
-                                        break;
-                                    case Cases.Prepositional:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                break;
-                            case Number.Paucal:
-                                break;
-                            case Number.Plural:
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case Gender.Feminine:
-                        break;
-                    case Gender.Neuter:
-                        break;
-                    default:
-                        break;
-                }
-            }
+				switch (number_to)
+				{
+					case Number.None:
+						throw new Exception("Number of the word is undefind. Please call DetectNumber()");
+					case Number.Singular:
+						switch (case_to)
+						{
+							case Cases.None:
+								throw new Exception("Case of the word is undefind. Please call DetectCase()");
+							case Cases.Nominative:
+								break;
+							case Cases.Genetive:
+								if (Regex.IsMatch(Word, "ый$"))
+								{
+									Word = Regex.Replace(Word, "ый$", "ого");
+								} 
+								else if (Regex.IsMatch(Word, "ой$"))
+								{
+									Word = Regex.Replace(Word, "ой$", "ого");
+								}
+								else if (Regex.IsMatch(Word, "ий$"))
+								{
+									Word = Regex.Replace(Word, "ий$", "его");
+								}
+								else if (Regex.IsMatch(Word, "ая$"))
+								{
+									Word = Regex.Replace(Word, "ая$", "ой");
+								}
+								else if (Regex.IsMatch(Word, "яя$"))
+								{
+									Word = Regex.Replace(Word, "яя$", "ей");
+								}
+								else if (Regex.IsMatch(Word, "ое$"))
+								{
+									Word = Regex.Replace(Word, "ое$", "ого");
+								}
+								else if (Regex.IsMatch(Word, "ее$"))
+								{
+									Word = Regex.Replace(Word, "ее$", "его");
+								}
+								break;
+							case Cases.Dative:
+								break;
+							case Cases.Accusative:
+								break;
+							case Cases.Instrumental:
+								break;
+							case Cases.Prepositional:
+								break;
+							default:
+								break;
+						}
+						break;
+					case Number.Paucal:
+						break;
+					case Number.Plural:
+						break;
+					default:
+						break;
+				}
+			}
 			catch (Exception _exception)
 			{
 				return "[Alert] " + _exception.Message + "\n";

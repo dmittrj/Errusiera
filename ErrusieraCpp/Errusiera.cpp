@@ -773,50 +773,57 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 		return word;
 	}
 	try {
-		switch (gender_to)
+		switch (number_to)
 		{
-		case Gender::Masculine:
-			switch (number_to)
+		case Number::None:
+			throw std::exception("Number of the word is undefind. Please call detect_number()");
+			break;
+		case Number::Singular:
+			switch (case_to)
 			{
-			case Number::None:
-				throw std::exception("Number of the word is undefind. Please call detect_number()");
+			case Cases::None:
+				throw std::exception("Case of the word is undefind. Please call detect_case()");
 				break;
-			case Number::Singular:
-				switch (case_to)
-				{
-				case Cases::None:
-					throw std::exception("Case of the word is undefind. Please call detect_case()");
-					break;
-				case Cases::Nominative:
-					break;
-				case Cases::Genetive:
-					if (pattern(word, "[ ]029011")) {
-						pattern(word, "[ ]!--029011--!!++016004016++!", word);
-					}
-					break;
-				case Cases::Dative:
-					break;
-				case Cases::Accusative:
-					break;
-				case Cases::Instrumental:
-					break;
-				case Cases::Prepositional:
-					break;
-				default:
-					break;
+			case Cases::Nominative:
+				break;
+			case Cases::Genetive:
+				if (pattern(word, "[ ]029011")) {
+					pattern(word, "[ ]!--029011--!!++016004016++!", word);
+				} 
+				else if (pattern(word, "[ ]016011")) {
+					pattern(word, "[ ]016!--011--!!++004016++!", word);
+				}
+				else if (pattern(word, "[ ]010011")) {
+					pattern(word, "[ ]!--010011--!!++006004016++!", word);
+				}
+				else if (pattern(word, "[ ]001033")) {
+					pattern(word, "[ ]!--001033--!!++016011++!", word);
+				}
+				else if (pattern(word, "[ ]033033")) {
+					pattern(word, "[ ]!--033033--!!++006011++!", word);
+				}
+				else if (pattern(word, "[ ]016006")) {
+					pattern(word, "[ ]016!--006--!!++004016++!", word);
+				}
+				else if (pattern(word, "[ ]006006")) {
+					pattern(word, "[ ]006!--006--!!++004016++!", word);
 				}
 				break;
-			case Number::Paucal:
+			case Cases::Dative:
 				break;
-			case Number::Plural:
+			case Cases::Accusative:
+				break;
+			case Cases::Instrumental:
+				break;
+			case Cases::Prepositional:
 				break;
 			default:
 				break;
 			}
 			break;
-		case Gender::Feminine:
+		case Number::Paucal:
 			break;
-		case Gender::Neuter:
+		case Number::Plural:
 			break;
 		default:
 			break;
