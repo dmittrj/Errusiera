@@ -446,7 +446,21 @@ std::string Noun::serialize() {
 }
 
 Gender Noun::define_gender() {
-	return Gender::Masculine;
+	std::string _old_word = word;
+	to_nominative();
+	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
+		word = _old_word;
+		return Gender::Feminine;
+	} 
+	else if (pattern(word, "[]016") || pattern(word, "[]006")) {
+		word = _old_word;
+		return Gender::Neuter;
+	}
+	else {
+		word = _old_word;
+		return Gender::Masculine;
+	}
+	
 }
 
 Noun Noun::deserialize(std::string _serialized_string) {
