@@ -810,6 +810,27 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 				}
 				break;
 			case Cases::Dative:
+				if (pattern(word, "[ ]029011")) {
+					pattern(word, "[ ]!--029011--!!++016014021++!", word);
+				}
+				else if (pattern(word, "[ ]016011")) {
+					pattern(word, "[ ]016!--011--!!++016014021++!", word);
+				}
+				else if (pattern(word, "[ ]010011")) {
+					pattern(word, "[ ]!--010011--!!++006014021++!", word);
+				}
+				else if (pattern(word, "[ ]001033")) {
+					pattern(word, "[ ]!--001033--!!++016011++!", word);
+				}
+				else if (pattern(word, "[ ]033033")) {
+					pattern(word, "[ ]!--033033--!!++006011++!", word);
+				}
+				else if (pattern(word, "[ ]016006")) {
+					pattern(word, "[ ]016!--006--!!++014021++!", word);
+				}
+				else if (pattern(word, "[ ]006006")) {
+					pattern(word, "[ ]006!--006--!!++014021++!", word);
+				}
 				break;
 			case Cases::Accusative:
 				break;
