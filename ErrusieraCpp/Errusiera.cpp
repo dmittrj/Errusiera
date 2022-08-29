@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.2-alpha2
+// Errusiera 1.0.2-alpha3
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -381,6 +381,13 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 
 std::string Noun::to_string() {
 	return word;
+}
+
+std::string Noun::conjugate(Cases case_to, Number number_to) {
+	std::string _old_word = word;
+	std::string _new_word = change_word(case_to, number_to);
+	word = _old_word;
+	return _new_word;
 }
 
 std::string Noun::serialize() {

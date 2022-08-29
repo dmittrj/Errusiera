@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.2-alpha2
+	// Errusiera for C# 1.0.2-alpha3
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -575,6 +575,21 @@ namespace Errusiera
 			WordNumber = number_to;
 			return Word;
 			}
+
+		/// <summary>
+		/// <para>RUS: Склоняет существительное</para>
+		/// <para>ENG: Conjugates the noun</para>
+		/// </summary>
+		/// <param name="case_to">Падеж</param>
+		/// <param name="number_to">Число</param>
+		/// <returns>Изменённое слово</returns>
+		public string Conjugate(Cases case_to, Number number_to)
+        {
+			string _old_word = Word;
+			string _new_word = ChangeWord(case_to, number_to);
+			Word = _old_word;
+			return _new_word;
+		}
 
 		/// <summary>
 		/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
