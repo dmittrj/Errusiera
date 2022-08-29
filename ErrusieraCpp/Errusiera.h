@@ -10,8 +10,8 @@
 enum class Cases
 {
 	/// <summary>
-	/// <para>RUS: Нет падежа или неизвестен. Не используйте сами этот падеж</para>
-	/// <para>ENG: No case or case is unknown. Please do not use it by your own</para>
+	/// <para>RUS: Нет падежа или неизвестен</para>
+	/// <para>ENG: No case or case is unknown</para>
 	/// </summary>
 	None,
 	/// <summary>
@@ -46,8 +46,8 @@ enum class Cases
 enum class Number
 {
 	/// <summary>
-	/// <para>RUS: Нет числа или неизвестно. Не используйте сами этот параметр</para>
-	/// <para>ENG: No number or number is unknown. Please do not use it by your own</para>
+	/// <para>RUS: Нет числа или неизвестно</para>
+	/// <para>ENG: No number or number is unknown</para>
 	/// </summary>
 	None,
 	/// <summary>
@@ -81,6 +81,24 @@ enum class Gender
 	/// Средний род
 	/// </summary>
 	Neuter
+};
+
+/// <summary>
+/// Одушевлённость
+/// </summary>
+enum class Animacy {
+	/// <summary>
+	/// Неизвестно
+	/// </summary>
+	None,
+	/// <summary>
+	/// Одушевлённое
+	/// </summary>
+	Animate,
+	/// <summary>
+	/// Неодушевлённое
+	/// </summary>
+	Inanimate
 };
 
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
@@ -189,6 +207,7 @@ public:
 private:
 	Cases word_case;
 	Number word_number;
+	bool animacy;
 	std::string word_nominative = "";
 
 	void to_nominative();
