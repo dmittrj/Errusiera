@@ -356,6 +356,9 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				else if (pattern(word, "[ ]006024")) {
 					pattern(word, "[ ]!--006024--!!++024001023++!", word);
 				}
+				else if (pattern(word, "[ ]001")) {
+					pattern(word, "[ ]!++023++!", word);
+				}
 				else {
 					pattern(word, "[_]!++001023++!", word);
 				}

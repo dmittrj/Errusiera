@@ -96,8 +96,8 @@ namespace Errusiera
 		/// Слово
 		/// </summary>
 		public string Word;
-		public readonly Cases WordCase;
-		public readonly Number WordNumber;
+		public Cases WordCase;
+		public Number WordNumber;
 		public Gender WordGender
 		{
 			get
@@ -577,6 +577,10 @@ namespace Errusiera
 								{
 									Word = Regex.Replace(Word, "ец$", "цах");
 								}
+								else if (Regex.IsMatch(Word, "а$"))
+								{
+									Word += "х";
+								}
 								else
 								{
 									Word += "ах";
@@ -594,8 +598,8 @@ namespace Errusiera
 				return "[Alert] " + _exception.Message + "\n";
 			}
 
-			//WordCase = case_to;
-			//WordNumber = number_to;
+			WordCase = case_to;
+			WordNumber = number_to;
 			return Word;
 			}
 
