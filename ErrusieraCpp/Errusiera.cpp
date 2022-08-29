@@ -445,6 +445,10 @@ std::string Noun::serialize() {
 	return _serialized;
 }
 
+Gender Noun::define_gender() {
+	return Gender::Masculine;
+}
+
 Noun Noun::deserialize(std::string _serialized_string) {
 	std::string _reading_str = _serialized_string;
 	std::string _word = "";
@@ -945,6 +949,11 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 		return (std::string)"[Alert] " + _exception.what() + "\n";
 	}
 	return word;
+}
+
+std::string Adjective::operator+(Noun _noun) {
+	change_word(_noun.word_case, _noun.word_number, _noun.define_gender());
+	return word + " " + _noun.word;
 }
 
 std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber) {
