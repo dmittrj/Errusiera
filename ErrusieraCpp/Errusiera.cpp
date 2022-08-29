@@ -835,6 +835,27 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 			case Cases::Accusative:
 				break;
 			case Cases::Instrumental:
+				if (pattern(word, "[ ]029011")) {
+					pattern(word, "[ ]!--029011--!!++029014++!", word);
+				}
+				else if (pattern(word, "[ ]016011")) {
+					pattern(word, "[ ]016!--011--!!++029014++!", word);
+				}
+				else if (pattern(word, "[ ]010011")) {
+					pattern(word, "[ ]!--010011--!!++010014++!", word);
+				}
+				else if (pattern(word, "[ ]001033")) {
+					pattern(word, "[ ]!--001033--!!++016011++!", word);
+				}
+				else if (pattern(word, "[ ]033033")) {
+					pattern(word, "[ ]!--033033--!!++006011++!", word);
+				}
+				else if (pattern(word, "[ ]016006")) {
+					pattern(word, "[ ]016!--006--!!++029014++!", word);
+				}
+				else if (pattern(word, "[ ]006006")) {
+					pattern(word, "[ ]006!--006--!!++010014++!", word);
+				}
 				break;
 			case Cases::Prepositional:
 				break;

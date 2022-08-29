@@ -147,6 +147,34 @@ namespace Errusiera
 							case Cases.Accusative:
 								break;
 							case Cases.Instrumental:
+								if (Regex.IsMatch(Word, "ый$"))
+								{
+									Word = Regex.Replace(Word, "ый$", "ым");
+								}
+								else if (Regex.IsMatch(Word, "ой$"))
+								{
+									Word = Regex.Replace(Word, "ой$", "ым");
+								}
+								else if (Regex.IsMatch(Word, "ий$"))
+								{
+									Word = Regex.Replace(Word, "ий$", "им");
+								}
+								else if (Regex.IsMatch(Word, "ая$"))
+								{
+									Word = Regex.Replace(Word, "ая$", "ой");
+								}
+								else if (Regex.IsMatch(Word, "яя$"))
+								{
+									Word = Regex.Replace(Word, "яя$", "ей");
+								}
+								else if (Regex.IsMatch(Word, "ое$"))
+								{
+									Word = Regex.Replace(Word, "ое$", "ым");
+								}
+								else if (Regex.IsMatch(Word, "ее$"))
+								{
+									Word = Regex.Replace(Word, "ее$", "им");
+								}
 								break;
 							case Cases.Prepositional:
 								break;
