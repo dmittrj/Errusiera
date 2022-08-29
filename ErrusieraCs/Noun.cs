@@ -11,7 +11,7 @@ namespace Errusiera
 	/// <summary>
 	/// Падежи
 	/// </summary>
-	enum Cases
+	public enum Cases
 	{
 		/// <summary>
 		/// <para>RUS: Нет падежа или неизвестен. Не используйте сами этот падеж</para>
@@ -47,7 +47,7 @@ namespace Errusiera
 	/// <summary>
 	/// Числа
 	/// </summary>
-	enum Number
+	public enum Number
 	{
 		/// <summary>
 		/// <para>RUS: Нет числа или неизвестно. Не используйте сами этот параметр</para>
@@ -71,7 +71,7 @@ namespace Errusiera
 	/// <summary>
 	/// Рода
 	/// </summary>
-	enum Gender
+	public enum Gender
 	{
 		/// <summary>
 		/// Мужской род
@@ -90,7 +90,7 @@ namespace Errusiera
 	/// <summary>
 	/// Имя существительное
 	/// </summary>
-	class Noun
+	public class Noun
 	{
 		/// <summary>
 		/// Слово
