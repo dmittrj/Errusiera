@@ -218,6 +218,10 @@ namespace Errusiera
 								{
 									Word = Regex.Replace(Word, "шь$", "ши");
 								}
+								else if (Regex.IsMatch(Word, "дь$"))
+								{
+									Word = Regex.Replace(Word, "дь$", "ди");
+								}
 								else if (Regex.IsMatch(Word, "ь$"))
 								{
 									Word = Regex.Replace(Word, "ь$", "я");
@@ -255,6 +259,10 @@ namespace Errusiera
 								else if (Regex.IsMatch(Word, "шь$"))
 								{
 									Word = Regex.Replace(Word, "шь$", "ши");
+								}
+								else if (Regex.IsMatch(Word, "дь$"))
+								{
+									Word = Regex.Replace(Word, "дь$", "ди");
 								}
 								else if (Regex.IsMatch(Word, "ь$"))
 								{

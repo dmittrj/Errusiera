@@ -7,9 +7,9 @@ namespace CsTests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Noun_Berry()
         {
-			Errusiera.Noun test1 = new Errusiera.Noun("Ягода", Cases.Nominative, Number.Singular);
+			Noun test1 = new Noun("Ягода", Cases.Nominative, Number.Singular);
 			Assert.AreEqual("Ягоды", test1.ChangeCase(Cases.Genetive));
 			Assert.AreEqual("Ягоде", test1.ChangeCase(Cases.Dative));
 			Assert.AreEqual("Ягоду", test1.ChangeCase(Cases.Accusative));
@@ -22,5 +22,22 @@ namespace CsTests
 			Assert.AreEqual("Ягодами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Ягодах", test1.ChangeCase(Cases.Prepositional));
 		}
-    }
+
+		[TestMethod]
+		public void Noun_Horse()
+		{
+            Noun test1 = new Noun("Лошадь", Cases.Nominative, Number.Singular);
+			Assert.AreEqual("Лошади", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Лошади", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Лошадь", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Лошадью", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Лошади", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Лошади", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Лошадей", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Лошадям", test1.ChangeCase(Cases.Dative));
+			//Assert.AreEqual("Лошадей", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Лошадями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Лошадях", test1.ChangeCase(Cases.Prepositional));
+		}
+	}
 }
