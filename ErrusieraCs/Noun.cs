@@ -388,6 +388,10 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "сь$", "сем");
 								}
+								else if (Regex.IsMatch(_word, "дь$"))
+								{
+									_word = Regex.Replace(_word, "дь$", "дью");
+								}
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
 									_word = Regex.Replace(_word, "ь$", "ём");
