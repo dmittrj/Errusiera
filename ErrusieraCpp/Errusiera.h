@@ -10,8 +10,8 @@
 enum class Cases
 {
 	/// <summary>
-	/// <para>RUS: Нет падежа или неизвестен. Не используйте сами этот падеж</para>
-	/// <para>ENG: No case or case is unknown. Please do not use it by your own</para>
+	/// <para>RUS: Нет падежа или неизвестен</para>
+	/// <para>ENG: No case or case is unknown</para>
 	/// </summary>
 	None,
 	/// <summary>
@@ -46,8 +46,8 @@ enum class Cases
 enum class Number
 {
 	/// <summary>
-	/// <para>RUS: Нет числа или неизвестно. Не используйте сами этот параметр</para>
-	/// <para>ENG: No number or number is unknown. Please do not use it by your own</para>
+	/// <para>RUS: Нет числа или неизвестно</para>
+	/// <para>ENG: No number or number is unknown</para>
 	/// </summary>
 	None,
 	/// <summary>
@@ -70,6 +70,10 @@ enum class Number
 enum class Gender
 {
 	/// <summary>
+	/// Род неизвестен
+	/// </summary>
+	None,
+	/// <summary>
 	/// Мужской род
 	/// </summary>
 	Masculine,
@@ -81,6 +85,24 @@ enum class Gender
 	/// Средний род
 	/// </summary>
 	Neuter
+};
+
+/// <summary>
+/// Одушевлённость
+/// </summary>
+enum class Animacy {
+	/// <summary>
+	/// Неизвестно
+	/// </summary>
+	None,
+	/// <summary>
+	/// Одушевлённое
+	/// </summary>
+	Animate,
+	/// <summary>
+	/// Неодушевлённое
+	/// </summary>
+	Inanimate
 };
 
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
@@ -119,7 +141,9 @@ public:
 	/// <param name="word_noun_only">| Слово</param>
 	/// <param name="noun_case">| Падеж</param>
 	/// <param name="noun_number">| Число</param>
-	Noun(std::string word_noun_only, Cases noun_case, Number noun_number);
+	/// /// <param name="noun_gender">| Род</param>
+	/// /// <param name="noun_animacy">| Одушевленность</param>
+	Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy);
 
 	~Noun();
 
@@ -186,12 +210,17 @@ public:
 	static Noun deserialize(std::string _serialized_string);
 
 	Gender define_gender();
+	bool operator==(Noun _noun);
 private:
 	Cases word_case;
 	Number word_number;
-	std::string word_nominative = "";
-
-	void to_nominative();
+	Gender word_gender;
+	Animacy word_animacy;
+	std::string word_default = "";
+	/// <summary>
+	/// Obsoleted
+	/// </summary>
+	std::string to_default();
 };
 
 /// <summary>

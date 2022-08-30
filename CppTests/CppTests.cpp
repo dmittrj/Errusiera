@@ -13,7 +13,7 @@ namespace CppTests
 		
 		TEST_METHOD(Noun_Berry)
 		{
-			Noun test1("ягода", Cases::Nominative, Number::Singular);
+			Noun test1("ягода", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
 			Assert::AreEqual((std::string)"ягоды", test1.change_case(Cases::Genetive));
 			Assert::AreEqual((std::string)"ягоде", test1.change_case(Cases::Dative));
 			Assert::AreEqual((std::string)"ягоду", test1.change_case(Cases::Accusative));
@@ -29,7 +29,7 @@ namespace CppTests
 
 		TEST_METHOD(Noun_Horse)
 		{
-			Noun test1("Ћошадь", Cases::Nominative, Number::Singular);
+			Noun test1("Ћошадь", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Animate);
 			Assert::AreEqual((std::string)"Ћошади", test1.change_case(Cases::Genetive));
 			Assert::AreEqual((std::string)"Ћошади", test1.change_case(Cases::Dative));
 			Assert::AreEqual((std::string)"Ћошадь", test1.change_case(Cases::Accusative));
@@ -41,6 +41,13 @@ namespace CppTests
 			//Assert::AreEqual((std::string)"Ћошадей", test1.change_case(Cases::Accusative));
 			Assert::AreEqual((std::string)"Ћошад€ми", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Ћошад€х", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Serializing)
+		{
+			Noun test1("—лово—лово—лово—лово", Cases::Accusative, Number::Plural, Gender::Masculine, Animacy::Animate);
+			Noun test2 = Noun::deserialize(test1.serialize());
+			Assert::IsTrue(test1 == test2);
 		}
 	};
 }
