@@ -47,7 +47,7 @@ namespace CppTests
 		{
 			Noun test1("СловоСловоСловоСлово", Cases::Accusative, Number::Plural, Gender::Masculine, Animacy::Animate);
 			Noun test2 = Noun::deserialize(test1.serialize());
-			Assert::AreEqual(test1, test2);
+			Assert::IsTrue(test1 == test2);
 		}
 	};
 }

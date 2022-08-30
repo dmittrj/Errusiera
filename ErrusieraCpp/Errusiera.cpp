@@ -771,6 +771,16 @@ Noun Noun::deserialize(std::string _serialized_string) {
 	return _return_no_word;
 }
 
+bool Noun::operator==(Noun _noun) {
+	if (word != _noun.word) return false;
+	if (word_animacy != _noun.word_animacy) return false;
+	if (word_case != _noun.word_case) return false;
+	if (word_default != _noun.word_default) return false;
+	if (word_gender != _noun.word_gender) return false;
+	if (word_number != _noun.word_number) return false;
+	return true;
+}
+
 int char_code(std::string _internal_code) {
 	if (_internal_code == "001") return -32;
 	if (_internal_code == "002") return -31;

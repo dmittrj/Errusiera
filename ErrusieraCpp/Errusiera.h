@@ -210,6 +210,7 @@ public:
 	static Noun deserialize(std::string _serialized_string);
 
 	Gender define_gender();
+	bool operator==(Noun _noun);
 private:
 	Cases word_case;
 	Number word_number;
