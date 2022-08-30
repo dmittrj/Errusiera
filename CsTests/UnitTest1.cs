@@ -18,7 +18,7 @@ namespace CsTests
 			Assert.AreEqual("ягоды", test1.ChangeWord(Cases.Nominative, Number.Plural));
 			Assert.AreEqual("ягод", test1.ChangeCase(Cases.Genetive));
 			Assert.AreEqual("ягодам", test1.ChangeCase(Cases.Dative));
-			//Assert.AreEqual("ягоды", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("ягоды", test1.ChangeCase(Cases.Accusative));
 			Assert.AreEqual("ягодами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("ягодах", test1.ChangeCase(Cases.Prepositional));
 		}
@@ -35,7 +35,7 @@ namespace CsTests
 			Assert.AreEqual("Ћошади", test1.ChangeWord(Cases.Nominative, Number.Plural));
 			Assert.AreEqual("Ћошадей", test1.ChangeCase(Cases.Genetive));
 			Assert.AreEqual("Ћошад€м", test1.ChangeCase(Cases.Dative));
-			//Assert.AreEqual("Ћошадей", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ћошадей", test1.ChangeCase(Cases.Accusative));
 			Assert.AreEqual("Ћошад€ми", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Ћошад€х", test1.ChangeCase(Cases.Prepositional));
 		}

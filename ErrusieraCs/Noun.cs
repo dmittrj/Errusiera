@@ -589,7 +589,14 @@ namespace Errusiera
 								}
 								break;
 							case Cases.Accusative:
-								break;
+                                if (WordAnimacy == Animacy.Animate)
+                                {
+									goto case Cases.Genetive;
+                                } else
+                                {
+									goto case Cases.Nominative;
+                                }
+                                break;
 							case Cases.Instrumental:
 								if (Regex.IsMatch(_word, "й$"))
 								{
