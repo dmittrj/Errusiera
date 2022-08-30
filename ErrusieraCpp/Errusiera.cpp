@@ -8,13 +8,16 @@ Noun::Noun(std::string word_noun_only) {
 	word = word_noun_only;
 }
 
-Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Animacy noun_animacy) {
+Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy) {
 	word = word_noun_only;
 	word_case = noun_case;
 	word_number = noun_number;
+	word_gender = noun_gender;
 	word_animacy = noun_animacy;
 
-	if (word_case == Cases::Nominative) word_nominative = word;
+	if (word_case == Cases::Nominative && word_number == Number::Singular) {
+		word_default = word;
+	}
 }
 
 Noun::~Noun() {
@@ -22,9 +25,9 @@ Noun::~Noun() {
 }
 
 void Noun::to_nominative() {
-	if (word_nominative != "") {
-		word = word_nominative;
-	}
+	//if (word_nominative != "") {
+	//	word = word_nominative;
+	//}
 }
 
 std::string Noun::change_case(Cases case_to) {
@@ -452,6 +455,25 @@ std::string Noun::serialize() {
 		_serialized += "None";
 		break;
 	}
+	_serialized += "\",\"word_gender\":\"";
+	switch (word_gender)
+	{
+	case Gender::None:
+		_serialized += "None";
+		break;
+	case Gender::Feminine:
+		_serialized += "Feminine";
+		break;
+	case Gender::Masculine:
+		_serialized += "Masculine";
+		break;
+	case Gender::Neuter:
+		_serialized += "Neuter";
+		break;
+	default:
+		_serialized += "None";
+		break;
+	}
 	_serialized += "\",\"word_animacy\":\"";
 	switch (word_animacy)
 	{
@@ -468,7 +490,7 @@ std::string Noun::serialize() {
 		_serialized += "None";
 		break;
 	}
-	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";
+	_serialized += "\",\"word_nominative\":\"" + word_default + "\"";
 	_serialized += "}";
 	return _serialized;
 }
@@ -497,6 +519,8 @@ Noun Noun::deserialize(std::string _serialized_string) {
 	std::string _word_nominative = "";
 	Cases _case = Cases::None;
 	Number _number = Number::None;
+	Gender _gender = Gender::None;
+	Animacy _animacy = Animacy::None;
 	try {
 		if (_reading_str.size() < 9) throw std::invalid_argument("Not a JSON format");
 		if (_serialized_string.substr(0, 9) != "{\"word\":\"") throw std::invalid_argument("Not a JSON format");
@@ -588,6 +612,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 			throw std::invalid_argument("\'word_case\' argument is not recognized properly");
 		}
 
+		//Number
 		if (_reading_str.size() < 17) throw std::invalid_argument("Not a JSON format");
 		if (_reading_str.substr(0, 17) != "\",\"word_number\":\"") throw std::invalid_argument("Not a JSON format");
 		_reading_str = _reading_str.substr(17);
@@ -631,6 +656,86 @@ Noun Noun::deserialize(std::string _serialized_string) {
 			throw std::invalid_argument("\'word_number\' argument is not recognized properly");
 		}
 
+		//Gender
+		if (_reading_str.size() < 17) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 17) != "\",\"word_gender\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(17);
+
+		if (_reading_str.size() < 4) {
+			throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
+		}
+		std::string _gender_string = _reading_str.substr(0, 4);
+		if (_gender_string == "None") {
+			_reading_str = _reading_str.substr(4);
+			_gender = Gender::None;
+		}
+		else if (_gender_string == "Masc") {
+			if (_reading_str.size() >= 9 && _reading_str.substr(0, 9) == "Masculine") {
+				_reading_str = _reading_str.substr(9);
+				_gender = Gender::Masculine;
+			}
+			else {
+				throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
+			}
+		}
+		else if (_gender_string == "Femi") {
+			if (_reading_str.size() >= 8 && _reading_str.substr(0, 8) == "Feminine") {
+				_reading_str = _reading_str.substr(8);
+				_gender = Gender::Feminine;
+			}
+			else {
+				throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
+			}
+		}
+		else if (_gender_string == "Neut") {
+			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Neuter") {
+				_reading_str = _reading_str.substr(6);
+				_gender = Gender::Neuter;
+			}
+			else {
+				throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
+			}
+		}
+		else {
+			throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
+		}
+
+
+		//Animacy
+		if (_reading_str.size() < 18) throw std::invalid_argument("Not a JSON format");
+		if (_reading_str.substr(0, 18) != "\",\"word_animacy\":\"") throw std::invalid_argument("Not a JSON format");
+		_reading_str = _reading_str.substr(18);
+
+		if (_reading_str.size() < 4) {
+			throw std::invalid_argument("\'word_animacy\' argument is not recognized properly");
+		}
+		std::string _animacy_string = _reading_str.substr(0, 4);
+		if (_animacy_string == "None") {
+			_reading_str = _reading_str.substr(4);
+			_animacy = Animacy::None;
+		}
+		else if (_animacy_string == "Anim") {
+			if (_reading_str.size() >= 7 && _reading_str.substr(0, 7) == "Animate") {
+				_reading_str = _reading_str.substr(7);
+				_animacy = Animacy::Animate;
+			}
+			else {
+				throw std::invalid_argument("\'word_animacy\' argument is not recognized properly");
+			}
+		}
+		else if (_animacy_string == "Inan") {
+			if (_reading_str.size() >= 9 && _reading_str.substr(0, 9) == "Inanimate") {
+				_reading_str = _reading_str.substr(9);
+				_animacy = Animacy::Inanimate;
+			}
+			else {
+				throw std::invalid_argument("\'word_animacy\' argument is not recognized properly");
+			}
+		}
+		else {
+			throw std::invalid_argument("\'word_animacy\' argument is not recognized properly");
+		}
+
 		if (_reading_str.size() < 21) throw std::invalid_argument("Not a JSON format");
 		if (_reading_str.substr(0, 21) != "\",\"word_nominative\":\"") throw std::invalid_argument("Not a JSON format");
 		_reading_str = _reading_str.substr(21);
@@ -653,12 +758,12 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		if (_reading_str.size() < 1) throw std::invalid_argument("Not a JSON format");
 		if (_reading_str != "}") throw std::invalid_argument("Not a JSON format");
 
-		Noun _return_noun(_word, _case, _number, Animacy::None);
-		_return_noun.word_nominative = _word_nominative;
+		Noun _return_noun(_word, _case, _number,_gender, _animacy);
+		_return_noun.word_default = _word_nominative;
 		return _return_noun;
 	} 
 	catch (std::invalid_argument const& _exception) {
-		std::cout << "[Alert] " << _exception.what() << std::endl;
+		return (std::string)"[Alert] " + _exception.what();
 		Noun _exception_no_word("");
 		return _exception_no_word;
 	}
