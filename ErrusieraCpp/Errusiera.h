@@ -220,7 +220,7 @@ private:
 	/// <summary>
 	/// Obsoleted
 	/// </summary>
-	void to_nominative();
+	std::string to_default();
 };
 
 /// <summary>

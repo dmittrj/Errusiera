@@ -24,10 +24,10 @@ Noun::~Noun() {
 
 }
 
-void Noun::to_nominative() {
-	//if (word_nominative != "") {
-	//	word = word_nominative;
-	//}
+std::string Noun::to_default() {
+	if (word_default != "") {
+		return word_default;
+	}
 }
 
 std::string Noun::change_case(Cases case_to) {
@@ -43,8 +43,18 @@ Cases Noun::detect_case() {
 }
 
 std::string Noun::change_word(Cases case_to, Number number_to) {
+	std::string _word = conjugate(case_to, number_to);
+	this->word = _word;
+	return _word;
+}
+
+std::string Noun::to_string() {
+	return word;
+}
+
+std::string Noun::conjugate(Cases case_to, Number number_to) {
 	if (case_to == word_case && number_to == word_number) { return word; }
-	to_nominative();
+	std::string _word = to_default();
 	try {
 		switch (number_to)
 		{
@@ -388,21 +398,10 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 	catch (std::exception& _exception) {
 		return (std::string)"[Alert] " + _exception.what() + "\n";
 	}
-	
+
 	word_case = case_to;
 	word_number = number_to;
 	return word;
-}
-
-std::string Noun::to_string() {
-	return word;
-}
-
-std::string Noun::conjugate(Cases case_to, Number number_to) {
-	std::string _old_word = word;
-	std::string _new_word = change_word(case_to, number_to);
-	word = _old_word;
-	return _new_word;
 }
 
 std::string Noun::serialize() {
