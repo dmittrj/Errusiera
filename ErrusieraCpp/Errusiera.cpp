@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.2-beta3
+// Errusiera 1.0.3
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
