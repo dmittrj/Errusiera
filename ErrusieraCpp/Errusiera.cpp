@@ -495,7 +495,7 @@ std::string Noun::serialize() {
 
 Gender Noun::define_gender() {
 	std::string _old_word = word;
-	to_nominative();
+	to_default();
 	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
 		word = _old_word;
 		return Gender::Feminine;
@@ -508,7 +508,6 @@ Gender Noun::define_gender() {
 		word = _old_word;
 		return Gender::Masculine;
 	}
-	
 }
 
 Noun Noun::deserialize(std::string _serialized_string) {
