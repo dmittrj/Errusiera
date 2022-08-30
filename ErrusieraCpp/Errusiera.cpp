@@ -8,10 +8,11 @@ Noun::Noun(std::string word_noun_only) {
 	word = word_noun_only;
 }
 
-Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number) {
+Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Animacy noun_animacy) {
 	word = word_noun_only;
 	word_case = noun_case;
 	word_number = noun_number;
+	word_animacy = noun_animacy;
 
 	if (word_case == Cases::Nominative) word_nominative = word;
 }
@@ -451,6 +452,22 @@ std::string Noun::serialize() {
 		_serialized += "None";
 		break;
 	}
+	_serialized += "\",\"word_animacy\":\"";
+	switch (word_animacy)
+	{
+	case Animacy::None:
+		_serialized += "None";
+		break;
+	case Animacy::Animate:
+		_serialized += "Animate";
+		break;
+	case Animacy::Inanimate:
+		_serialized += "Inanimate";
+		break;
+	default:
+		_serialized += "None";
+		break;
+	}
 	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";
 	_serialized += "}";
 	return _serialized;
@@ -636,7 +653,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		if (_reading_str.size() < 1) throw std::invalid_argument("Not a JSON format");
 		if (_reading_str != "}") throw std::invalid_argument("Not a JSON format");
 
-		Noun _return_noun(_word, _case, _number);
+		Noun _return_noun(_word, _case, _number, Animacy::None);
 		_return_noun.word_nominative = _word_nominative;
 		return _return_noun;
 	} 
