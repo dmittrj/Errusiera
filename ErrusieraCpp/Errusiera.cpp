@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.2-beta1
+// Errusiera 1.0.2-beta2
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -87,15 +87,15 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]026030")) {
 					pattern(_word, "[ ]026!--030--!!++010++!", _word);
 				}
+				else if (pattern(_word, "[ ]005030")) {
+					//дь -> ди
+					pattern(_word, "[ ]005!--030--!!++010++!", _word);
+				}
 				else if (pattern(_word, "[ ]030")) {
 					pattern(_word, "[ ]!--030--!!++033++!", _word);
 				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024001++!", _word);
-				}
-				else if (pattern(_word, "[ ]005030")) {
-					//дь -> ди
-					pattern(_word, "[ ]005!--030--!!++010++!", _word);
 				}
 				else {
 					pattern(_word, "[_]!++001++!", _word);
@@ -144,11 +144,9 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]033")) {
 					pattern(_word, "[ ]!--033--!!++032++!", _word);
 				}
-				else if (pattern(_word, "[ ]008030")) {
-
-				}
-				else if (pattern(_word, "[ ]026030")) {
-
+				else if (pattern(_word, "[ ]005030")) {
+					//дь -> дь
+					
 				}
 				else if (pattern(_word, "[ ]030")) {
 					pattern(_word, "[ ]!--030--!!++033++!", _word);

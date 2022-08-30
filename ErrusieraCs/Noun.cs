@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.2-beta1
+	// Errusiera for C# 1.0.2-beta2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -337,6 +337,10 @@ namespace Errusiera
 								else if (Regex.IsMatch(_word, "я$"))
 								{
 									_word = Regex.Replace(_word, "я$", "ю");
+								}
+								else if (Regex.IsMatch(_word, "дь$"))
+								{
+									
 								}
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
