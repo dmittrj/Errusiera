@@ -24,10 +24,10 @@ Noun::~Noun() {
 
 }
 
-void Noun::to_nominative() {
-	//if (word_nominative != "") {
-	//	word = word_nominative;
-	//}
+std::string Noun::to_default() {
+	if (word_default != "") {
+		return word_default;
+	}
 }
 
 std::string Noun::change_case(Cases case_to) {
@@ -43,8 +43,20 @@ Cases Noun::detect_case() {
 }
 
 std::string Noun::change_word(Cases case_to, Number number_to) {
+	std::string _word = conjugate(case_to, number_to);
+	this->word = _word;
+	word_case = case_to;
+	word_number = number_to;
+	return _word;
+}
+
+std::string Noun::to_string() {
+	return word;
+}
+
+std::string Noun::conjugate(Cases case_to, Number number_to) {
 	if (case_to == word_case && number_to == word_number) { return word; }
-	to_nominative();
+	std::string _word = to_default();
 	try {
 		switch (number_to)
 		{
@@ -57,156 +69,156 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 			case Cases::Nominative:
 				break;
 			case Cases::Genetive:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++033++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++033++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!!++029++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!!++029++!", _word);
 				}
-				else if (pattern(word, "[ ]014033")) {
-					pattern(word, "[ ]014!--033--!!++006015010++!", word);
+				else if (pattern(_word, "[ ]014033")) {
+					pattern(_word, "[ ]014!--033--!!++006015010++!", _word);
 				}
-				else if (pattern(word, "[ ]033")) {
-					pattern(word, "[ ]!--033--!!++010++!", word);
+				else if (pattern(_word, "[ ]033")) {
+					pattern(_word, "[ ]!--033--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]008030")) {
-					pattern(word, "[ ]008!--030--!!++010++!", word);
+				else if (pattern(_word, "[ ]008030")) {
+					pattern(_word, "[ ]008!--030--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]026030")) {
-					pattern(word, "[ ]026!--030--!!++010++!", word);
+				else if (pattern(_word, "[ ]026030")) {
+					pattern(_word, "[ ]026!--030--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]030")) {
-					pattern(word, "[ ]!--030--!!++033++!", word);
+				else if (pattern(_word, "[ ]030")) {
+					pattern(_word, "[ ]!--030--!!++033++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024001++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024001++!", _word);
 				}
-				else if (pattern(word, "[ ]005030")) {
+				else if (pattern(_word, "[ ]005030")) {
 					//дь -> ди
-					pattern(word, "[ ]005!--030--!!++010++!", word);
+					pattern(_word, "[ ]005!--030--!!++010++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++001++!", word);
+					pattern(_word, "[_]!++001++!", _word);
 				}
 				break;
 			case Cases::Dative:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++032++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++032++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!!++006++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!!++006++!", _word);
 				}
-				else if (pattern(word, "[ ]014033")) {
-					pattern(word, "[ ]014!--033--!!++006015010++!", word);
+				else if (pattern(_word, "[ ]014033")) {
+					pattern(_word, "[ ]014!--033--!!++006015010++!", _word);
 				}
-				else if (pattern(word, "[ ]033")) {
-					pattern(word, "[ ]!--033--!!++006++!", word);
+				else if (pattern(_word, "[ ]033")) {
+					pattern(_word, "[ ]!--033--!!++006++!", _word);
 				}
-				else if (pattern(word, "[ ]008030")) {
-					pattern(word, "[ ]008!--030--!!++010++!", word);
+				else if (pattern(_word, "[ ]008030")) {
+					pattern(_word, "[ ]008!--030--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]026030")) {
-					pattern(word, "[ ]026!--030--!!++010++!", word);
+				else if (pattern(_word, "[ ]026030")) {
+					pattern(_word, "[ ]026!--030--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]005030")) {
+				else if (pattern(_word, "[ ]005030")) {
 					//дь -> ди
-					pattern(word, "[ ]005!--030--!!++010++!", word);
+					pattern(_word, "[ ]005!--030--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]030")) {
-					pattern(word, "[ ]!--030--!!++032++!", word);
+				else if (pattern(_word, "[ ]030")) {
+					pattern(_word, "[ ]!--030--!!++032++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024021++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024021++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++021++!", word);
+					pattern(_word, "[_]!++021++!", _word);
 				}
 				break;
 			case Cases::Accusative:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++033++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++033++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!!++021++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!!++021++!", _word);
 				}
-				else if (pattern(word, "[ ]033")) {
-					pattern(word, "[ ]!--033--!!++032++!", word);
+				else if (pattern(_word, "[ ]033")) {
+					pattern(_word, "[ ]!--033--!!++032++!", _word);
 				}
-				else if (pattern(word, "[ ]008030")) {
+				else if (pattern(_word, "[ ]008030")) {
 
 				}
-				else if (pattern(word, "[ ]026030")) {
+				else if (pattern(_word, "[ ]026030")) {
 
 				}
-				else if (pattern(word, "[ ]030")) {
-					pattern(word, "[ ]!--030--!!++033++!", word);
+				else if (pattern(_word, "[ ]030")) {
+					pattern(_word, "[ ]!--030--!!++033++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024001++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024001++!", _word);
 				}
 				break;
 			case Cases::Instrumental:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++006014++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++006014++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!!++016011++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!!++016011++!", _word);
 				}
-				else if (pattern(word, "[ ]014033")) {
-					pattern(word, "[ ]014!--033--!!++006015006014++!", word);
+				else if (pattern(_word, "[ ]014033")) {
+					pattern(_word, "[ ]014!--033--!!++006015006014++!", _word);
 				}
-				else if (pattern(word, "[ ]033")) {
-					pattern(word, "[ ]!--033--!!++006011++!", word);
+				else if (pattern(_word, "[ ]033")) {
+					pattern(_word, "[ ]!--033--!!++006011++!", _word);
 				}
-				else if (pattern(word, "[ ]008030")) {
-					pattern(word, "[ ]008030!++032++!", word);
+				else if (pattern(_word, "[ ]008030")) {
+					pattern(_word, "[ ]008030!++032++!", _word);
 				}
-				else if (pattern(word, "[ ]026030")) {
-					pattern(word, "[ ]026030!++032++!", word);
+				else if (pattern(_word, "[ ]026030")) {
+					pattern(_word, "[ ]026030!++032++!", _word);
 				}
-				else if (pattern(word, "[ ]018030")) {
-					pattern(word, "[ ]018!--030--!!++006014++!", word);
+				else if (pattern(_word, "[ ]018030")) {
+					pattern(_word, "[ ]018!--030--!!++006014++!", _word);
 				}
-				else if (pattern(word, "[ ]013030")) {
-					pattern(word, "[ ]013!--030--!!++006014++!", word);
+				else if (pattern(_word, "[ ]013030")) {
+					pattern(_word, "[ ]013!--030--!!++006014++!", _word);
 				}
-				else if (pattern(word, "[ ]019030")) {
-					pattern(word, "[ ]019!--030--!!++006014++!", word);
+				else if (pattern(_word, "[ ]019030")) {
+					pattern(_word, "[ ]019!--030--!!++006014++!", _word);
 				}
-				else if (pattern(word, "[ ]030")) {
-					pattern(word, "[ ]!--030--!!++007014++!", word);
+				else if (pattern(_word, "[ ]030")) {
+					pattern(_word, "[ ]!--030--!!++007014++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024006014++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024006014++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++016014++!", word);
+					pattern(_word, "[_]!++016014++!", _word);
 				}
 				break;
 			case Cases::Prepositional:
-				if (pattern(word, "[ ]010011")) {
-					pattern(word, "[ ]010!--011--!!++010++!", word);
+				if (pattern(_word, "[ ]010011")) {
+					pattern(_word, "[ ]010!--011--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++006++!", word);
+				else if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++006++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!!++006++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!!++006++!", _word);
 				}
-				else if (pattern(word, "[ ]014033")) {
-					pattern(word, "[ ]014!--033--!!++006015010++!", word);
+				else if (pattern(_word, "[ ]014033")) {
+					pattern(_word, "[ ]014!--033--!!++006015010++!", _word);
 				}
-				else if (pattern(word, "[ ]010033")) {
-					pattern(word, "[ ]010!--033--!!++010++!", word);
+				else if (pattern(_word, "[ ]010033")) {
+					pattern(_word, "[ ]010!--033--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]033")) {
-					pattern(word, "[ ]!--033--!!++006++!", word);
+				else if (pattern(_word, "[ ]033")) {
+					pattern(_word, "[ ]!--033--!!++006++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024006++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024006++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++006++!", word);
+					pattern(_word, "[_]!++006++!", _word);
 				}
 				break;
 			default:
@@ -223,156 +235,156 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 				throw std::exception("Case of the word is undefind. Please call detect_case()");
 				break;
 			case Cases::Nominative:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++010++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]012001")) {
-					pattern(word, "[ ]012!--001--!!++010++!", word);
+				else if (pattern(_word, "[ ]012001")) {
+					pattern(_word, "[ ]012!--001--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!!++029++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!!++029++!", _word);
 				}
-				else if (pattern(word, "[ ]033")) {
-					pattern(word, "[ ]!--033--!!++010++!", word);
+				else if (pattern(_word, "[ ]033")) {
+					pattern(_word, "[ ]!--033--!!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]016012")) {
-					pattern(word, "[ ]!--016012--!!++012010++!", word);
+				else if (pattern(_word, "[ ]016012")) {
+					pattern(_word, "[ ]!--016012--!!++012010++!", _word);
 				}
-				else if (pattern(word, "[ ]006012")) {
-					pattern(word, "[ ]!--006012--!!++012010++!", word);
+				else if (pattern(_word, "[ ]006012")) {
+					pattern(_word, "[ ]!--006012--!!++012010++!", _word);
 				}
-				else if (pattern(word, "[ ]012")) {
-					pattern(word, "[ ]!++010++!", word);
+				else if (pattern(_word, "[ ]012")) {
+					pattern(_word, "[ ]!++010++!", _word);
 				}
-				else if (pattern(word, "[ ]006")) {
-					pattern(word, "[ ]!--006--!!++033++!", word);
+				else if (pattern(_word, "[ ]006")) {
+					pattern(_word, "[ ]!--006--!!++033++!", _word);
 				}
-				else if (pattern(word, "[ ]007")) {
-					pattern(word, "[ ]!--007--!!++033++!", word);
+				else if (pattern(_word, "[ ]007")) {
+					pattern(_word, "[ ]!--007--!!++033++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024029++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024029++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++029++!", word);
+					pattern(_word, "[_]!++029++!", _word);
 				}
 				break;
 			case Cases::Genetive:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++006003++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++006003++!", _word);
 				}
-				else if (pattern(word, "[ ]012001")) {
-					pattern(word, "[ ]!--012001--!!++016012++!", word);
+				else if (pattern(_word, "[ ]012001")) {
+					pattern(_word, "[ ]!--012001--!!++016012++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!--001--!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!--001--!", _word);
 				}
-				else if (pattern(word, "[ ]016012")) {
-					pattern(word, "[ ]!--016012--!!++012016003++!", word);
+				else if (pattern(_word, "[ ]016012")) {
+					pattern(_word, "[ ]!--016012--!!++012016003++!", _word);
 				}
-				else if (pattern(word, "[ ]006012")) {
-					pattern(word, "[ ]!--006012--!!++012016003++!", word);
+				else if (pattern(_word, "[ ]006012")) {
+					pattern(_word, "[ ]!--006012--!!++012016003++!", _word);
 				}
-				else if (pattern(word, "[ ]012")) {
-					pattern(word, "[ ]!++016003++!", word);
+				else if (pattern(_word, "[ ]012")) {
+					pattern(_word, "[ ]!++016003++!", _word);
 				}
-				else if (pattern(word, "[ ]006")) {
-					pattern(word, "[ ]!++003++!", word);
+				else if (pattern(_word, "[ ]006")) {
+					pattern(_word, "[ ]!++003++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024006003++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024006003++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++016003++!", word);
+					pattern(_word, "[_]!++016003++!", _word);
 				}
 				break;
 			case Cases::Dative:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++033014++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++033014++!", _word);
 				}
-				else if (pattern(word, "[ ]012001")) {
-					pattern(word, "[ ]012001!++014++!", word);
+				else if (pattern(_word, "[ ]012001")) {
+					pattern(_word, "[ ]012001!++014++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]001!++014++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]001!++014++!", _word);
 				}
-				else if (pattern(word, "[ ]016012")) {
-					pattern(word, "[ ]!--016012--!!++012001014++!", word);
+				else if (pattern(_word, "[ ]016012")) {
+					pattern(_word, "[ ]!--016012--!!++012001014++!", _word);
 				}
-				else if (pattern(word, "[ ]006012")) {
-					pattern(word, "[ ]!--006012--!!++012001014++!", word);
+				else if (pattern(_word, "[ ]006012")) {
+					pattern(_word, "[ ]!--006012--!!++012001014++!", _word);
 				}
-				else if (pattern(word, "[ ]012")) {
-					pattern(word, "[ ]!++001014++!", word);
+				else if (pattern(_word, "[ ]012")) {
+					pattern(_word, "[ ]!++001014++!", _word);
 				}
-				else if (pattern(word, "[ ]006")) {
-					pattern(word, "[ ]!--006--!!++033014++!", word);
+				else if (pattern(_word, "[ ]006")) {
+					pattern(_word, "[ ]!--006--!!++033014++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024001014++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024001014++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++001014++!", word);
+					pattern(_word, "[_]!++001014++!", _word);
 				}
 				break;
 			case Cases::Accusative:
 				break;
 			case Cases::Instrumental:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++033014010++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++033014010++!", _word);
 				}
-				else if (pattern(word, "[ ]012001")) {
-					pattern(word, "[ ]012001!++014010++!", word);
+				else if (pattern(_word, "[ ]012001")) {
+					pattern(_word, "[ ]012001!++014010++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]001!++014010++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]001!++014010++!", _word);
 				}
-				else if (pattern(word, "[ ]016012")) {
-					pattern(word, "[ ]!--016012--!!++012001014010++!", word);
+				else if (pattern(_word, "[ ]016012")) {
+					pattern(_word, "[ ]!--016012--!!++012001014010++!", _word);
 				}
-				else if (pattern(word, "[ ]006012")) {
-					pattern(word, "[ ]!--006012--!!++012001014010++!", word);
+				else if (pattern(_word, "[ ]006012")) {
+					pattern(_word, "[ ]!--006012--!!++012001014010++!", _word);
 				}
-				else if (pattern(word, "[ ]012")) {
-					pattern(word, "[ ]!++001014010++!", word);
+				else if (pattern(_word, "[ ]012")) {
+					pattern(_word, "[ ]!++001014010++!", _word);
 				}
-				else if (pattern(word, "[ ]006")) {
-					pattern(word, "[ ]!--006--!!++033014010++!", word);
+				else if (pattern(_word, "[ ]006")) {
+					pattern(_word, "[ ]!--006--!!++033014010++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024001014010++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024001014010++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++001014010++!", word);
+					pattern(_word, "[_]!++001014010++!", _word);
 				}
 				break;
 			case Cases::Prepositional:
-				if (pattern(word, "[ ]011")) {
-					pattern(word, "[ ]!--011--!!++033023++!", word);
+				if (pattern(_word, "[ ]011")) {
+					pattern(_word, "[ ]!--011--!!++033023++!", _word);
 				}
-				else if (pattern(word, "[ ]012001")) {
-					pattern(word, "[ ]012001!++023++!", word);
+				else if (pattern(_word, "[ ]012001")) {
+					pattern(_word, "[ ]012001!++023++!", _word);
 				}
-				else if (pattern(word, "[ ]016012")) {
-					pattern(word, "[ ]!--016012--!!++012001023++!", word);
+				else if (pattern(_word, "[ ]016012")) {
+					pattern(_word, "[ ]!--016012--!!++012001023++!", _word);
 				}
-				else if (pattern(word, "[ ]006012")) {
-					pattern(word, "[ ]!--006012--!!++012001023++!", word);
+				else if (pattern(_word, "[ ]006012")) {
+					pattern(_word, "[ ]!--006012--!!++012001023++!", _word);
 				}
-				else if (pattern(word, "[ ]012")) {
-					pattern(word, "[ ]!++001023++!", word);
+				else if (pattern(_word, "[ ]012")) {
+					pattern(_word, "[ ]!++001023++!", _word);
 				}
-				else if (pattern(word, "[ ]006")) {
-					pattern(word, "[ ]!--006--!!++033023++!", word);
+				else if (pattern(_word, "[ ]006")) {
+					pattern(_word, "[ ]!--006--!!++033023++!", _word);
 				}
-				else if (pattern(word, "[ ]006024")) {
-					pattern(word, "[ ]!--006024--!!++024001023++!", word);
+				else if (pattern(_word, "[ ]006024")) {
+					pattern(_word, "[ ]!--006024--!!++024001023++!", _word);
 				}
-				else if (pattern(word, "[ ]001")) {
-					pattern(word, "[ ]!++023++!", word);
+				else if (pattern(_word, "[ ]001")) {
+					pattern(_word, "[ ]!++023++!", _word);
 				}
 				else {
-					pattern(word, "[_]!++001023++!", word);
+					pattern(_word, "[_]!++001023++!", _word);
 				}
 				break;
 			default:
@@ -388,21 +400,7 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 	catch (std::exception& _exception) {
 		return (std::string)"[Alert] " + _exception.what() + "\n";
 	}
-	
-	word_case = case_to;
-	word_number = number_to;
-	return word;
-}
-
-std::string Noun::to_string() {
-	return word;
-}
-
-std::string Noun::conjugate(Cases case_to, Number number_to) {
-	std::string _old_word = word;
-	std::string _new_word = change_word(case_to, number_to);
-	word = _old_word;
-	return _new_word;
+	return _word;
 }
 
 std::string Noun::serialize() {
@@ -497,7 +495,7 @@ std::string Noun::serialize() {
 
 Gender Noun::define_gender() {
 	std::string _old_word = word;
-	to_nominative();
+	to_default();
 	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
 		word = _old_word;
 		return Gender::Feminine;
@@ -510,7 +508,6 @@ Gender Noun::define_gender() {
 		word = _old_word;
 		return Gender::Masculine;
 	}
-	
 }
 
 Noun Noun::deserialize(std::string _serialized_string) {
