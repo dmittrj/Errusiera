@@ -9,7 +9,7 @@ namespace CsTests
         [TestMethod]
         public void Noun_Berry()
         {
-			Noun test1 = new Noun("ягода", Cases.Nominative, Number.Singular);
+			Noun test1 = new Noun("ягода", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
 			Assert.AreEqual("ягоды", test1.ChangeCase(Cases.Genetive));
 			Assert.AreEqual("ягоде", test1.ChangeCase(Cases.Dative));
 			Assert.AreEqual("ягоду", test1.ChangeCase(Cases.Accusative));
@@ -26,7 +26,7 @@ namespace CsTests
 		[TestMethod]
 		public void Noun_Horse()
 		{
-            Noun test1 = new Noun("Ћошадь", Cases.Nominative, Number.Singular);
+            Noun test1 = new Noun("Ћошадь", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Animate);
 			Assert.AreEqual("Ћошади", test1.ChangeCase(Cases.Genetive));
 			Assert.AreEqual("Ћошади", test1.ChangeCase(Cases.Dative));
 			Assert.AreEqual("Ћошадь", test1.ChangeCase(Cases.Accusative));
