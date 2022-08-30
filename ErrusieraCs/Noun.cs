@@ -160,6 +160,8 @@ namespace Errusiera
 		/// <param name="Word_noun_only">Слово</param>
 		/// <param name="noun_case">Падеж</param>
 		/// <param name="noun_number">Число</param>
+		/// <param name="noun_gender">Род</param>
+		/// <param name="noun_animacy">Одушевленность</param>
 		public Noun(string Word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy)
 		{
 			Word = Word_noun_only;
