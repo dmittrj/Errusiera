@@ -455,6 +455,22 @@ std::string Noun::serialize() {
 		_serialized += "None";
 		break;
 	}
+	_serialized += "\",\"word_gender\":\"";
+	switch (word_gender)
+	{
+	case Gender::Feminine:
+		_serialized += "None";
+		break;
+	case Animacy::Animate:
+		_serialized += "Animate";
+		break;
+	case Animacy::Inanimate:
+		_serialized += "Inanimate";
+		break;
+	default:
+		_serialized += "None";
+		break;
+	}
 	_serialized += "\",\"word_animacy\":\"";
 	switch (word_animacy)
 	{
@@ -471,7 +487,7 @@ std::string Noun::serialize() {
 		_serialized += "None";
 		break;
 	}
-	_serialized += "\",\"word_nominative\":\"" + word_nominative + "\"";
+	_serialized += "\",\"word_nominative\":\"" + word_default + "\"";
 	_serialized += "}";
 	return _serialized;
 }

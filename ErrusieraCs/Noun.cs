@@ -74,6 +74,10 @@ namespace Errusiera
 	public enum Gender
 	{
 		/// <summary>
+		/// Род неизвестен
+		/// </summary>
+		None,
+		/// <summary>
 		/// Мужской род
 		/// </summary>
 		Masculine,

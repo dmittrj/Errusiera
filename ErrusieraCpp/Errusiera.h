@@ -70,6 +70,10 @@ enum class Number
 enum class Gender
 {
 	/// <summary>
+	/// Род неизвестен
+	/// </summary>
+	None,
+	/// <summary>
 	/// Мужской род
 	/// </summary>
 	Masculine,
