@@ -664,12 +664,12 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		if (_reading_str.size() < 4) {
 			throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
 		}
-		std::string _number_string = _reading_str.substr(0, 4);
-		if (_number_string == "None") {
+		std::string _gender_string = _reading_str.substr(0, 4);
+		if (_gender_string == "None") {
 			_reading_str = _reading_str.substr(4);
 			_gender = Gender::None;
 		}
-		else if (_number_string == "Masc") {
+		else if (_gender_string == "Masc") {
 			if (_reading_str.size() >= 9 && _reading_str.substr(0, 9) == "Masculine") {
 				_reading_str = _reading_str.substr(9);
 				_gender = Gender::Masculine;
@@ -678,7 +678,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 				throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
 			}
 		}
-		else if (_number_string == "Femi") {
+		else if (_gender_string == "Femi") {
 			if (_reading_str.size() >= 8 && _reading_str.substr(0, 8) == "Feminine") {
 				_reading_str = _reading_str.substr(8);
 				_gender = Gender::Feminine;
@@ -687,7 +687,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 				throw std::invalid_argument("\'word_gender\' argument is not recognized properly");
 			}
 		}
-		else if (_number_string == "Neut") {
+		else if (_gender_string == "Neut") {
 			if (_reading_str.size() >= 6 && _reading_str.substr(0, 6) == "Neuter") {
 				_reading_str = _reading_str.substr(6);
 				_gender = Gender::Neuter;
@@ -701,7 +701,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		}
 
 
-		//Gender
+		//Animacy
 		if (_reading_str.size() < 18) throw std::invalid_argument("Not a JSON format");
 		if (_reading_str.substr(0, 18) != "\",\"word_animacy\":\"") throw std::invalid_argument("Not a JSON format");
 		_reading_str = _reading_str.substr(18);
@@ -709,12 +709,12 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		if (_reading_str.size() < 4) {
 			throw std::invalid_argument("\'word_animacy\' argument is not recognized properly");
 		}
-		std::string _number_string = _reading_str.substr(0, 4);
-		if (_number_string == "None") {
+		std::string _animacy_string = _reading_str.substr(0, 4);
+		if (_animacy_string == "None") {
 			_reading_str = _reading_str.substr(4);
 			_animacy = Animacy::None;
 		}
-		else if (_number_string == "Anim") {
+		else if (_animacy_string == "Anim") {
 			if (_reading_str.size() >= 7 && _reading_str.substr(0, 7) == "Animate") {
 				_reading_str = _reading_str.substr(7);
 				_animacy = Animacy::Animate;
@@ -723,7 +723,7 @@ Noun Noun::deserialize(std::string _serialized_string) {
 				throw std::invalid_argument("\'word_animacy\' argument is not recognized properly");
 			}
 		}
-		else if (_number_string == "Inan") {
+		else if (_animacy_string == "Inan") {
 			if (_reading_str.size() >= 9 && _reading_str.substr(0, 9) == "Inanimate") {
 				_reading_str = _reading_str.substr(9);
 				_animacy = Animacy::Inanimate;
