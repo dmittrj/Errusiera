@@ -90,7 +90,7 @@ namespace Errusiera
 	/// <summary>
 	/// Одушевлённость
 	/// </summary>
-	enum Animacy
+	public enum Animacy
 	{
 		/// <summary>
 		/// Неизвестно
@@ -139,7 +139,9 @@ namespace Errusiera
 					return Gender.Masculine;
 				}
 			}
+			set { }
 		}
+		public Animacy WordAnimacy;
 
 		/// <summary>
 		/// <para>RUS: Конструктор с параметром строки. После создания требуется вызвать DetectParams()</para>
@@ -158,13 +160,18 @@ namespace Errusiera
 		/// <param name="Word_noun_only">Слово</param>
 		/// <param name="noun_case">Падеж</param>
 		/// <param name="noun_number">Число</param>
-		public Noun(string Word_noun_only, Cases noun_case, Number noun_number)
+		public Noun(string Word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy)
 		{
 			Word = Word_noun_only;
 			WordCase = noun_case;
 			WordNumber = noun_number;
+			WordGender = noun_gender;
+			WordAnimacy = noun_animacy;
 
-			WordNominative = Word;
+			if (WordCase == Cases.Nominative && WordNumber == Number.Singular)
+            {
+				WordNominative = Word;
+			}
 		}
 		~Noun() { }
 
