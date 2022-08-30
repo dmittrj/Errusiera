@@ -495,6 +495,10 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "ец$", "цы");
 								}
+								else if (Regex.IsMatch(_word, "ь$"))
+								{
+									_word = Regex.Replace(_word, "ь$", "и");
+								}
 								else
 								{
 									_word += "ы";
