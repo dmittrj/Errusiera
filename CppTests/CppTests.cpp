@@ -42,5 +42,12 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Лошадями", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Лошадях", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_Serializing)
+		{
+			Noun test1("СловоСловоСловоСлово", Cases::Accusative, Number::Plural, Animacy::Animate);
+			Noun test2 = Noun::deserialize(test1.serialize());
+			Assert::AreEqual(test1, test2);
+		}
 	};
 }
