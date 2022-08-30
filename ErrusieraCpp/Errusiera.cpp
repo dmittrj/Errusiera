@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.2-beta2
+// Errusiera 1.0.2-beta3
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -241,6 +241,7 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				throw std::exception("Case of the word is undefind. Please call detect_case()");
 				break;
 			case Cases::Nominative:
+			_Siera_NominativeCase:
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++010++!", _word);
 				}
@@ -280,6 +281,7 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				}
 				break;
 			case Cases::Genetive:
+				_Siera_GenetiveCase:
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++006003++!", _word);
 				}
@@ -346,6 +348,21 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				}
 				break;
 			case Cases::Accusative:
+				switch (word_animacy)
+				{
+				case Animacy::None:
+					throw std::exception("Unknown form (please call detect_animacy())");
+					break;
+				case Animacy::Animate:
+					goto _Siera_GenetiveCase;
+					break;
+				case Animacy::Inanimate:
+					goto _Siera_NominativeCase;
+					break;
+				default:
+					throw std::exception("Unknown form (please call detect_animacy())");
+					break;
+				}
 				break;
 			case Cases::Instrumental:
 				if (pattern(_word, "[ ]011")) {

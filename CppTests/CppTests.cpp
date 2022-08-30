@@ -22,7 +22,7 @@ namespace CppTests
 			Assert::AreEqual((std::string)"ягоды", test1.change_word(Cases::Nominative, Number::Plural));
 			Assert::AreEqual((std::string)"ягод", test1.change_case(Cases::Genetive));
 			Assert::AreEqual((std::string)"ягодам", test1.change_case(Cases::Dative));
-			//Assert::AreEqual((std::string)"ягоды", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"ягоды", test1.change_case(Cases::Accusative));
 			Assert::AreEqual((std::string)"ягодами", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"ягодах", test1.change_case(Cases::Prepositional));
 		}
@@ -38,7 +38,7 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Ћошади", test1.change_word(Cases::Nominative, Number::Plural));
 			Assert::AreEqual((std::string)"Ћошадей", test1.change_case(Cases::Genetive));
 			Assert::AreEqual((std::string)"Ћошад€м", test1.change_case(Cases::Dative));
-			//Assert::AreEqual((std::string)"Ћошадей", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Ћошадей", test1.change_case(Cases::Accusative));
 			Assert::AreEqual((std::string)"Ћошад€ми", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Ћошад€х", test1.change_case(Cases::Prepositional));
 		}
