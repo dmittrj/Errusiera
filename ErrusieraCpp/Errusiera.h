@@ -10,8 +10,8 @@
 enum class Cases
 {
 	/// <summary>
-	/// <para>RUS: Нет падежа или неизвестен. Не используйте сами этот падеж</para>
-	/// <para>ENG: No case or case is unknown. Please do not use it by your own</para>
+	/// <para>RUS: Нет падежа или неизвестен</para>
+	/// <para>ENG: No case or case is unknown</para>
 	/// </summary>
 	None,
 	/// <summary>
@@ -46,8 +46,8 @@ enum class Cases
 enum class Number
 {
 	/// <summary>
-	/// <para>RUS: Нет числа или неизвестно. Не используйте сами этот параметр</para>
-	/// <para>ENG: No number or number is unknown. Please do not use it by your own</para>
+	/// <para>RUS: Нет числа или неизвестно</para>
+	/// <para>ENG: No number or number is unknown</para>
 	/// </summary>
 	None,
 	/// <summary>
@@ -70,6 +70,10 @@ enum class Number
 enum class Gender
 {
 	/// <summary>
+	/// Род неизвестен
+	/// </summary>
+	None,
+	/// <summary>
 	/// Мужской род
 	/// </summary>
 	Masculine,
@@ -81,6 +85,24 @@ enum class Gender
 	/// Средний род
 	/// </summary>
 	Neuter
+};
+
+/// <summary>
+/// Одушевлённость
+/// </summary>
+enum class Animacy {
+	/// <summary>
+	/// Неизвестно
+	/// </summary>
+	None,
+	/// <summary>
+	/// Одушевлённое
+	/// </summary>
+	Animate,
+	/// <summary>
+	/// Неодушевлённое
+	/// </summary>
+	Inanimate
 };
 
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
@@ -98,6 +120,7 @@ int char_code(const char* _internal_code);
 /// </summary>
 class Noun
 {
+	friend class Adjective;
 public:
 	/// <summary>
 	/// Слово
@@ -118,7 +141,9 @@ public:
 	/// <param name="word_noun_only">| Слово</param>
 	/// <param name="noun_case">| Падеж</param>
 	/// <param name="noun_number">| Число</param>
-	Noun(std::string word_noun_only, Cases noun_case, Number noun_number);
+	/// /// <param name="noun_gender">| Род</param>
+	/// /// <param name="noun_animacy">| Одушевленность</param>
+	Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy);
 
 	~Noun();
 
@@ -155,6 +180,15 @@ public:
 	std::string change_word(Cases case_to, Number number_to);
 
 	/// <summary>
+	/// <para>RUS: Склоняет существительное</para>
+	/// <para>ENG: Conjugates the noun</para>
+	/// </summary>
+	/// <param name="case_to">| Падеж</param>
+	/// <param name="number_to">| Число</param>
+	/// <returns>Изменённое слово</returns>
+	std::string conjugate(Cases case_to, Number number_to);
+
+	/// <summary>
 	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
 	/// <para>ENG: Convert class to string</para>
 	/// </summary>
@@ -174,12 +208,19 @@ public:
 	/// </summary>
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
+
+	Gender define_gender();
+	bool operator==(Noun _noun);
 private:
 	Cases word_case;
 	Number word_number;
-	std::string word_nominative = "";
-
-	void to_nominative();
+	Gender word_gender;
+	Animacy word_animacy;
+	std::string word_default = "";
+	/// <summary>
+	/// Obsoleted
+	/// </summary>
+	std::string to_default();
 };
 
 /// <summary>
@@ -204,19 +245,46 @@ public:
 	std::string change_case(Cases case_to);
 
 	/// <summary>
+	/// <para>RUS: Меняет число имени прилагательного</para>
+	/// <para>ENG: The function changes the number of the adjective</para>
+	/// </summary>
+	/// <param name="number_to">| Число</param>
+	/// <returns>Слово в заказанном числе</returns>
+	std::string change_number(Number number_to);
+
+	/// <summary>
+	/// <para>RUS: Меняет род имени прилагательного</para>
+	/// <para>ENG: The function changes the gender of the adjective</para>
+	/// </summary>
+	/// <param name="gender_to">| Род</param>
+	/// <returns>Слово в заказанном роде</returns>
+	std::string change_gender(Gender gender_to);
+
+	/// <summary>
+	/// <para>RUS: Меняет все параметры имени прилагательного</para>
+	/// <para>ENG: The function changes all parameters of the adjective</para>
+	/// </summary>
+	/// <param name="case_to">| Падеж</param>
+	/// <param name="number_to">| Число</param>
+	/// <param name="gender_to">| Род</param>
+	/// <returns>Изменённое слово</returns>
+	std::string change_word(Cases case_to, Number number_to, Gender gender_to);
+
+	/// <summary>
 	/// <para>RUS: Привести класс к строке, т.е. возвращает слово</para>
 	/// <para>ENG: Convert class to string</para>
 	/// </summary>
 	/// <returns>Слово</returns>
 	std::string to_string();
 
+	std::string operator+(Noun _noun);
 private:
 	Cases word_case;
 	Number word_number;
 	Gender word_gender;
-	std::string word_nominative = "";
+	std::string word_default = "";
 
-	void to_nominative();
+	void to_default();
 };
 
 class Numeral
@@ -242,6 +310,16 @@ public:
 	std::string to_string();
 private:
 	static std::string num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber);
+};
+
+
+
+class Phrase
+{
+public:
+
+private:
+
 };
 
 

@@ -6,13 +6,17 @@ namespace Errusiera
     {
         static void Main()
         {
+			//Alpha testing
+			Adjective adj = new Adjective("Красный", Cases.Nominative, Number.Singular, Gender.Masculine);
+			Console.WriteLine(adj.ChangeCase(Cases.Genetive));
+
 			//These are some examples of using Errusiera
 
 			//Example 1. Enter your name
 			Console.Write("Введите ваше имя > ");
 			string myName1;
 			myName1 = Console.ReadLine();
-			Noun E_myName_1 = new Noun(myName1, Cases.Nominative, Number.Singular);
+			Noun E_myName_1 = new Noun(myName1, Cases.Nominative, Number.Singular, Gender.None, Animacy.Animate);
 			E_myName_1.ChangeCase(Cases.Dative);
 			myName1 = E_myName_1.ToString();
 			Console.WriteLine(myName1 + " нравится Errusiera\n");
@@ -23,8 +27,8 @@ namespace Errusiera
 			string husbandName2 = Console.ReadLine();
 			Console.Write("Введите имя жены > ");
 			string wifeName2 = Console.ReadLine();
-			Noun E_husbandName2 = new Noun(husbandName2, Cases.Nominative, Number.Singular);
-			Noun E_wifeName2 = new Noun(wifeName2, Cases.Nominative, Number.Singular);
+			Noun E_husbandName2 = new Noun(husbandName2, Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Animate);
+			Noun E_wifeName2 = new Noun(wifeName2, Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Animate);
 			Console.WriteLine(E_husbandName2.ToString() + " женат на " + E_wifeName2.ChangeCase(Cases.Prepositional));
 			Console.WriteLine(E_wifeName2.ChangeCase(Cases.Nominative) + " замужем за " + E_husbandName2.ChangeCase(Cases.Instrumental) + "\n");
 
@@ -35,8 +39,8 @@ namespace Errusiera
 			time3 = Console.ReadLine();
 			int hours3 = int.Parse(time3.Substring(0, 2));
 			int minutes3 = int.Parse(time3.Substring(3, 2));
-			Noun E_hours3 = new Noun("час", Cases.Nominative, Number.Singular);
-			Noun E_minutes3 = new Noun("минута", Cases.Nominative, Number.Singular);
+			Noun E_hours3 = new Noun("час", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Noun E_minutes3 = new Noun("минута", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
 			E_hours3.ChangeCase(Cases.Genetive);
 			E_minutes3.ChangeCase(Cases.Genetive);
 			if (hours3 >= 10 && hours3 <= 20) E_hours3.ChangeNumber(Number.Plural);
