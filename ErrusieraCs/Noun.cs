@@ -88,6 +88,25 @@ namespace Errusiera
 	};
 
 	/// <summary>
+	/// Одушевлённость
+	/// </summary>
+	enum Animacy
+	{
+		/// <summary>
+		/// Неизвестно
+		/// </summary>
+		None,
+		/// <summary>
+		/// Одушевлённое
+		/// </summary>
+		Animate,
+		/// <summary>
+		/// Неодушевлённое
+		/// </summary>
+		Inanimate
+	};
+
+	/// <summary>
 	/// Имя существительное
 	/// </summary>
 	public class Noun

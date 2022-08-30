@@ -8,13 +8,16 @@ Noun::Noun(std::string word_noun_only) {
 	word = word_noun_only;
 }
 
-Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Animacy noun_animacy) {
+Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy) {
 	word = word_noun_only;
 	word_case = noun_case;
 	word_number = noun_number;
+	word_gender = noun_gender;
 	word_animacy = noun_animacy;
 
-	if (word_case == Cases::Nominative) word_nominative = word;
+	if (word_case == Cases::Nominative && word_number == Number::Singular) {
+		word_default = word;
+	}
 }
 
 Noun::~Noun() {
@@ -22,9 +25,9 @@ Noun::~Noun() {
 }
 
 void Noun::to_nominative() {
-	if (word_nominative != "") {
-		word = word_nominative;
-	}
+	//if (word_nominative != "") {
+	//	word = word_nominative;
+	//}
 }
 
 std::string Noun::change_case(Cases case_to) {

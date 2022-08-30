@@ -137,7 +137,9 @@ public:
 	/// <param name="word_noun_only">| Слово</param>
 	/// <param name="noun_case">| Падеж</param>
 	/// <param name="noun_number">| Число</param>
-	Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Animacy noun_animacy);
+	/// /// <param name="noun_gender">| Род</param>
+	/// /// <param name="noun_animacy">| Одушевленность</param>
+	Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy);
 
 	~Noun();
 
@@ -207,9 +209,12 @@ public:
 private:
 	Cases word_case;
 	Number word_number;
+	Gender word_gender;
 	Animacy word_animacy;
-	std::string word_nominative = "";
-
+	std::string word_default = "";
+	/// <summary>
+	/// Obsoleted
+	/// </summary>
 	void to_nominative();
 };
 
