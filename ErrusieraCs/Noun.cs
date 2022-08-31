@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.3
+	// Errusiera for C# 1.0.3-alpha1
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>

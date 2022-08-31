@@ -7,10 +7,9 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace CppTests
 {
-	TEST_CLASS(CppTests)
+	TEST_CLASS(NounConjugation)
 	{
 	public:
-		
 		TEST_METHOD(Noun_Berry)
 		{
 			Noun test1("Ягода", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
@@ -42,7 +41,11 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Лошадями", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Лошадях", test1.change_case(Cases::Prepositional));
 		}
+	};
 
+	TEST_CLASS(Serializing)
+	{
+	public:
 		TEST_METHOD(Noun_Serializing)
 		{
 			Noun test1("СловоСловоСловоСлово", Cases::Accusative, Number::Plural, Gender::Masculine, Animacy::Animate);
