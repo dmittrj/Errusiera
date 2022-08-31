@@ -5,10 +5,10 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.3-alpha1
+	// Errusiera for C# 1.0.4
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
-	class Adjective
+	public class Adjective
     {
 		public string Word;
 		public Adjective(string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender)
