@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.4-beta1
+	// Errusiera for C# 1.0.4-beta2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -440,7 +440,7 @@ namespace Errusiera
 								}
 								else
 								{
-									_word += "и";
+									_word += "е";
 								}
 								break;
 							default:
@@ -596,7 +596,6 @@ namespace Errusiera
                                 {
 									goto case Cases.Nominative;
                                 }
-                                break;
 							case Cases.Instrumental:
 								if (Regex.IsMatch(_word, "й$"))
 								{
