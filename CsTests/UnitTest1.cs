@@ -4,7 +4,7 @@ using Errusiera;
 namespace CsTests
 {
     [TestClass]
-    public class UnitTest1
+    public class NounConjugation
     {
         [TestMethod]
         public void Noun_Berry()
@@ -38,6 +38,23 @@ namespace CsTests
 			Assert.AreEqual("Лошадей", test1.ChangeCase(Cases.Accusative));
 			Assert.AreEqual("Лошадями", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Лошадях", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Lamp()
+		{
+			Noun test1 = new Noun("Лампа", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Лампы", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Лампе", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Лампу", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Лампой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Лампе", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Лампы", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Ламп", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Лампам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Лампы", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Лампами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Лампах", test1.ChangeCase(Cases.Prepositional));
 		}
 	}
 }
