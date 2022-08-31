@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.4
+	// Errusiera for C# 1.0.4-beta1
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	public class Adjective
