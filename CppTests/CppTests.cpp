@@ -89,6 +89,22 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Книгами", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Книгах", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_Keyboard)
+		{
+			Noun test1("Клавиатура", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Клавиатуры", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Клавиатуре", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Клавиатуру", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Клавиатурой", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Клавиатуре", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Клавиатуры", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Клавиатур", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Клавиатурам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Клавиатуры", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Клавиатурами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Клавиатурах", test1.change_case(Cases::Prepositional));
+		}
 	};
 
 	TEST_CLASS(Serializing)

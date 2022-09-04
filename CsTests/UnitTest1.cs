@@ -90,5 +90,21 @@ namespace CsTests
 			Assert.AreEqual("Книгами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Книгах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		public void Noun_Keyboard()
+		{
+			Noun test1 = new Noun("Клавиатура", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Клавиатуры", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Клавиатуре", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Клавиатуру", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Клавиатурой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Клавиатуре", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Клавиатуры", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Клавиатур", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Клавиатурам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Клавиатуру", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Клавиатурами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Клавиатурах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 }
