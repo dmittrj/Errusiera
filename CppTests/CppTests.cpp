@@ -57,6 +57,150 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Лампами", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Лампах", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_Printer)
+		{
+			Noun test1("Принтер", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Принтера", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Принтеру", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Принтер", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Принтером", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Принтере", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Принтеры", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Принтеров", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Принтерам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Принтеры", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Принтерами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Принтерах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Book)
+		{
+			Noun test1("Книга", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Книги", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Книге", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Книгу", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Книгой", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Книге", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Книги", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Книг", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Книгам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Книги", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Книгами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Книгах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Keyboard)
+		{
+			Noun test1("Клавиатура", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Клавиатуры", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Клавиатуре", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Клавиатуру", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Клавиатурой", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Клавиатуре", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Клавиатуры", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Клавиатур", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Клавиатурам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Клавиатуры", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Клавиатурами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Клавиатурах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Mouse)
+		{
+			Noun test1("Мышь", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Animate);
+			Assert::AreEqual((std::string)"Мыши", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Мыши", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Мышь", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Мышью", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Мыши", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Мыши", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Мышей", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Мышам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Мышей", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Мышами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Мышах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Cat)
+		{
+			Noun test1("Кот", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Animate);
+			Assert::AreEqual((std::string)"Кота", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Коту", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Кота", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Котом", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Коте", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Коты", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Котов", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Котам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Котов", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Котами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Котах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Ball)
+		{
+			Noun test1("Мяч", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Мяча", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Мячу", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Мяч", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Мячом", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Мяче", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Мячи", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Мячей", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Мячам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Мячи", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Мячами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Мячах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Anthem)
+		{
+			Noun test1("Гимн", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Гимна", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Гимну", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Гимн", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Гимном", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Гимне", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Гимны", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Гимнов", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Гимнам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Гимны", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Гимнами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Гимнах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Well)
+		{
+			Noun test1("Колодец", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Колодца", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Колодцу", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Колодец", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Колодцем", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Колодце", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Колодцы", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Колодцев", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Колодцам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Колодцы", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Колодцами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Колодцах", test1.change_case(Cases::Prepositional));
+		}
+
+		TEST_METHOD(Noun_Fighter)
+		{
+			Noun test1("борец", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Animate);
+			Assert::AreEqual((std::string)"борца", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"борцу", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"борца", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"борцом", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"борце", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"борцы", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"борцов", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"борцам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"борцов", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"борцами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"борцах", test1.change_case(Cases::Prepositional));
+		}
 	};
 
 	TEST_CLASS(Serializing)

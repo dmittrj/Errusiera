@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.4
+	// Errusiera for C# 1.0.4-beta2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -246,6 +246,14 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "й$", "я");
 								}
+								else if (Regex.IsMatch(_word, "га$"))
+								{
+									_word = Regex.Replace(_word, "га$", "ги");
+								}
+								else if (Regex.IsMatch(_word, "ка$"))
+								{
+									_word = Regex.Replace(_word, "ка$", "ки");
+								}
 								else if (Regex.IsMatch(_word, "а$"))
 								{
 									_word = Regex.Replace(_word, "а$", "ы");
@@ -340,15 +348,26 @@ namespace Errusiera
 								}
 								else if (Regex.IsMatch(_word, "дь$"))
 								{
+
+								}
+								else if (Regex.IsMatch(_word, "шь$"))
+								{
 									
 								}
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
 									_word = Regex.Replace(_word, "ь$", "я");
 								}
-								else if (Regex.IsMatch(_word, "ец$"))
+								else if (Regex.IsMatch(_word, "ец$") && WordAnimacy == Animacy.Animate)
 								{
 									_word = Regex.Replace(_word, "ец$", "ца");
+								}
+								else
+                                {
+									if (WordAnimacy == Animacy.Animate)
+                                    {
+										_word += "а";
+									}
 								}
 								break;
 							case Cases.Instrumental:
@@ -396,6 +415,14 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "ь$", "ём");
 								}
+								else if (Regex.IsMatch(_word, "борец$"))
+								{
+									_word = Regex.Replace(_word, "борец$", "борцом");
+								}
+								else if (Regex.IsMatch(_word, "гонец$"))
+								{
+									_word = Regex.Replace(_word, "гонец$", "гонцом");
+								}
 								else if (Regex.IsMatch(_word, "ец$"))
 								{
 									_word = Regex.Replace(_word, "ец$", "цем");
@@ -434,13 +461,17 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "дь$", "ди");
 								}
+								else if (Regex.IsMatch(_word, "шь$"))
+								{
+									_word = Regex.Replace(_word, "шь$", "ши");
+								}
 								else if (Regex.IsMatch(_word, "ец$"))
 								{
 									_word = Regex.Replace(_word, "ец$", "це");
 								}
 								else
 								{
-									_word += "и";
+									_word += "е";
 								}
 								break;
 							default:
@@ -458,6 +489,10 @@ namespace Errusiera
 								if (Regex.IsMatch(_word, "й$"))
 								{
 									_word = Regex.Replace(_word, "й$", "и");
+								}
+								else if (Regex.IsMatch(_word, "га$"))
+								{
+									_word = Regex.Replace(_word, "га$", "ги");
 								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
@@ -499,6 +534,10 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "ь$", "и");
 								}
+								else if (Regex.IsMatch(_word, "ч$"))
+								{
+									_word = Regex.Replace(_word, "ч$", "чи");
+								}
 								else
 								{
 									_word += "ы";
@@ -533,6 +572,14 @@ namespace Errusiera
 								{
 									_word += "в";
 								}
+								else if (Regex.IsMatch(_word, "борец$"))
+								{
+									_word = Regex.Replace(_word, "борец$", "борцов");
+								}
+								else if (Regex.IsMatch(_word, "гонец$"))
+								{
+									_word = Regex.Replace(_word, "гонец$", "гонцов");
+								}
 								else if (Regex.IsMatch(_word, "ец$"))
 								{
 									_word = Regex.Replace(_word, "ец$", "цев");
@@ -540,6 +587,10 @@ namespace Errusiera
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
 									_word = Regex.Replace(_word, "ь$", "ей");
+								}
+								else if (Regex.IsMatch(_word, "ч$"))
+								{
+									_word = Regex.Replace(_word, "ч$", "чей");
 								}
 								else
 								{
@@ -579,6 +630,10 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "ец$", "цам");
 								}
+								else if (Regex.IsMatch(_word, "шь$"))
+								{
+									_word = Regex.Replace(_word, "шь$", "шам");
+								}
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
 									_word = Regex.Replace(_word, "ь$", "ям");
@@ -596,7 +651,6 @@ namespace Errusiera
                                 {
 									goto case Cases.Nominative;
                                 }
-                                break;
 							case Cases.Instrumental:
 								if (Regex.IsMatch(_word, "й$"))
 								{
@@ -629,6 +683,10 @@ namespace Errusiera
 								else if (Regex.IsMatch(_word, "ец$"))
 								{
 									_word = Regex.Replace(_word, "ец$", "цами");
+								}
+								else if (Regex.IsMatch(_word, "шь$"))
+								{
+									_word = Regex.Replace(_word, "шь$", "шами");
 								}
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
@@ -667,6 +725,10 @@ namespace Errusiera
 								else if (Regex.IsMatch(_word, "ец$"))
 								{
 									_word = Regex.Replace(_word, "ец$", "цах");
+								}
+								else if (Regex.IsMatch(_word, "шь$"))
+								{
+									_word = Regex.Replace(_word, "шь$", "шах");
 								}
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
