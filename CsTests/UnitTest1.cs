@@ -73,5 +73,22 @@ namespace CsTests
 			Assert.AreEqual("Принтерами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Принтерах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Book()
+		{
+			Noun test1 = new Noun("Книга", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Книги", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Книге", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Книгу", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Книгой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Книге", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Книги", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Книг", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Книгам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Книги", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Книгами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Книгах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 }

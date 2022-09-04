@@ -72,6 +72,14 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++033++!", _word);
 				}
+				else if (pattern(_word, "[ ]012001")) {
+					//ка
+					pattern(_word, "[ ]012!--001--!!++010++!", _word);
+				}
+				else if (pattern(_word, "[ ]004001")) {
+					//га
+					pattern(_word, "[ ]004!--001--!!++010++!", _word);
+				}
 				else if (pattern(_word, "[ ]001")) {
 					pattern(_word, "[ ]!--001--!!++029++!", _word);
 				}
@@ -246,7 +254,12 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 					pattern(_word, "[ ]!--011--!!++010++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
+					//ка
 					pattern(_word, "[ ]012!--001--!!++010++!", _word);
+				}
+				else if (pattern(_word, "[ ]004001")) {
+					//га
+					pattern(_word, "[ ]004!--001--!!++010++!", _word);
 				}
 				else if (pattern(_word, "[ ]001")) {
 					pattern(_word, "[ ]!--001--!!++029++!", _word);

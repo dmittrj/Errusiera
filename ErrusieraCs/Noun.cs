@@ -246,6 +246,14 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "й$", "я");
 								}
+								else if (Regex.IsMatch(_word, "га$"))
+								{
+									_word = Regex.Replace(_word, "га$", "ги");
+								}
+								else if (Regex.IsMatch(_word, "ка$"))
+								{
+									_word = Regex.Replace(_word, "ка$", "ки");
+								}
 								else if (Regex.IsMatch(_word, "а$"))
 								{
 									_word = Regex.Replace(_word, "а$", "ы");
@@ -458,6 +466,10 @@ namespace Errusiera
 								if (Regex.IsMatch(_word, "й$"))
 								{
 									_word = Regex.Replace(_word, "й$", "и");
+								}
+								else if (Regex.IsMatch(_word, "га$"))
+								{
+									_word = Regex.Replace(_word, "га$", "ги");
 								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
