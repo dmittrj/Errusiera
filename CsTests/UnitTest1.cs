@@ -191,5 +191,22 @@ namespace CsTests
 			Assert.AreEqual("Колодцами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Колодцах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Fighter()
+		{
+			Noun test1 = new Noun("борец", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Animate);
+			Assert.AreEqual("борца", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("борцу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("борца", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("борцом", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("борце", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("борцы", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("борцов", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("борцам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("борцов", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("борцами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("борцах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 }
