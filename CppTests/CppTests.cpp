@@ -105,6 +105,22 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Клавиатурами", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Клавиатурах", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_Mouse)
+		{
+			Noun test1("Мышь", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Animate);
+			Assert::AreEqual((std::string)"Мыши", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Мыши", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Мышь", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Мышью", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Мыши", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Мыши", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Мышей", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Мышам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Мышей", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Мышами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Мышах", test1.change_case(Cases::Prepositional));
+		}
 	};
 
 	TEST_CLASS(Serializing)

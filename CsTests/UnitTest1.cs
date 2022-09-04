@@ -106,5 +106,22 @@ namespace CsTests
 			Assert.AreEqual("Клавиатурами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Клавиатурах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Mouse()
+		{
+			Noun test1 = new Noun("Мышь", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Animate);
+			Assert.AreEqual("Мыши", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Мыши", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Мышь", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Мышью", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Мыши", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Мыши", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Мышей", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Мышам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Мышей", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Мышами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Мышах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 }
