@@ -140,5 +140,22 @@ namespace CsTests
 			Assert.AreEqual("Êמעאלט", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Êמעאץ", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Ball()
+		{
+			Noun test1 = new Noun("ּÿק", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("ּÿקא", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("ּÿקף", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("ּÿק", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("ּÿקמל", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("ּÿקו", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("ּÿקט", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("ּÿקוי", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("ּÿקאל", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("ּÿקט", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("ּÿקאלט", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("ּÿקאץ", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 }

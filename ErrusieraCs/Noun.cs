@@ -525,6 +525,10 @@ namespace Errusiera
 								{
 									_word = Regex.Replace(_word, "ь$", "и");
 								}
+								else if (Regex.IsMatch(_word, "ч$"))
+								{
+									_word = Regex.Replace(_word, "ч$", "чи");
+								}
 								else
 								{
 									_word += "ы";
@@ -566,6 +570,10 @@ namespace Errusiera
 								else if (Regex.IsMatch(_word, "ь$"))
 								{
 									_word = Regex.Replace(_word, "ь$", "ей");
+								}
+								else if (Regex.IsMatch(_word, "ч$"))
+								{
+									_word = Regex.Replace(_word, "ч$", "чей");
 								}
 								else
 								{
