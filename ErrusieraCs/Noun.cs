@@ -361,7 +361,13 @@ namespace Errusiera
 								else if (Regex.IsMatch(_word, "ец$"))
 								{
 									_word = Regex.Replace(_word, "ец$", "ца");
-								}
+								} else
+                                {
+									if (WordAnimacy == Animacy.Animate)
+                                    {
+										_word += "а";
+									}
+                                }
 								break;
 							case Cases.Instrumental:
 								if (Regex.IsMatch(_word, "й$"))

@@ -166,6 +166,11 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024001++!", _word);
 				}
+				else {
+					if (word_animacy == Animacy::Animate) {
+						pattern(_word, "[ ]!++001++!", _word);
+					}
+				}
 				break;
 			case Cases::Instrumental:
 				if (pattern(_word, "[ ]011")) {
