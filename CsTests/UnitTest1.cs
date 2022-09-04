@@ -157,5 +157,22 @@ namespace CsTests
 			Assert.AreEqual("ћ€чами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("ћ€чах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Anthem()
+		{
+			Noun test1 = new Noun("√имн", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("√имна", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("√имну", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("√имн", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("√имном", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("√имне", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("√имны", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("√имнов", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("√имнам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("√имны", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("√имнами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("√имнах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 }
