@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.4-beta3
+// Errusiera 1.0.4-beta4
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -871,6 +871,11 @@ Noun Noun::deserialize(std::string _serialized_string) {
 	}
 	Noun _return_no_word("");
 	return _return_no_word;
+}
+
+Adjective Noun::build_adjective(Gender _gender) {
+	std::string _word = this->word;
+	Adjective _adjective(_word, Cases::Nominative, Number::Singular, _gender);
 }
 
 bool Noun::operator==(Noun _noun) {
