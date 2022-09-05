@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.4-beta1
+// Errusiera 1.0.4-beta3
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -598,7 +598,7 @@ std::string Noun::serialize() {
 	return _serialized;
 }
 
-Gender Noun::define_gender() {
+Gender Noun::detect_gender() {
 	std::string _old_word = word;
 	to_default();
 	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
@@ -1211,7 +1211,7 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 }
 
 std::string Adjective::operator+(Noun _noun) {
-	change_word(_noun.word_case, _noun.word_number, _noun.define_gender());
+	change_word(_noun.word_case, _noun.word_number, _noun.detect_gender());
 	return word + " " + _noun.word;
 }
 

@@ -167,8 +167,15 @@ public:
 	/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
 	/// <para>ENG: Determines the case if it was not set manually</para>
 	/// </summary>
-	/// <returns>Case of the noun</returns>
+	/// <returns>Падеж существительного</returns>
 	Cases detect_case();
+
+	/// <summary>
+	/// <para>RUS: Определяет род, если он не был задан вручную</para>
+	/// <para>ENG: Determines the case if it was not set manually</para>
+	/// </summary>
+	/// <returns>Род существительного</returns>
+	Gender detect_gender();
 
 	/// <summary>
 	/// <para>RUS: Меняет все параметры имени существительного</para>
@@ -209,7 +216,6 @@ public:
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
 
-	Gender define_gender();
 	bool operator==(Noun _noun);
 private:
 	Cases word_case;
