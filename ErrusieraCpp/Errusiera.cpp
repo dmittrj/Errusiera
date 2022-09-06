@@ -874,8 +874,14 @@ Noun Noun::deserialize(std::string _serialized_string) {
 }
 
 Adjective Noun::build_adjective(Gender _gender) {
-	std::string _word = this->word;
-	Adjective _adjective(_word, Cases::Nominative, Number::Singular, _gender);
+	std::string _word = to_default();
+	if (pattern(_word, "[ ]001")) {
+		//à
+		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
+	}
+	Adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
+	_adjective.change_gender(_gender);
+	return _adjective;
 }
 
 bool Noun::operator==(Noun _noun) {
