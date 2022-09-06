@@ -758,6 +758,14 @@ namespace Errusiera
 			return _word;
 		}
 
+		/// <summary>
+		/// <para>RUS: Трансформирует существительное в прилагательное</para>
+		/// <para>ENG: Transform noun to adjective</para> 
+		/// </summary>
+		/// <param name="_case">Падеж</param>
+		/// <param name="_number">Число</param>
+		/// <param name="_gender">Род</param>
+		/// <returns>Прилагательное с заданными параметрами</returns>
 		public Adjective BuildAdjective(Cases _case, Number _number, Gender _gender)
         {
 			string _word = ToDefault();
