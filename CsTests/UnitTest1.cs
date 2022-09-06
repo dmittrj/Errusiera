@@ -209,4 +209,16 @@ namespace CsTests
 			Assert.AreEqual("борцах", test1.ChangeCase(Cases.Prepositional));
 		}
 	}
+
+	[TestClass]
+	public class NounToAdjective
+	{
+		[TestMethod]
+		public void Noun_Berry()
+		{
+			Noun test1 = new Noun("ягода", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("ягодный", test2.ToString());
+		}
+	}
 }

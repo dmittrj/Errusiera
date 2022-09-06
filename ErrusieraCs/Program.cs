@@ -49,6 +49,19 @@ namespace Errusiera
 			else E_minutes3.ChangeNumber(Number.Singular);
 			Console.WriteLine("Время: " + hours3 + " " + E_hours3.ToString() + " " +
 				minutes3 + " " + E_minutes3.ToString());
+
+
+			//Example 4. Playing cards
+			Console.Write("\nВведите карточную масть > ");
+			string suit4 = Console.ReadLine();
+			Console.Write("Введите достоинство карты > ");
+			string card4 = Console.ReadLine();
+			Noun E_suit4 = new Noun(suit4, Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Noun E_card4 = new Noun(card4, Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			//E_suit4.DetectGender();
+			//E_card4.DetectGender();
+			Adjective E_asuit4 = E_suit4.BuildAdjective(Cases.Nominative, Number.Singular, E_card4.WordGender);
+			Console.WriteLine("Ваша карта — " + E_asuit4.ToString() + " " + E_card4.ToString());
 		}
     }
 }

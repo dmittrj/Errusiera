@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.4-beta1
+	// Errusiera for C# 1.0.5
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	public class Adjective
@@ -281,7 +281,7 @@ namespace Errusiera
 		/// <returns>Слово</returns>
 		public override string ToString()
         {
-            return base.ToString();
+            return Word;
         }
 
         public static string operator+(Adjective _adj, Noun _noun)

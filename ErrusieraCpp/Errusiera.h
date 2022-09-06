@@ -115,6 +115,8 @@ int char_code(std::string _internal_code);
 
 int char_code(const char* _internal_code);
 
+class Adjective;
+
 /// <summary>
 /// Имя существительное
 /// </summary>
@@ -167,8 +169,15 @@ public:
 	/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
 	/// <para>ENG: Determines the case if it was not set manually</para>
 	/// </summary>
-	/// <returns>Case of the noun</returns>
+	/// <returns>Падеж существительного</returns>
 	Cases detect_case();
+
+	/// <summary>
+	/// <para>RUS: Определяет род, если он не был задан вручную</para>
+	/// <para>ENG: Determines the case if it was not set manually</para>
+	/// </summary>
+	/// <returns>Род существительного</returns>
+	Gender detect_gender();
 
 	/// <summary>
 	/// <para>RUS: Меняет все параметры имени существительного</para>
@@ -209,7 +218,16 @@ public:
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
 
-	Gender define_gender();
+	/// <summary>
+	/// <para>RUS: Трансформирует существительное в прилагательное</para>
+	/// <para>ENG: Transform noun to adjective</para> 
+	/// </summary>
+	/// <param name="_case">| Падеж</param>
+	/// <param name="_number">| Число</param>
+	/// <param name="_gender">| Род</param>
+	/// <returns>Прилагательное с заданными параметрами</returns>
+	Adjective build_adjective(Cases _case, Number _number, Gender _gender);
+
 	bool operator==(Noun _noun);
 private:
 	Cases word_case;

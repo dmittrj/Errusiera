@@ -54,5 +54,20 @@ int main() {
 	else if (minutes3 % 10 > 4 || minutes3 % 10 == 0) E_minutes3.change_number(Number::Plural);
 	else E_minutes3.change_number(Number::Singular);
 	std::cout << "\302\360\345\354\377: " << hours3 << " " << E_hours3.to_string() << " " 
-		<< minutes3 << " " << E_minutes3.to_string();
+		<< minutes3 << " " << E_minutes3.to_string() << std::endl;
+
+
+	//Example 4. Playing cards
+	std::cout << "¬ведите карточную масть > ";
+	std::string suit4;
+	std::cin >> suit4;
+	std::cout << "¬ведите достоинство карты > ";
+	std::string card4;
+	std::cin >> card4;
+	Noun E_suit4(suit4, Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+	Noun E_card4(card4, Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+	E_suit4.detect_gender();
+	E_card4.detect_gender();
+	Adjective E_asuit4 = E_suit4.build_adjective(Cases::Nominative, Number::Singular, E_card4.detect_gender());
+	std::cout << "¬аша карта Ч " << E_asuit4.to_string() << " " << E_card4.to_string() << std::endl;
 }

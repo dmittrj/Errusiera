@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.4-beta1
+// Errusiera 1.0.5
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -598,7 +598,7 @@ std::string Noun::serialize() {
 	return _serialized;
 }
 
-Gender Noun::define_gender() {
+Gender Noun::detect_gender() {
 	std::string _old_word = word;
 	to_default();
 	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
@@ -871,6 +871,21 @@ Noun Noun::deserialize(std::string _serialized_string) {
 	}
 	Noun _return_no_word("");
 	return _return_no_word;
+}
+
+Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
+	std::string _word = to_default();
+	if (pattern(_word, "[ ]008001")) {
+		//жа
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]001")) {
+		//а
+		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
+	}
+	Adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
+	_adjective.change_word(_case, _number, _gender);
+	return _adjective;
 }
 
 bool Noun::operator==(Noun _noun) {
@@ -1211,7 +1226,7 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 }
 
 std::string Adjective::operator+(Noun _noun) {
-	change_word(_noun.word_case, _noun.word_number, _noun.define_gender());
+	change_word(_noun.word_case, _noun.word_number, _noun.detect_gender());
 	return word + " " + _noun.word;
 }
 
