@@ -879,6 +879,10 @@ Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//жа
 		pattern(_word, "[_]!++015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]022001")) {
+		//фа
+		pattern(_word, "[ ]022!--001--!!++016003029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]001")) {
 		//а
 		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
