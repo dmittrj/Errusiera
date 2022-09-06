@@ -324,7 +324,8 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 					pattern(_word, "[ ]!--011--!!++006003++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
-					pattern(_word, "[ ]!--012001--!!++016012++!", _word);
+					//ка
+					pattern(_word, "[ ]!--012001--!!++006012++!", _word);
 				}
 				else if (pattern(_word, "[ ]001")) {
 					pattern(_word, "[ ]!--001--!", _word);

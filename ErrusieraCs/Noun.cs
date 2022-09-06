@@ -550,7 +550,7 @@ namespace Errusiera
 								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
-									_word = Regex.Replace(_word, "ка$", "ок");
+									_word = Regex.Replace(_word, "ка$", "ек");
 								}
 								else if (Regex.IsMatch(_word, "а$"))
 								{
