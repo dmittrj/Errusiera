@@ -203,6 +203,17 @@ namespace CppTests
 		}
 	};
 
+	TEST_CLASS(NounToAdjective)
+	{
+	public:
+		TEST_METHOD(Noun_Berry)
+		{
+			Noun test1("ягода", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			Adjective test2 = test1.build_adjective(Gender::Masculine);
+			Assert::AreEqual((std::string)"ягодный", test2.to_string());
+		}
+	};
+
 	TEST_CLASS(Serializing)
 	{
 	public:
