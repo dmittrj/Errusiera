@@ -54,7 +54,7 @@ int main() {
 	else if (minutes3 % 10 > 4 || minutes3 % 10 == 0) E_minutes3.change_number(Number::Plural);
 	else E_minutes3.change_number(Number::Singular);
 	std::cout << "\302\360\345\354\377: " << hours3 << " " << E_hours3.to_string() << " " 
-		<< minutes3 << " " << E_minutes3.to_string();
+		<< minutes3 << " " << E_minutes3.to_string() << std::endl;
 
 
 	//Example 4. Playing cards
