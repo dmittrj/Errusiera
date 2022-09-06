@@ -68,6 +68,6 @@ int main() {
 	Noun E_card4(card4, Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
 	E_suit4.detect_gender();
 	E_card4.detect_gender();
-	Adjective E_asuit4 = E_suit4.build_adjective(E_card4.detect_gender());
+	Adjective E_asuit4 = E_suit4.build_adjective(Cases::Nominative, Number::Singular, E_card4.detect_gender());
 	std::cout << "Ваша карта — " << E_asuit4.to_string() << " " << E_card4.to_string() << std::endl;
 }

@@ -218,7 +218,7 @@ public:
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
 
-	Adjective build_adjective(Gender _gender);
+	Adjective build_adjective(Cases _case, Number _number, Gender _gender);
 
 	bool operator==(Noun _noun);
 private:
