@@ -115,6 +115,8 @@ int char_code(std::string _internal_code);
 
 int char_code(const char* _internal_code);
 
+class Adjective;
+
 /// <summary>
 /// Имя существительное
 /// </summary>
@@ -215,6 +217,16 @@ public:
 	/// </summary>
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
+
+	/// <summary>
+	/// <para>RUS: Трансформирует существительное в прилагательное</para>
+	/// <para>ENG: Transform noun to adjective</para> 
+	/// </summary>
+	/// <param name="_case">| Падеж</param>
+	/// <param name="_number">| Число</param>
+	/// <param name="_gender">| Род</param>
+	/// <returns>Прилагательное с заданными параметрами</returns>
+	Adjective build_adjective(Cases _case, Number _number, Gender _gender);
 
 	bool operator==(Noun _noun);
 private:

@@ -281,7 +281,7 @@ namespace Errusiera
 		/// <returns>Слово</returns>
 		public override string ToString()
         {
-            return base.ToString();
+            return Word;
         }
 
         public static string operator+(Adjective _adj, Noun _noun)

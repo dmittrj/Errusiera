@@ -759,6 +759,30 @@ namespace Errusiera
 		}
 
 		/// <summary>
+		/// <para>RUS: Трансформирует существительное в прилагательное</para>
+		/// <para>ENG: Transform noun to adjective</para> 
+		/// </summary>
+		/// <param name="_case">Падеж</param>
+		/// <param name="_number">Число</param>
+		/// <param name="_gender">Род</param>
+		/// <returns>Прилагательное с заданными параметрами</returns>
+		public Adjective BuildAdjective(Cases _case, Number _number, Gender _gender)
+        {
+			string _word = ToDefault();
+			if (Regex.IsMatch(_word, "жа$"))
+			{
+				_word += "ный";
+			}
+			else if (Regex.IsMatch(_word, "а$"))
+			{
+				_word = Regex.Replace(_word, "а$", "ный");
+			}
+			Adjective _adjective = new Adjective(_word, Cases.Nominative, Number.Singular, Gender.Masculine);
+			_adjective.ChangeWord(_case, _number, _gender);
+			return _adjective;
+		}
+
+		/// <summary>
 		/// <para>RUS: Определяет падеж, если он не был задан вручную</para>
 		/// <para>ENG: Determines the case if it was not set manually</para>
 		/// </summary>
