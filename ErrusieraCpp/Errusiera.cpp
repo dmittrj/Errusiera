@@ -875,7 +875,11 @@ Noun Noun::deserialize(std::string _serialized_string) {
 
 Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	std::string _word = to_default();
-	if (pattern(_word, "[ ]001")) {
+	if (pattern(_word, "[ ]008001")) {
+		//жа
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]001")) {
 		//а
 		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
 	}
