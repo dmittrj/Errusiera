@@ -230,13 +230,14 @@ public:
 	Adjective build_adjective(Cases _case, Number _number, Gender _gender);
 
 	bool operator==(Noun _noun);
+
+	static bool yo;
 private:
 	Cases word_case;
 	Number word_number;
 	Gender word_gender;
 	Animacy word_animacy;
 	std::string word_default = "";
-	static bool yo;
 	std::string to_default();
 };
 

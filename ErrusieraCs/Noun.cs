@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.5
+	// Errusiera for C# 1.0.6
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -869,7 +869,7 @@ namespace Errusiera
 
 		private string WordNominative;
 
-		private bool Yo = true;
+		public static bool Yo = true;
 
 		private string ToDefault()
         {
