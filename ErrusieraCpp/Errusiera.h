@@ -215,6 +215,7 @@ public:
 	/// <para>RUS: Десериализует строку формата JSON в объект класса Noun</para>
 	/// <para>ENG: JSON deserializing</para> 
 	/// </summary>
+	/// <param name="_serialized_string">| Строка формате JSON</param>
 	/// <returns>Объект класса Noun</returns>
 	static Noun deserialize(std::string _serialized_string);
 
