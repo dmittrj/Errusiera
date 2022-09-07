@@ -242,6 +242,23 @@ namespace CsTests
 			Assert.AreEqual("ƒелами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("ƒелах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Chair()
+		{
+			Noun test1 = new Noun("стул", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("стула", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("стулу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("стул", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("стулом", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("стуле", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("стуль€", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("стульев", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("стуль€м", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("стуль€", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("стуль€ми", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("стуль€х", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]

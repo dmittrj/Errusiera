@@ -293,6 +293,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++010++!", _word);
 				}
+				else if (pattern(_word, "019020021013")) {
+					//стул -> стулья
+					pattern(_word, "[ ]!++030033++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					//ка
 					pattern(_word, "[ ]012!--001--!!++010++!", _word);
@@ -346,6 +350,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++006003++!", _word);
 				}
+				else if (pattern(_word, "019020021013")) {
+					//стул -> стульев
+					pattern(_word, "[ ]!++030006003++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					//ка
 					pattern(_word, "[ ]!--012001--!!++006012++!", _word);
@@ -395,6 +403,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 			case Cases::Dative:
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++033014++!", _word);
+				}
+				else if (pattern(_word, "019020021013")) {
+					//стул -> стульям
+					pattern(_word, "[ ]!++030033014++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++014++!", _word);
@@ -454,6 +466,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++033014010++!", _word);
 				}
+				else if (pattern(_word, "019020021013")) {
+					//стул -> стульями
+					pattern(_word, "[ ]!++030033014010++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++014010++!", _word);
 				}
@@ -494,6 +510,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 			case Cases::Prepositional:
 				if (pattern(_word, "[ ]011")) {
 					pattern(_word, "[ ]!--011--!!++033023++!", _word);
+				}
+				else if (pattern(_word, "019020021013")) {
+					//стул -> стульях
+					pattern(_word, "[ ]!++030033023++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++023++!", _word);
