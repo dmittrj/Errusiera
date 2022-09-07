@@ -3,6 +3,7 @@
 // Errusiera 1.0.5
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
+bool Noun::yo = true;
 
 Noun::Noun(std::string word_noun_only) {
 	word = word_noun_only;

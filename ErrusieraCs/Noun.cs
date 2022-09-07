@@ -869,6 +869,8 @@ namespace Errusiera
 
 		private string WordNominative;
 
+		private bool Yo = true;
+
 		private string ToDefault()
         {
 			if (WordNominative != "")

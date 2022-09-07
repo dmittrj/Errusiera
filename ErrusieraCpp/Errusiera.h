@@ -236,9 +236,7 @@ private:
 	Gender word_gender;
 	Animacy word_animacy;
 	std::string word_default = "";
-	/// <summary>
-	/// Obsoleted
-	/// </summary>
+	static bool yo;
 	std::string to_default();
 };
 
