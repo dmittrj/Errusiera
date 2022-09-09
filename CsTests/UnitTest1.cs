@@ -327,6 +327,23 @@ namespace CsTests
 			Assert.AreEqual("Игрушками", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Игрушках", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Acceleration()
+		{
+			Noun test1 = new Noun("Ускорение", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Ускорения", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Ускорению", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Ускорение", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ускорением", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Ускорении", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Ускорения", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Ускорений", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Ускорениям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Ускорения", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ускорениями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Ускорениях", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]

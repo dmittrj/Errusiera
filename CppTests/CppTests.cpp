@@ -313,6 +313,22 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Игрушками", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Игрушках", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_Acceleration)
+		{
+			Noun test1("Ускорение", Cases::Nominative, Number::Singular, Gender::Neuter, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Ускорения", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Ускорению", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Ускорение", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Ускорением", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Ускорении", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Ускорения", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Ускорений", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Ускорениям", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Ускорения", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Ускорениями", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Ускорениях", test1.change_case(Cases::Prepositional));
+		}
 	};
 
 	TEST_CLASS(NounToAdjective)
