@@ -393,6 +393,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 					//ч -> чей
 					pattern(_word, "[ ]025!++006011++!", _word);
 				}
+				else if (pattern(_word, "[ ]015016")) {
+					//но -> он
+					pattern(_word, "[ ]!--015016--!!++016015++!", _word);
+				}
 				else if (pattern(_word, "[ ]016")) {
 					//о -> _
 					pattern(_word, "[ ]!--016--!", _word);

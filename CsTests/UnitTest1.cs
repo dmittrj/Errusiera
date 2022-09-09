@@ -259,6 +259,40 @@ namespace CsTests
 			Assert.AreEqual("стульями", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("стульях", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Wall()
+		{
+			Noun test1 = new Noun("Стена", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Стены", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Стене", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Стену", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Стеной", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Стене", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Стены", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Стен", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Стенам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Стены", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Стенами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Стенах", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Window()
+		{
+			Noun test1 = new Noun("Окно", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Окна", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Окну", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Окно", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Окном", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Окне", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Окна", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Окон", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Окнам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Окна", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Окнами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Окнах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
