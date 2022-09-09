@@ -103,7 +103,12 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]030")) {
 					pattern(_word, "[ ]!--030--!!++033++!", _word);
 				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льца
+					pattern(_word, "[ ]013!--006024--!!++030024001++!", _word);
+				}
 				else if (pattern(_word, "[ ]006024")) {
+					//ец -> ца
 					pattern(_word, "[ ]!--006024--!!++024001++!", _word);
 				}
 				else if (pattern(_word, "[ ]016")) {
@@ -139,6 +144,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				}
 				else if (pattern(_word, "[ ]030")) {
 					pattern(_word, "[ ]!--030--!!++032++!", _word);
+				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцу
+					pattern(_word, "[ ]013!--006024--!!++030024021++!", _word);
 				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024021++!", _word);
@@ -227,6 +236,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 					//гонец -> гонцом
 					pattern(_word, "[ ]016015!--006024--!!++024016014++!", _word);
 				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцем
+					pattern(_word, "[ ]013!--006024--!!++030024006014++!", _word);
+				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024006014++!", _word);
 				}
@@ -264,6 +277,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				}
 				else if (pattern(_word, "[ ]033")) {
 					pattern(_word, "[ ]!--033--!!++006++!", _word);
+				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льце
+					pattern(_word, "[ ]013!--006024--!!++030024006++!", _word);
 				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024006++!", _word);
@@ -327,6 +344,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]007")) {
 					pattern(_word, "[ ]!--007--!!++033++!", _word);
 				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцы
+					pattern(_word, "[ ]013!--006024--!!++030024029++!", _word);
+				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024029++!", _word);
 				}
@@ -382,6 +403,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 					//гонец -> гонцов
 					pattern(_word, "[ ]016015!--006024--!!++024016003++!", _word);
 				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцев
+					pattern(_word, "[ ]013!--006024--!!++030024006003++!", _word);
+				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024006003++!", _word);
 				}
@@ -430,6 +455,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				}
 				else if (pattern(_word, "[ ]006")) {
 					pattern(_word, "[ ]!--006--!!++033014++!", _word);
+				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцам
+					pattern(_word, "[ ]013!--006024--!!++030024001014++!", _word);
 				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024001014++!", _word);
@@ -493,6 +522,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]006")) {
 					pattern(_word, "[ ]!--006--!!++033014010++!", _word);
 				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцами
+					pattern(_word, "[ ]013!--006024--!!++030024001014010++!", _word);
+				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024001014010++!", _word);
 				}
@@ -534,6 +567,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				}
 				else if (pattern(_word, "[ ]006")) {
 					pattern(_word, "[ ]!--006--!!++033023++!", _word);
+				}
+				else if (pattern(_word, "[ ]013006024")) {
+					//лец -> льцах
+					pattern(_word, "[ ]013!--006024--!!++030024001023++!", _word);
 				}
 				else if (pattern(_word, "[ ]006024")) {
 					pattern(_word, "[ ]!--006024--!!++024001023++!", _word);

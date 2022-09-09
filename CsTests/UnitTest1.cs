@@ -293,6 +293,23 @@ namespace CsTests
 			Assert.AreEqual("Окнами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Окнах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Finger()
+		{
+			Noun test1 = new Noun("Палец", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Пальца", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Пальцу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Палец", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Пальцем", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Пальце", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Пальцы", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Пальцев", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Пальцам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Пальцы", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Пальцами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Пальцах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
