@@ -310,6 +310,23 @@ namespace CsTests
 			Assert.AreEqual("Пальцами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Пальцах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Toy()
+		{
+			Noun test1 = new Noun("Игрушка", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Игрушки", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Игрушке", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Игрушку", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Игрушкой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Игрушке", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Игрушки", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Игрушек", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Игрушкам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Игрушки", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Игрушками", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Игрушках", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
