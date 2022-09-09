@@ -208,6 +208,142 @@ namespace CsTests
 			Assert.AreEqual("борцами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("борцах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Frog()
+		{
+			Noun test1 = new Noun("Лягушка", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Animate);
+			Assert.AreEqual("Лягушки", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Лягушке", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Лягушку", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Лягушкой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Лягушке", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Лягушки", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Лягушек", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Лягушкам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Лягушек", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Лягушками", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Лягушках", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_ThingToDo()
+		{
+			Noun test1 = new Noun("Дело", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Дела", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Делу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Дело", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Делом", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Деле", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Дела", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Дел", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Делам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Дела", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Делами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Делах", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Chair()
+		{
+			Noun test1 = new Noun("стул", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("стула", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("стулу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("стул", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("стулом", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("стуле", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("стулья", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("стульев", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("стульям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("стулья", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("стульями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("стульях", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Wall()
+		{
+			Noun test1 = new Noun("Стена", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Стены", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Стене", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Стену", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Стеной", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Стене", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Стены", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Стен", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Стенам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Стены", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Стенами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Стенах", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Window()
+		{
+			Noun test1 = new Noun("Окно", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Окна", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Окну", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Окно", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Окном", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Окне", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Окна", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Окон", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Окнам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Окна", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Окнами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Окнах", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Finger()
+		{
+			Noun test1 = new Noun("Палец", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Пальца", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Пальцу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Палец", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Пальцем", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Пальце", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Пальцы", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Пальцев", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Пальцам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Пальцы", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Пальцами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Пальцах", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Toy()
+		{
+			Noun test1 = new Noun("Игрушка", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Игрушки", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Игрушке", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Игрушку", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Игрушкой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Игрушке", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Игрушки", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Игрушек", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Игрушкам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Игрушки", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Игрушками", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Игрушках", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Acceleration()
+		{
+			Noun test1 = new Noun("Ускорение", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Ускорения", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Ускорению", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Ускорение", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ускорением", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Ускорении", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Ускорения", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Ускорений", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Ускорениям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Ускорения", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ускорениями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Ускорениях", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
