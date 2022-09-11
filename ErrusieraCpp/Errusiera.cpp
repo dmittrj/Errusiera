@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.6
+// Errusiera 1.0.7-beta1
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool Noun::yo = true;
@@ -379,6 +379,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 					//о -> а
 					pattern(_word, "[ ]!--016--!!++001++!", _word);
 				}
+				else if (pattern(_word, "[ ]026")) {
+					//ш -> ши
+					pattern(_word, "[_]!++010++!", _word);
+				}
 				else {
 					pattern(_word, "[_]!++029++!", _word);
 				}
@@ -445,6 +449,10 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "[ ]016")) {
 					//о -> _
 					pattern(_word, "[ ]!--016--!", _word);
+				}
+				else if (pattern(_word, "[ ]026")) {
+					//ш -> шей
+					pattern(_word, "[_]!++006011++!", _word);
 				}
 				else {
 					pattern(_word, "[_]!++016003++!", _word);
