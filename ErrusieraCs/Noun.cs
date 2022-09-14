@@ -119,7 +119,23 @@ namespace Errusiera
 		/// Слово
 		/// </summary>
 		public string Word;
-		public Cases WordCase;
+		public Cases WordCase
+        {
+			get
+            {
+				if (WordCase != Cases.None)
+				{
+					return WordCase;
+				}
+
+				if (Regex.IsMatch(Word, "ах$") || Regex.IsMatch(Word, "ях$"))
+				{
+					return Cases.Prepositional;
+				}
+				return Cases.Nominative;
+			}
+			set { }
+        }
 		public Number WordNumber;
 		public Gender WordGender
 		{
@@ -134,14 +150,11 @@ namespace Errusiera
 				{
 					return Gender.Feminine;
 				}
-				else if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
+				if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
 				{
 					return Gender.Neuter;
 				}
-				else
-				{
-					return Gender.Masculine;
-				}
+				return Gender.Masculine;
 			}
 			set { }
 		}
