@@ -361,6 +361,22 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Ручками", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Ручках", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_Fastening)
+		{
+			Noun test1("Крепление", Cases::Nominative, Number::Singular, Gender::Neuter, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Крепления", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Креплению", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Крепление", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Креплением", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Креплении", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Крепления", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Креплений", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Креплениям", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Крепления", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Креплениями", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Креплениях", test1.change_case(Cases::Prepositional));
+		}
 	};
 
 	TEST_CLASS(NounToAdjective)

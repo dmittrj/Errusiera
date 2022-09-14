@@ -378,6 +378,23 @@ namespace CsTests
 			Assert.AreEqual("Ручками", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Ручках", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Fastening()
+		{
+			Noun test1 = new Noun("Крепление", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Крепления", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Креплению", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Крепление", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Креплением", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Креплении", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Крепления", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Креплений", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Креплениям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Крепления", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Креплениями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Креплениях", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
