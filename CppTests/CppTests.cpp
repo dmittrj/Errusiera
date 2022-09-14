@@ -397,6 +397,32 @@ namespace CppTests
 		}
 	};
 
+	TEST_CLASS(NounDetectGender)
+	{
+	public:
+		TEST_METHOD(Noun_Chair)
+		{
+			Noun test1("Стул", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+			Assert::IsTrue(Gender::Masculine == test1.detect_gender());
+		}
+
+		TEST_METHOD(Noun_Head)
+		{
+			Noun test1("Голова", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+			Assert::IsTrue(Gender::Feminine == test1.detect_gender());
+		}
+	};
+
+	TEST_CLASS(NounDetectCase)
+	{
+	public:
+		TEST_METHOD(NounP_Prepositional)
+		{
+			Noun test1("Столах", Cases::None, Number::Singular, Gender::Masculine, Animacy::Inanimate);
+			Assert::IsTrue(Cases::Prepositional == test1.detect_case());
+		}
+	};
+
 	TEST_CLASS(Serializing)
 	{
 	public:

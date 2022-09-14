@@ -408,4 +408,33 @@ namespace CsTests
 			Assert.AreEqual("Ягодный", test2.ToString());
 		}
 	}
+
+	[TestClass]
+	public class NounDetectGender
+	{
+		[TestMethod]
+		public void Noun_Chair()
+		{
+			Noun test1 = new Noun("Стул", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Masculine == test1.DetectGender());
+		}
+
+		[TestMethod]
+		public void Noun_Head()
+		{
+			Noun test1 = new Noun("Голова", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Feminine == test1.DetectGender());
+		}
+	}
+
+	[TestClass]
+	public class NounDetectCase
+	{
+		[TestMethod]
+		public void NounP_Prepositional()
+		{
+			Noun test1 = new Noun("Столах", Cases.None, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Prepositional == test1.DetectCase());
+		}
+	}
 }

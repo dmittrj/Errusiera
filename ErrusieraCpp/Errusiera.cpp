@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.7-beta1
+// Errusiera 1.0.7-beta2
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool Noun::yo = true;
@@ -41,6 +41,11 @@ std::string Noun::change_number(Number number_to) {
 
 Cases Noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
+	//std::string _word = to_default();
+	if (pattern(word, "[ ]001023") || pattern(word, "[ ]033023")) {
+		return Cases::Prepositional;
+	}
+	return Cases::Nominative;
 }
 
 std::string Noun::change_word(Cases case_to, Number number_to) {
@@ -729,20 +734,15 @@ std::string Noun::serialize() {
 }
 
 Gender Noun::detect_gender() {
-	std::string _old_word = word;
-	to_default();
-	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
-		word = _old_word;
+	if (word_gender != Gender::None) { return word_gender; }
+	std::string _word = to_default();
+	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
 		return Gender::Feminine;
 	} 
-	else if (pattern(word, "[]016") || pattern(word, "[]006")) {
-		word = _old_word;
+	if (pattern(_word, "[ ]016") || pattern(_word, "[ ]006")) {
 		return Gender::Neuter;
 	}
-	else {
-		word = _old_word;
-		return Gender::Masculine;
-	}
+	return Gender::Masculine;
 }
 
 Noun Noun::deserialize(std::string _serialized_string) {
