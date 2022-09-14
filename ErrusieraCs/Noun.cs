@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.7-beta1
+	// Errusiera for C# 1.0.7-beta2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -119,36 +119,9 @@ namespace Errusiera
 		/// Слово
 		/// </summary>
 		public string Word;
-		public Cases WordCase
-        {
-			get
-            {
-				if (Regex.IsMatch(Word, "ах$") || Regex.IsMatch(Word, "ях$"))
-				{
-					return Cases.Prepositional;
-				}
-				return Cases.Nominative;
-			}
-			set { }
-        }
+		public Cases WordCase;
 		public Number WordNumber;
-		public Gender WordGender
-		{
-			get
-			{
-				string _Word = ToDefault();
-				if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
-				{
-					return Gender.Feminine;
-				}
-				if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
-				{
-					return Gender.Neuter;
-				}
-				return Gender.Masculine;
-			}
-			set { }
-		}
+		public Gender WordGender;
 		public Animacy WordAnimacy;
 
 		/// <summary>
@@ -923,11 +896,29 @@ namespace Errusiera
 		/// <para>ENG: Determines the case if it was not set manually</para>
 		/// </summary>
 		/// <returns>Определённый падеж или None, если возникла неоднозначность</returns>
-		[Obsolete]
 		public Cases DetectCase()
 		{
 			if (WordCase != Cases.None) { return WordCase; }
-			return WordCase;
+			if (Regex.IsMatch(Word, "ах$") || Regex.IsMatch(Word, "ях$"))
+			{
+				return Cases.Prepositional;
+			}
+			return Cases.Nominative;
+		}
+
+		public Gender DetectGender()
+		{
+			if (WordGender != Gender.None) { return WordGender; }
+			string _Word = ToDefault();
+			if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
+			{
+				return Gender.Feminine;
+			}
+			if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
+			{
+				return Gender.Neuter;
+			}
+			return Gender.Masculine;
 		}
 
 		/// <summary>
