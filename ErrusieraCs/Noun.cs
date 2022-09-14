@@ -123,11 +123,6 @@ namespace Errusiera
         {
 			get
             {
-				if (WordCase != Cases.None)
-				{
-					return WordCase;
-				}
-
 				if (Regex.IsMatch(Word, "ах$") || Regex.IsMatch(Word, "ях$"))
 				{
 					return Cases.Prepositional;
@@ -141,10 +136,6 @@ namespace Errusiera
 		{
 			get
 			{
-				if (WordGender != Gender.None)
-                {
-					return WordGender;
-                }
 				string _Word = ToDefault();
 				if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
 				{
@@ -932,6 +923,7 @@ namespace Errusiera
 		/// <para>ENG: Determines the case if it was not set manually</para>
 		/// </summary>
 		/// <returns>Определённый падеж или None, если возникла неоднозначность</returns>
+		[Obsolete]
 		public Cases DetectCase()
 		{
 			if (WordCase != Cases.None) { return WordCase; }
