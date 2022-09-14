@@ -418,5 +418,12 @@ namespace CsTests
 			Noun test1 = new Noun("Стул", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
 			Assert.IsTrue(Gender.Masculine == test1.WordGender);
 		}
+
+		[TestMethod]
+		public void Noun_Head()
+		{
+			Noun test1 = new Noun("Голова", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Feminine == test1.WordGender);
+		}
 	}
 }

@@ -405,6 +405,12 @@ namespace CppTests
 			Noun test1("Стул", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
 			Assert::IsTrue(Gender::Masculine == test1.detect_gender());
 		}
+
+		TEST_METHOD(Noun_Head)
+		{
+			Noun test2("Голова", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+			Assert::IsTrue(Gender::Feminine == test2.detect_gender());
+		}
 	};
 
 	TEST_CLASS(Serializing)
