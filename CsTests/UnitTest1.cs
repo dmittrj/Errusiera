@@ -344,6 +344,57 @@ namespace CsTests
 			Assert.AreEqual("Ускорениями", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Ускорениях", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Pencil()
+		{
+			Noun test1 = new Noun("Карандаш", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Карандаша", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Карандашу", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Карандаш", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Карандашом", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Карандаше", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Карандаши", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Карандашей", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Карандашам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Карандаши", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Карандашами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Карандашах", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Pen()
+		{
+			Noun test1 = new Noun("Ручка", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Ручки", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Ручке", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Ручку", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ручкой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Ручке", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Ручки", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Ручек", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Ручкам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Ручки", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Ручками", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Ручках", test1.ChangeCase(Cases.Prepositional));
+		}
+
+		[TestMethod]
+		public void Noun_Fastening()
+		{
+			Noun test1 = new Noun("Крепление", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Крепления", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Креплению", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Крепление", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Креплением", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Креплении", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Крепления", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Креплений", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Креплениям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Крепления", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Креплениями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Креплениях", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
@@ -355,6 +406,44 @@ namespace CsTests
 			Noun test1 = new Noun("Ягода", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
 			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
 			Assert.AreEqual("Ягодный", test2.ToString());
+		}
+	}
+
+	[TestClass]
+	public class NounDetectGender
+	{
+		[TestMethod]
+		public void Noun_Chair()
+		{
+			Noun test1 = new Noun("Стул", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Masculine == test1.DetectGender());
+		}
+
+		[TestMethod]
+		public void Noun_Head()
+		{
+			Noun test1 = new Noun("Голова", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Feminine == test1.DetectGender());
+		}
+
+		[TestMethod]
+		public void Noun_Sun()
+		{
+			Noun test1 = new Noun("Солнце", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Neuter == test1.DetectGender());
+		}
+	}
+
+	[TestClass]
+	public class NounDetectCase
+	{
+		[TestMethod]
+		public void NounP_Prepositional()
+		{
+			Noun test1 = new Noun("Столах", Cases.None, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Prepositional == test1.DetectCase());
+			Noun test2 = new Noun("Коленях", Cases.None, Number.Singular, Gender.Neuter, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Prepositional == test2.DetectCase());
 		}
 	}
 }
