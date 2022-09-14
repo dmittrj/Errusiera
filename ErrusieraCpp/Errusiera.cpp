@@ -41,8 +41,8 @@ std::string Noun::change_number(Number number_to) {
 
 Cases Noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
-	std::string _word = to_default();
-	if (pattern(_word, "[ ]001023") || pattern(_word, "[ ]033023")) {
+	//std::string _word = to_default();
+	if (pattern(word, "[ ]001023") || pattern(word, "[ ]033023")) {
 		return Cases::Prepositional;
 	}
 	return Cases::Nominative;
