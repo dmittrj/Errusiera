@@ -729,18 +729,14 @@ std::string Noun::serialize() {
 }
 
 Gender Noun::detect_gender() {
-	std::string _old_word = word;
-	to_default();
-	if (pattern(word, "[]001") || pattern(word, "[]033") || pattern(word, "[]030")) {
-		word = _old_word;
+	std::string _word = to_default();
+	if (pattern(_word, "[]001") || pattern(_word, "[]033") || pattern(_word, "[]030")) {
 		return Gender::Feminine;
 	} 
-	else if (pattern(word, "[]016") || pattern(word, "[]006")) {
-		word = _old_word;
+	else if (pattern(_word, "[]016") || pattern(_word, "[]006")) {
 		return Gender::Neuter;
 	}
 	else {
-		word = _old_word;
 		return Gender::Masculine;
 	}
 }
