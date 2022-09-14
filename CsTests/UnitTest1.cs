@@ -408,4 +408,15 @@ namespace CsTests
 			Assert.AreEqual("Ягодный", test2.ToString());
 		}
 	}
+
+	[TestClass]
+	public class NounDetectGender
+	{
+		[TestMethod]
+		public void Noun_Chair()
+		{
+			Noun test1 = new Noun("Стул", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Masculine == test1.WordGender);
+		}
+	}
 }
