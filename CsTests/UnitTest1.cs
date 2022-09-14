@@ -425,6 +425,13 @@ namespace CsTests
 			Noun test1 = new Noun("Голова", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
 			Assert.IsTrue(Gender.Feminine == test1.DetectGender());
 		}
+
+		[TestMethod]
+		public void Noun_Sun()
+		{
+			Noun test1 = new Noun("Солнце", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Neuter == test1.DetectGender());
+		}
 	}
 
 	[TestClass]
@@ -435,6 +442,8 @@ namespace CsTests
 		{
 			Noun test1 = new Noun("Столах", Cases.None, Number.Singular, Gender.Masculine, Animacy.Inanimate);
 			Assert.IsTrue(Cases.Prepositional == test1.DetectCase());
+			Noun test2 = new Noun("Коленях", Cases.None, Number.Singular, Gender.Neuter, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Prepositional == test2.DetectCase());
 		}
 	}
 }

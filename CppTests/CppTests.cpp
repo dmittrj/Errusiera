@@ -411,6 +411,12 @@ namespace CppTests
 			Noun test1("Голова", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
 			Assert::IsTrue(Gender::Feminine == test1.detect_gender());
 		}
+
+		TEST_METHOD(Noun_Sun)
+		{
+			Noun test1("Солнце", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+			Assert::IsTrue(Gender::Neuter == test1.detect_gender());
+		}
 	};
 
 	TEST_CLASS(NounDetectCase)
@@ -420,6 +426,8 @@ namespace CppTests
 		{
 			Noun test1("Столах", Cases::None, Number::Singular, Gender::Masculine, Animacy::Inanimate);
 			Assert::IsTrue(Cases::Prepositional == test1.detect_case());
+			Noun test2("Коленях", Cases::None, Number::Singular, Gender::Neuter, Animacy::Inanimate);
+			Assert::IsTrue(Cases::Prepositional == test2.detect_case());
 		}
 	};
 
