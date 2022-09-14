@@ -729,6 +729,7 @@ std::string Noun::serialize() {
 }
 
 Gender Noun::detect_gender() {
+	if (word_gender != Gender::None) { return word_gender; }
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
 		return Gender::Feminine;

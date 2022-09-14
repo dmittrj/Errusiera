@@ -125,21 +125,21 @@ namespace Errusiera
 		{
 			get
 			{
-				string _old_word = Word;
-				ToDefault();
-				if (Regex.IsMatch(Word, "а$") || Regex.IsMatch(Word, "я$") || Regex.IsMatch(Word, "ь$"))
+				if (WordGender != Gender.None)
+                {
+					return WordGender;
+                }
+				string _Word = ToDefault();
+				if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
 				{
-					Word = _old_word;
 					return Gender.Feminine;
 				}
-				else if (Regex.IsMatch(Word, "о$") || Regex.IsMatch(Word, "е$"))
+				else if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
 				{
-					Word = _old_word;
 					return Gender.Neuter;
 				}
 				else
 				{
-					Word = _old_word;
 					return Gender.Masculine;
 				}
 			}
