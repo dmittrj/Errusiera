@@ -41,6 +41,11 @@ std::string Noun::change_number(Number number_to) {
 
 Cases Noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
+	std::string _word = to_default();
+	if (pattern(_word, "[ ]001023") || pattern(_word, "[ ]033023")) {
+		return Cases::Prepositional;
+	}
+	return Cases::Nominative;
 }
 
 std::string Noun::change_word(Cases case_to, Number number_to) {
@@ -734,12 +739,10 @@ Gender Noun::detect_gender() {
 	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
 		return Gender::Feminine;
 	} 
-	else if (pattern(_word, "[ ]016") || pattern(_word, "[ ]006")) {
+	if (pattern(_word, "[ ]016") || pattern(_word, "[ ]006")) {
 		return Gender::Neuter;
 	}
-	else {
-		return Gender::Masculine;
-	}
+	return Gender::Masculine;
 }
 
 Noun Noun::deserialize(std::string _serialized_string) {
