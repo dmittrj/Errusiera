@@ -397,6 +397,16 @@ namespace CppTests
 		}
 	};
 
+	TEST_CLASS(NounDetectGender)
+	{
+	public:
+		TEST_METHOD(Noun_Chair)
+		{
+			Noun test1("Стул", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+			Assert::IsTrue(Gender::Masculine == test1.detect_gender());
+		}
+	};
+
 	TEST_CLASS(Serializing)
 	{
 	public:

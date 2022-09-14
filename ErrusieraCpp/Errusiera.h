@@ -115,6 +115,7 @@ int char_code(std::string _internal_code);
 
 int char_code(const char* _internal_code);
 
+class Noun;
 class Adjective;
 
 /// <summary>
