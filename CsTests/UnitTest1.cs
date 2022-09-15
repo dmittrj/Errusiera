@@ -395,6 +395,23 @@ namespace CsTests
 			Assert.AreEqual("Креплениями", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Креплениях", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Mic()
+		{
+			Noun test1 = new Noun("Микрофон", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Микрофона", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Микрофону", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Микрофон", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Микрофоном", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Микрофоне", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Микрофоны", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Микрофонов", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Микрофонам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Микрофоны", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Микрофонами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Микрофонах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
@@ -406,6 +423,22 @@ namespace CsTests
 			Noun test1 = new Noun("Ягода", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
 			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
 			Assert.AreEqual("Ягодный", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_Leather()
+		{
+			Noun test1 = new Noun("Кожа", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Кожаный", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_Cat()
+		{
+			Noun test1 = new Noun("Кошка", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Animate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Кошачий", test2.ToString());
 		}
 	}
 
@@ -432,11 +465,27 @@ namespace CsTests
 			Noun test1 = new Noun("Солнце", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
 			Assert.IsTrue(Gender.Neuter == test1.DetectGender());
 		}
+
+		[TestMethod]
+		public void Noun_Mouse()
+		{
+			Noun test1 = new Noun("Мышь", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Feminine == test1.DetectGender());
+		}
 	}
 
 	[TestClass]
 	public class NounDetectCase
 	{
+		[TestMethod]
+		public void NounP_Instrumental()
+		{
+			Noun test1 = new Noun("Столами", Cases.None, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Instrumental == test1.DetectCase());
+			Noun test2 = new Noun("Коленями", Cases.None, Number.Singular, Gender.Neuter, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Instrumental == test2.DetectCase());
+		}
+
 		[TestMethod]
 		public void NounP_Prepositional()
 		{

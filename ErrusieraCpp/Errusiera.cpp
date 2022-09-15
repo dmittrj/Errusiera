@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.8
+// Errusiera 1.0.9-beta1
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool Noun::yo = true;
@@ -42,6 +42,9 @@ std::string Noun::change_number(Number number_to) {
 Cases Noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
 	//std::string _word = to_default();
+	if (pattern(word, "[ ]001014010") || pattern(word, "[ ]033014010")) {
+		return Cases::Instrumental;
+	}
 	if (pattern(word, "[ ]001023") || pattern(word, "[ ]033023")) {
 		return Cases::Prepositional;
 	}
@@ -1012,6 +1015,10 @@ Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]022001")) {
 		//фа
 		pattern(_word, "[ ]022!--001--!!++016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]012001")) {
+		//ка
+		pattern(_word, "[ ]!--012001--!!++001025010011++!", _word);
 	}
 	else if (pattern(_word, "[ ]001")) {
 		//а

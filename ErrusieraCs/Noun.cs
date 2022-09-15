@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.8
+	// Errusiera for C# 1.0.9-beta1
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -882,6 +882,10 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "фа$", "фовый");
 			}
+			else if (Regex.IsMatch(_word, "ка$"))
+			{
+				_word = Regex.Replace(_word, "ка$", "ачий");
+			}
 			else if (Regex.IsMatch(_word, "а$"))
 			{
 				_word = Regex.Replace(_word, "а$", "ный");
@@ -899,6 +903,10 @@ namespace Errusiera
 		public Cases DetectCase()
 		{
 			if (WordCase != Cases.None) { return WordCase; }
+			if (Regex.IsMatch(Word, "ами$") || Regex.IsMatch(Word, "ями$"))
+			{
+				return Cases.Instrumental;
+			}
 			if (Regex.IsMatch(Word, "ах$") || Regex.IsMatch(Word, "ях$"))
 			{
 				return Cases.Prepositional;
