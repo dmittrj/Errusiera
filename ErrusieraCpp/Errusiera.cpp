@@ -3,13 +3,13 @@
 // Errusiera 1.0.9-beta2
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
-bool Noun::yo = true;
+bool noun::yo = true;
 
-Noun::Noun(std::string word_noun_only) {
+noun::noun(std::string word_noun_only) {
 	word = word_noun_only;
 }
 
-Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy) {
+noun::noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy) {
 	word = word_noun_only;
 	word_case = noun_case;
 	word_number = noun_number;
@@ -21,25 +21,25 @@ Noun::Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gend
 	}
 }
 
-Noun::~Noun() {
+noun::~noun() {
 
 }
 
-std::string Noun::to_default() {
+std::string noun::to_default() {
 	if (word_default != "") {
 		return word_default;
 	}
 }
 
-std::string Noun::change_case(Cases case_to) {
+std::string noun::change_case(Cases case_to) {
 	return change_word(case_to, word_number);
 }
 
-std::string Noun::change_number(Number number_to) {
+std::string noun::change_number(Number number_to) {
 	return change_word(word_case, number_to);
 }
 
-Cases Noun::detect_case() {
+Cases noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
 	//std::string _word = to_default();
 	if (pattern(word, "[ ]016003") || pattern(word, "[ ]006011")) {
@@ -54,7 +54,7 @@ Cases Noun::detect_case() {
 	return Cases::Nominative;
 }
 
-std::string Noun::change_word(Cases case_to, Number number_to) {
+std::string noun::change_word(Cases case_to, Number number_to) {
 	std::string _word = conjugate(case_to, number_to);
 	this->word = _word;
 	word_case = case_to;
@@ -62,11 +62,11 @@ std::string Noun::change_word(Cases case_to, Number number_to) {
 	return _word;
 }
 
-std::string Noun::to_string() {
+std::string noun::to_string() {
 	return word;
 }
 
-std::string Noun::conjugate(Cases case_to, Number number_to) {
+std::string noun::conjugate(Cases case_to, Number number_to) {
 	if (case_to == word_case && number_to == word_number) { return word; }
 	std::string _word = to_default();
 	try {
@@ -649,7 +649,7 @@ std::string Noun::conjugate(Cases case_to, Number number_to) {
 	return _word;
 }
 
-std::string Noun::serialize() {
+std::string noun::serialize() {
 	std::string _serialized = (std::string)"{" +
 		"\"word\":\"" + this->word + "\"," +
 		"\"word_case\":\"";
@@ -739,7 +739,7 @@ std::string Noun::serialize() {
 	return _serialized;
 }
 
-Gender Noun::detect_gender() {
+Gender noun::detect_gender() {
 	if (word_gender != Gender::None) { return word_gender; }
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
@@ -757,7 +757,7 @@ Gender Noun::detect_gender() {
 	return Gender::Masculine;
 }
 
-Noun Noun::deserialize(std::string _serialized_string) {
+noun noun::deserialize(std::string _serialized_string) {
 	std::string _reading_str = _serialized_string;
 	std::string _word = "";
 	std::string _word_nominative = "";
@@ -1002,20 +1002,20 @@ Noun Noun::deserialize(std::string _serialized_string) {
 		if (_reading_str.size() < 1) throw std::invalid_argument("Not a JSON format");
 		if (_reading_str != "}") throw std::invalid_argument("Not a JSON format");
 
-		Noun _return_noun(_word, _case, _number,_gender, _animacy);
+		noun _return_noun(_word, _case, _number,_gender, _animacy);
 		_return_noun.word_default = _word_nominative;
 		return _return_noun;
 	} 
 	catch (std::invalid_argument const& _exception) {
 		return (std::string)"[Alert] " + _exception.what();
-		Noun _exception_no_word("");
+		noun _exception_no_word("");
 		return _exception_no_word;
 	}
-	Noun _return_no_word("");
+	noun _return_no_word("");
 	return _return_no_word;
 }
 
-Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
+adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]008001")) {
 		//жа
@@ -1033,12 +1033,12 @@ Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//а
 		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
 	} else pattern(_word, "[_]!++016003029011++!", _word);
-	Adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
+	adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
 	_adjective.change_word(_case, _number, _gender);
 	return _adjective;
 }
 
-bool Noun::operator==(Noun _noun) {
+bool noun::operator==(noun _noun) {
 	if (word != _noun.word) return false;
 	if (word_animacy != _noun.word_animacy) return false;
 	if (word_case != _noun.word_case) return false;
@@ -1171,38 +1171,38 @@ bool pattern(std::string str_to_compare, std::string _pattern) {
 	return pattern(str_to_compare, _pattern, _trash);
 }
 
-Adjective::Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender) {
+adjective::adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender) {
 	word = word_adj_only;
 	word_case = adj_case;
 	word_number = adj_number;
 	word_gender = adj_gender;
 }
 
-Adjective::~Adjective() {
+adjective::~adjective() {
 
 }
 
-std::string Adjective::to_string() {
+std::string adjective::to_string() {
 	return word;
 }
 
-void Adjective::to_default() {
+void adjective::to_default() {
 
 }
 
-std::string Adjective::change_case(Cases case_to) {
+std::string adjective::change_case(Cases case_to) {
 	return change_word(case_to, word_number, word_gender);
 }
 
-std::string Adjective::change_number(Number number_to) {
+std::string adjective::change_number(Number number_to) {
 	return change_word(word_case, number_to, word_gender);
 }
 
-std::string Adjective::change_gender(Gender gender_to) {
+std::string adjective::change_gender(Gender gender_to) {
 	return change_word(word_case, word_number, gender_to);
 }
 
-std::string Adjective::change_word(Cases case_to, Number number_to, Gender gender_to) {
+std::string adjective::change_word(Cases case_to, Number number_to, Gender gender_to) {
 	to_default();
 	if (case_to == word_case && number_to == word_number && gender_to == word_gender) {
 		return word;
@@ -1375,7 +1375,7 @@ std::string Adjective::change_word(Cases case_to, Number number_to, Gender gende
 	return word;
 }
 
-std::string Adjective::operator+(Noun _noun) {
+std::string adjective::operator+(noun _noun) {
 	change_word(_noun.word_case, _noun.word_number, _noun.detect_gender());
 	return word + " " + _noun.word;
 }
