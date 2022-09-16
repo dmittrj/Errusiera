@@ -288,6 +288,23 @@ public:
 	/// <returns>Прилагательное с заданными параметрами</returns>
 	adjective build_adjective(Cases _case, Number _number, Gender _gender);
 
+	/// <summary>
+	/// <para>RUS: Склеивает два слова в одну фразу</para>
+	/// <para>ENG: Glue two words in one phrase</para> 
+	/// </summary>
+	/// <param name="_noun">| Дополнение</param>
+	/// <returns>Строка с фразой</returns>
+	std::string glue(noun _noun);
+
+	/// <summary>
+	/// <para>RUS: Склеивает два слова в одну фразу, используя предлог</para>
+	/// <para>ENG: Glue two words in one phrase by using preposition</para> 
+	/// </summary>
+	/// <param name="_noun">| Дополнение</param>
+	/// <param name="_prep">| Предлог</param>
+	/// <returns>Строка с фразой</returns>
+	std::string glue(noun _noun, Prepositions _prep);
+
 	bool operator==(noun _noun);
 
 	static bool yo;

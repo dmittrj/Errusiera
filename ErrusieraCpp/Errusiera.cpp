@@ -1015,6 +1015,14 @@ noun noun::deserialize(std::string _serialized_string) {
 	return _return_no_word;
 }
 
+std::string noun::glue(noun _noun) {
+
+}
+
+std::string noun::glue(noun _noun, Prepositions _prep) {
+
+}
+
 adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]008001")) {

@@ -999,6 +999,29 @@ namespace Errusiera
 		}
 
 		/// <summary>
+		/// <para>RUS: Склеивает два слова в одну фразу</para>
+		/// <para>ENG: Glue two words in one phrase</para> 
+		/// </summary>
+		/// <param name="_noun">Дополнение</param>
+		/// <returns>Строка с фразой</returns>
+		public string Glue(Noun _noun)
+		{
+
+		}
+
+		/// <summary>
+		/// <para>RUS: Склеивает два слова в одну фразу, используя предлог</para>
+		/// <para>ENG: Glue two words in one phrase by using preposition</para> 
+		/// </summary>
+		/// <param name="_noun">Дополнение</param>
+		/// <param name="_prep">Предлог</param>
+		/// <returns>Строка с фразой</returns>
+		public string Glue(Noun _noun, Prepositions _prep)
+		{
+
+		}
+
+		/// <summary>
 		/// <para>RUS: Привести класс к строке, т.е. вернуть слово</para>
 		/// <para>ENG: Convert class to string</para>
 		/// </summary>
