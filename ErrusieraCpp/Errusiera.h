@@ -306,18 +306,18 @@ private:
 	void to_default();
 };
 
-class Numeral
+class numeral
 {
 public:
 	/// <summary>
 	/// Слово
 	/// </summary>
 	std::string word;
-	Numeral(std::string word_num_only, Cases num_case, Number num_number, Gender num_gender);
+	numeral(std::string word_num_only, Cases num_case, Number num_number, Gender num_gender);
 
-	Numeral(int number);
+	numeral(int number);
 
-	~Numeral()
+	~numeral()
 	{
 	}
 

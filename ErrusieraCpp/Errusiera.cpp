@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.9-beta2
+// Errusiera 1.0.9-beta3
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool noun::yo = true;
@@ -1380,7 +1380,7 @@ std::string adjective::operator+(noun _noun) {
 	return word + " " + _noun.word;
 }
 
-std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber) {
+std::string numeral::num_to_str(int _number, Cases _case, Gender _gender, Number _gnumber) {
 	int _ones = _number % 10;
 	int _tens = _number % 100 / 10;
 	int _hundreds = _number / 100;
@@ -1835,7 +1835,7 @@ std::string Numeral::num_to_str(int _number, Cases _case, Gender _gender, Number
 	return _numstr;
 }
 
-Numeral::Numeral(int number) {
+numeral::numeral(int number) {
 
 }
 
