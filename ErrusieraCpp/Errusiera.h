@@ -294,7 +294,7 @@ public:
 	/// </summary>
 	/// <param name="_noun">| Дополнение</param>
 	/// <returns>Строка с фразой</returns>
-	std::string glue(noun _noun);
+	//std::string glue(noun _noun);
 
 	/// <summary>
 	/// <para>RUS: Склеивает два слова в одну фразу, используя предлог</para>

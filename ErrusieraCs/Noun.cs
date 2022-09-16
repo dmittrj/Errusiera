@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.9-beta3
+	// Errusiera for C# 1.0.9
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -1004,10 +1004,7 @@ namespace Errusiera
 		/// </summary>
 		/// <param name="_noun">Дополнение</param>
 		/// <returns>Строка с фразой</returns>
-		public string Glue(Noun _noun)
-		{
-			return "";
-		}
+		//public string Glue(Noun _noun)
 
 		/// <summary>
 		/// <para>RUS: Склеивает два слова в одну фразу, используя предлог</para>

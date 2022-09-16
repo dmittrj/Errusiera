@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.9-beta4
+// Errusiera 1.0.9
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool noun::yo = true;
@@ -1015,9 +1015,7 @@ noun noun::deserialize(std::string _serialized_string) {
 	return _return_no_word;
 }
 
-std::string noun::glue(noun _noun) {
-	return "";
-}
+//std::string noun::glue(noun _noun)
 
 std::string noun::glue(noun _noun, Prepositions _prep) {
 	std::string _phrase = word + " ";
