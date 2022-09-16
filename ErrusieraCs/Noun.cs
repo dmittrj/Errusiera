@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.8
+	// Errusiera for C# 1.0.9
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -108,6 +108,65 @@ namespace Errusiera
 		/// Неодушевлённое
 		/// </summary>
 		Inanimate
+	};
+
+	/// <summary>
+	/// Предлоги
+	/// </summary>
+	public enum Prepositions
+	{
+		/// <summary>
+		/// С
+		/// </summary>
+		With,
+		/// <summary>
+		/// В
+		/// </summary>
+		In,
+		/// <summary>
+		/// К
+		/// </summary>
+		To,
+		/// <summary>
+		/// О
+		/// </summary>
+		About,
+		/// <summary>
+		/// У
+		/// </summary>
+		Nearby,
+		/// <summary>
+		/// От
+		/// </summary>
+		From,
+		/// <summary>
+		/// Из
+		/// </summary>
+		Out,
+		/// <summary>
+		/// Над
+		/// </summary>
+		Above,
+		/// <summary>
+		/// Под
+		/// </summary>
+		Under,
+		/// <summary>
+		/// Для
+		/// </summary>
+		For,
+		/// <summary>
+		/// Без
+		/// </summary>
+		Without,
+		/// <summary>
+		/// На
+		/// </summary>
+		On,
+		/// <summary>
+		/// По
+		/// </summary>
+		Upon
 	};
 
 	/// <summary>
@@ -882,10 +941,14 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "фа$", "фовый");
 			}
+			else if (Regex.IsMatch(_word, "ка$"))
+			{
+				_word = Regex.Replace(_word, "ка$", "ачий");
+			}
 			else if (Regex.IsMatch(_word, "а$"))
 			{
 				_word = Regex.Replace(_word, "а$", "ный");
-			}
+			} else _word += "овый";
 			Adjective _adjective = new Adjective(_word, Cases.Nominative, Number.Singular, Gender.Masculine);
 			_adjective.ChangeWord(_case, _number, _gender);
 			return _adjective;
@@ -899,6 +962,14 @@ namespace Errusiera
 		public Cases DetectCase()
 		{
 			if (WordCase != Cases.None) { return WordCase; }
+			if (Regex.IsMatch(Word, "ов$") || Regex.IsMatch(Word, "ей$"))
+			{
+				return Cases.Genetive;
+			}
+			if (Regex.IsMatch(Word, "ами$") || Regex.IsMatch(Word, "ями$"))
+			{
+				return Cases.Instrumental;
+			}
 			if (Regex.IsMatch(Word, "ах$") || Regex.IsMatch(Word, "ях$"))
 			{
 				return Cases.Prepositional;
@@ -912,13 +983,97 @@ namespace Errusiera
 			string _Word = ToDefault();
 			if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
 			{
-				return Gender.Feminine;
+				if (_Word == "конь")
+                {
+					return Gender.Masculine;
+				} else
+                {
+					return Gender.Feminine;
+				}
 			}
 			if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
 			{
 				return Gender.Neuter;
 			}
 			return Gender.Masculine;
+		}
+
+		/// <summary>
+		/// <para>RUS: Склеивает два слова в одну фразу</para>
+		/// <para>ENG: Glue two words in one phrase</para> 
+		/// </summary>
+		/// <param name="_noun">Дополнение</param>
+		/// <returns>Строка с фразой</returns>
+		//public string Glue(Noun _noun)
+
+		/// <summary>
+		/// <para>RUS: Склеивает два слова в одну фразу, используя предлог</para>
+		/// <para>ENG: Glue two words in one phrase by using preposition</para> 
+		/// </summary>
+		/// <param name="_noun">Дополнение</param>
+		/// <param name="_prep">Предлог</param>
+		/// <returns>Строка с фразой</returns>
+		public string Glue(Noun _noun, Prepositions _prep)
+		{
+			string _phrase = Word + " ";
+			switch (_prep)
+			{
+				case Prepositions.With:
+					_phrase += "с ";
+					_phrase += _noun.Conjugate(Cases.Instrumental, _noun.WordNumber);
+					break;
+				case Prepositions.In:
+					_phrase += "в ";
+					_phrase += _noun.Conjugate(Cases.Prepositional, _noun.WordNumber);
+					break;
+				case Prepositions.To:
+					_phrase += "к ";
+					_phrase += _noun.Conjugate(Cases.Dative, _noun.WordNumber);
+					break;
+				case Prepositions.About:
+					_phrase += "о ";
+					_phrase += _noun.Conjugate(Cases.Prepositional, _noun.WordNumber);
+					break;
+				case Prepositions.Nearby:
+					_phrase += "у ";
+					_phrase += _noun.Conjugate(Cases.Genetive, _noun.WordNumber);
+					break;
+				case Prepositions.From:
+					_phrase += "от ";
+					_phrase += _noun.Conjugate(Cases.Genetive, _noun.WordNumber);
+					break;
+				case Prepositions.Out:
+					_phrase += "из ";
+					_phrase += _noun.Conjugate(Cases.Genetive, _noun.WordNumber);
+					break;
+				case Prepositions.Above:
+					_phrase += "над ";
+					_phrase += _noun.Conjugate(Cases.Instrumental, _noun.WordNumber);
+					break;
+				case Prepositions.Under:
+					_phrase += "под ";
+					_phrase += _noun.Conjugate(Cases.Instrumental, _noun.WordNumber);
+					break;
+				case Prepositions.For:
+					_phrase += "для ";
+					_phrase += _noun.Conjugate(Cases.Genetive, _noun.WordNumber);
+					break;
+				case Prepositions.Without:
+					_phrase += "без ";
+					_phrase += _noun.Conjugate(Cases.Genetive, _noun.WordNumber);
+					break;
+				case Prepositions.On:
+					_phrase += "на ";
+					_phrase += _noun.Conjugate(Cases.Prepositional, _noun.WordNumber);
+					break;
+				case Prepositions.Upon:
+					_phrase += "по ";
+					_phrase += _noun.Conjugate(Cases.Dative, _noun.WordNumber);
+					break;
+				default:
+					break;
+			}
+			return _phrase;
 		}
 
 		/// <summary>
