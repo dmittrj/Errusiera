@@ -412,6 +412,23 @@ namespace CsTests
 			Assert.AreEqual("Микрофонами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Микрофонах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_School()
+		{
+			Noun test1 = new Noun("Школа", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Assert.AreEqual("Школы", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Школе", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Школу", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Школой", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Школе", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Школы", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Школ", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Школам", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Школы", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Школами", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Школах", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
@@ -439,6 +456,14 @@ namespace CsTests
 			Noun test1 = new Noun("Кошка", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Animate);
 			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
 			Assert.AreEqual("Кошачий", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_Foam()
+		{
+			Noun test1 = new Noun("Поролон", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Поролоновый", test2.ToString());
 		}
 	}
 
@@ -472,11 +497,27 @@ namespace CsTests
 			Noun test1 = new Noun("Мышь", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
 			Assert.IsTrue(Gender.Feminine == test1.DetectGender());
 		}
+
+		[TestMethod]
+		public void Noun_Horse()
+		{
+			Noun test1 = new Noun("конь", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Masculine == test1.DetectGender());
+		}
 	}
 
 	[TestClass]
 	public class NounDetectCase
 	{
+		[TestMethod]
+		public void NounP_Genetive()
+		{
+			Noun test1 = new Noun("Столов", Cases.None, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Genetive == test1.DetectCase());
+			Noun test2 = new Noun("Коленей", Cases.None, Number.Singular, Gender.Neuter, Animacy.Inanimate);
+			Assert.IsTrue(Cases.Genetive == test2.DetectCase());
+		}
+
 		[TestMethod]
 		public void NounP_Instrumental()
 		{

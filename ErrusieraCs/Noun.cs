@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.9-beta1
+	// Errusiera for C# 1.0.9-beta2
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -889,7 +889,7 @@ namespace Errusiera
 			else if (Regex.IsMatch(_word, "а$"))
 			{
 				_word = Regex.Replace(_word, "а$", "ный");
-			}
+			} else _word += "овый";
 			Adjective _adjective = new Adjective(_word, Cases.Nominative, Number.Singular, Gender.Masculine);
 			_adjective.ChangeWord(_case, _number, _gender);
 			return _adjective;
@@ -903,6 +903,10 @@ namespace Errusiera
 		public Cases DetectCase()
 		{
 			if (WordCase != Cases.None) { return WordCase; }
+			if (Regex.IsMatch(Word, "ов$") || Regex.IsMatch(Word, "ей$"))
+			{
+				return Cases.Genetive;
+			}
 			if (Regex.IsMatch(Word, "ами$") || Regex.IsMatch(Word, "ями$"))
 			{
 				return Cases.Instrumental;
@@ -920,7 +924,13 @@ namespace Errusiera
 			string _Word = ToDefault();
 			if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
 			{
-				return Gender.Feminine;
+				if (_Word == "конь")
+                {
+					return Gender.Masculine;
+				} else
+                {
+					return Gender.Feminine;
+				}
 			}
 			if (Regex.IsMatch(_Word, "о$") || Regex.IsMatch(_Word, "е$"))
 			{

@@ -393,6 +393,22 @@ namespace CppTests
 			Assert::AreEqual((std::string)"Микрофонами", test1.change_case(Cases::Instrumental));
 			Assert::AreEqual((std::string)"Микрофонах", test1.change_case(Cases::Prepositional));
 		}
+
+		TEST_METHOD(Noun_School)
+		{
+			Noun test1("Школа", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			Assert::AreEqual((std::string)"Школы", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Школе", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Школу", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Школой", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Школе", test1.change_case(Cases::Prepositional));
+			Assert::AreEqual((std::string)"Школы", test1.change_word(Cases::Nominative, Number::Plural));
+			Assert::AreEqual((std::string)"Школ", test1.change_case(Cases::Genetive));
+			Assert::AreEqual((std::string)"Школам", test1.change_case(Cases::Dative));
+			Assert::AreEqual((std::string)"Школы", test1.change_case(Cases::Accusative));
+			Assert::AreEqual((std::string)"Школами", test1.change_case(Cases::Instrumental));
+			Assert::AreEqual((std::string)"Школах", test1.change_case(Cases::Prepositional));
+		}
 	};
 
 	TEST_CLASS(NounToAdjective)
@@ -417,6 +433,13 @@ namespace CppTests
 			Noun test1("Кошка", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Animate);
 			Adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
 			Assert::AreEqual((std::string)"Кошачий", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Foam)
+		{
+			Noun test1("Поролон", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Inanimate);
+			Adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Поролоновый", test2.to_string());
 		}
 	};
 
@@ -446,11 +469,24 @@ namespace CppTests
 			Noun test1("Мышь", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
 			Assert::IsTrue(Gender::Feminine == test1.detect_gender());
 		}
+
+		TEST_METHOD(Noun_Horse )
+		{
+			Noun test1("конь", Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+			Assert::IsTrue(Gender::Masculine == test1.detect_gender());
+		}
 	};
 
 	TEST_CLASS(NounDetectCase)
 	{
 	public:
+		TEST_METHOD(NounP_Genetive)
+		{
+			Noun test1("Столов", Cases::None, Number::Singular, Gender::Masculine, Animacy::Inanimate);
+			Assert::IsTrue(Cases::Genetive == test1.detect_case());
+			Noun test2("Коленей", Cases::None, Number::Singular, Gender::Neuter, Animacy::Inanimate);
+			Assert::IsTrue(Cases::Genetive == test2.detect_case());
+		}
 
 		TEST_METHOD(NounP_Instrumental)
 		{

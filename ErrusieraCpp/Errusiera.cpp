@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.9-beta1
+// Errusiera 1.0.9-beta2
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool Noun::yo = true;
@@ -42,6 +42,9 @@ std::string Noun::change_number(Number number_to) {
 Cases Noun::detect_case() {
 	if (word_case != Cases::None) { return word_case; }
 	//std::string _word = to_default();
+	if (pattern(word, "[ ]016003") || pattern(word, "[ ]006011")) {
+		return Cases::Genetive;
+	}
 	if (pattern(word, "[ ]001014010") || pattern(word, "[ ]033014010")) {
 		return Cases::Instrumental;
 	}
@@ -740,7 +743,13 @@ Gender Noun::detect_gender() {
 	if (word_gender != Gender::None) { return word_gender; }
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
-		return Gender::Feminine;
+		if (pattern(_word, "012016015030")) {
+			return Gender::Masculine;
+		}
+		else {
+			return Gender::Feminine;
+		}
+		
 	} 
 	if (pattern(_word, "[ ]016") || pattern(_word, "[ ]006")) {
 		return Gender::Neuter;
@@ -1023,7 +1032,7 @@ Adjective Noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]001")) {
 		//à
 		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
-	}
+	} else pattern(_word, "[_]!++016003029011++!", _word);
 	Adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
 	_adjective.change_word(_case, _number, _gender);
 	return _adjective;
