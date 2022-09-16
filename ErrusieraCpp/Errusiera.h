@@ -105,6 +105,64 @@ enum class Animacy {
 	Inanimate
 };
 
+/// <summary>
+/// Предлоги
+/// </summary>
+enum class Prepositions {
+	/// <summary>
+	/// С
+	/// </summary>
+	With,
+	/// <summary>
+	/// В
+	/// </summary>
+	In,
+	/// <summary>
+	/// К
+	/// </summary>
+	To,
+	/// <summary>
+	/// О
+	/// </summary>
+	About,
+	/// <summary>
+	/// У
+	/// </summary>
+	Nearby,
+	/// <summary>
+	/// От
+	/// </summary>
+	From,
+	/// <summary>
+	/// Из
+	/// </summary>
+	Out,
+	/// <summary>
+	/// Над
+	/// </summary>
+	Above,
+	/// <summary>
+	/// Под
+	/// </summary>
+	Under,
+	/// <summary>
+	/// Для
+	/// </summary>
+	For,
+	/// <summary>
+	/// Без
+	/// </summary>
+	Without,
+	/// <summary>
+	/// На
+	/// </summary>
+	On,
+	/// <summary>
+	/// По
+	/// </summary>
+	Upon
+};
+
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string, bool _eraser_mode);
 
 bool pattern(std::string str_to_compare, std::string _pattern, std::string& changed_string);

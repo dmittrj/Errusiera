@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.9-beta2
+	// Errusiera for C# 1.0.9-beta3
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 	/// <summary>
@@ -108,6 +108,65 @@ namespace Errusiera
 		/// Неодушевлённое
 		/// </summary>
 		Inanimate
+	};
+
+	/// <summary>
+	/// Предлоги
+	/// </summary>
+	enum Prepositions
+	{
+		/// <summary>
+		/// С
+		/// </summary>
+		With,
+		/// <summary>
+		/// В
+		/// </summary>
+		In,
+		/// <summary>
+		/// К
+		/// </summary>
+		To,
+		/// <summary>
+		/// О
+		/// </summary>
+		About,
+		/// <summary>
+		/// У
+		/// </summary>
+		Nearby,
+		/// <summary>
+		/// От
+		/// </summary>
+		From,
+		/// <summary>
+		/// Из
+		/// </summary>
+		Out,
+		/// <summary>
+		/// Над
+		/// </summary>
+		Above,
+		/// <summary>
+		/// Под
+		/// </summary>
+		Under,
+		/// <summary>
+		/// Для
+		/// </summary>
+		For,
+		/// <summary>
+		/// Без
+		/// </summary>
+		Without,
+		/// <summary>
+		/// На
+		/// </summary>
+		On,
+		/// <summary>
+		/// По
+		/// </summary>
+		Upon
 	};
 
 	/// <summary>

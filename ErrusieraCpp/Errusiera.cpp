@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.9-beta3
+// Errusiera 1.0.9-beta4
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool noun::yo = true;
@@ -1839,7 +1839,7 @@ numeral::numeral(int number) {
 
 }
 
-std::string Numeral::to_string() {
+std::string numeral::to_string() {
 	return word;
 }
 
