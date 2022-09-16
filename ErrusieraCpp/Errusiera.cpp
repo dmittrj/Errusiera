@@ -1020,7 +1020,65 @@ std::string noun::glue(noun _noun) {
 }
 
 std::string noun::glue(noun _noun, Prepositions _prep) {
-
+	std::string _phrase = word + " ";
+	switch (_prep)
+	{
+	case Prepositions::With:
+		_phrase += "с ";
+		_phrase += _noun.conjugate(Cases::Instrumental, _noun.word_number);
+		break;
+	case Prepositions::In:
+		_phrase += "в ";
+		_phrase += _noun.conjugate(Cases::Prepositional, _noun.word_number);
+		break;
+	case Prepositions::To:
+		_phrase += "к ";
+		_phrase += _noun.conjugate(Cases::Dative, _noun.word_number);
+		break;
+	case Prepositions::About:
+		_phrase += "о ";
+		_phrase += _noun.conjugate(Cases::Prepositional, _noun.word_number);
+		break;
+	case Prepositions::Nearby:
+		_phrase += "у ";
+		_phrase += _noun.conjugate(Cases::Genetive, _noun.word_number);
+		break;
+	case Prepositions::From:
+		_phrase += "от ";
+		_phrase += _noun.conjugate(Cases::Genetive, _noun.word_number);
+		break;
+	case Prepositions::Out:
+		_phrase += "из ";
+		_phrase += _noun.conjugate(Cases::Genetive, _noun.word_number);
+		break;
+	case Prepositions::Above:
+		_phrase += "над ";
+		_phrase += _noun.conjugate(Cases::Instrumental, _noun.word_number);
+		break;
+	case Prepositions::Under:
+		_phrase += "под ";
+		_phrase += _noun.conjugate(Cases::Instrumental, _noun.word_number);
+		break;
+	case Prepositions::For:
+		_phrase += "для ";
+		_phrase += _noun.conjugate(Cases::Genetive, _noun.word_number);
+		break;
+	case Prepositions::Without:
+		_phrase += "без ";
+		_phrase += _noun.conjugate(Cases::Genetive, _noun.word_number);
+		break;
+	case Prepositions::On:
+		_phrase += "на ";
+		_phrase += _noun.conjugate(Cases::Prepositional, _noun.word_number);
+		break;
+	case Prepositions::Upon:
+		_phrase += "по ";
+		_phrase += _noun.conjugate(Cases::Dative, _noun.word_number);
+		break;
+	default:
+		break;
+	}
+	return _phrase;
 }
 
 adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
