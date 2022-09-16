@@ -38,8 +38,8 @@ int main() {
 	std::cin >> time3;
 	int hours3 = std::stoi(time3.substr(0, 2));
 	int minutes3 = std::stoi(time3.substr(3, 2));
-	Numeral E_numh3(hours3);
-	Numeral E_numm3(minutes3);
+	numeral E_numh3(hours3);
+	numeral E_numm3(minutes3);
 	E_numh3.to_string();
 	noun E_hours3("\367\340\361", Cases::Nominative, Number::Singular, Gender::Masculine, Animacy::Inanimate);
 	noun E_minutes3("\354\350\355\363\362\340", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);

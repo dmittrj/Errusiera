@@ -1016,7 +1016,7 @@ noun noun::deserialize(std::string _serialized_string) {
 }
 
 std::string noun::glue(noun _noun) {
-
+	return "";
 }
 
 std::string noun::glue(noun _noun, Prepositions _prep) {
