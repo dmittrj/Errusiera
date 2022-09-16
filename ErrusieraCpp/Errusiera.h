@@ -115,15 +115,15 @@ int char_code(std::string _internal_code);
 
 int char_code(const char* _internal_code);
 
-class Noun;
-class Adjective;
+class noun;
+class adjective;
 
 /// <summary>
 /// Имя существительное
 /// </summary>
-class Noun
+class noun
 {
-	friend class Adjective;
+	friend class adjective;
 public:
 	/// <summary>
 	/// Слово
@@ -135,7 +135,7 @@ public:
 	/// <para>ENG: Constructor with string parameter only. Calling detect_params() requires</para>
 	/// </summary>
 	/// <param name="word_noun_only">| Слово</param>
-	Noun(std::string word_noun_only);
+	noun(std::string word_noun_only);
 
 	/// <summary>
 	/// <para>RUS: Конструктор со всеми параметрами. После объявления можно пользоваться</para>
@@ -146,9 +146,9 @@ public:
 	/// <param name="noun_number">| Число</param>
 	/// /// <param name="noun_gender">| Род</param>
 	/// /// <param name="noun_animacy">| Одушевленность</param>
-	Noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy);
+	noun(std::string word_noun_only, Cases noun_case, Number noun_number, Gender noun_gender, Animacy noun_animacy);
 
-	~Noun();
+	~noun();
 
 	/// <summary>
 	/// <para>RUS: Меняет падеж имени существительного</para>
@@ -206,19 +206,19 @@ public:
 	std::string to_string();
 
 	/// <summary>
-	/// <para>RUS: Сериализует объект класса Noun в формате JSON</para>
+	/// <para>RUS: Сериализует объект класса noun в формате JSON</para>
 	/// <para>ENG: JSON serializing</para> 
 	/// </summary>
 	/// <returns>Сериализованная строка</returns>
 	std::string serialize();
 
 	/// <summary>
-	/// <para>RUS: Десериализует строку формата JSON в объект класса Noun</para>
+	/// <para>RUS: Десериализует строку формата JSON в объект класса noun</para>
 	/// <para>ENG: JSON deserializing</para> 
 	/// </summary>
 	/// <param name="_serialized_string">| Строка формате JSON</param>
-	/// <returns>Объект класса Noun</returns>
-	static Noun deserialize(std::string _serialized_string);
+	/// <returns>Объект класса noun</returns>
+	static noun deserialize(std::string _serialized_string);
 
 	/// <summary>
 	/// <para>RUS: Трансформирует существительное в прилагательное</para>
@@ -228,9 +228,9 @@ public:
 	/// <param name="_number">| Число</param>
 	/// <param name="_gender">| Род</param>
 	/// <returns>Прилагательное с заданными параметрами</returns>
-	Adjective build_adjective(Cases _case, Number _number, Gender _gender);
+	adjective build_adjective(Cases _case, Number _number, Gender _gender);
 
-	bool operator==(Noun _noun);
+	bool operator==(noun _noun);
 
 	static bool yo;
 private:
@@ -245,15 +245,15 @@ private:
 /// <summary>
 /// Имя прилагательное
 /// </summary>
-class Adjective
+class adjective
 {
 public:
 	/// <summary>
 	/// Слово
 	/// </summary>
 	std::string word;
-	Adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender);
-	~Adjective();
+	adjective(std::string word_adj_only, Cases adj_case, Number adj_number, Gender adj_gender);
+	~adjective();
 
 	/// <summary>
 	/// <para>RUS: Меняет падеж имени прилагательного</para>
@@ -296,7 +296,7 @@ public:
 	/// <returns>Слово</returns>
 	std::string to_string();
 
-	std::string operator+(Noun _noun);
+	std::string operator+(noun _noun);
 private:
 	Cases word_case;
 	Number word_number;
@@ -306,18 +306,18 @@ private:
 	void to_default();
 };
 
-class Numeral
+class numeral
 {
 public:
 	/// <summary>
 	/// Слово
 	/// </summary>
 	std::string word;
-	Numeral(std::string word_num_only, Cases num_case, Number num_number, Gender num_gender);
+	numeral(std::string word_num_only, Cases num_case, Number num_number, Gender num_gender);
 
-	Numeral(int number);
+	numeral(int number);
 
-	~Numeral()
+	~numeral()
 	{
 	}
 
