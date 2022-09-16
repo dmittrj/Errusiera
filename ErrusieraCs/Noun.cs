@@ -113,7 +113,7 @@ namespace Errusiera
 	/// <summary>
 	/// Предлоги
 	/// </summary>
-	enum Prepositions
+	public enum Prepositions
 	{
 		/// <summary>
 		/// С
