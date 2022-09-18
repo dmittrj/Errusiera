@@ -429,6 +429,23 @@ namespace CsTests
 			Assert.AreEqual("Школами", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Школах", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Plant()
+		{
+			Noun test1 = new Noun("Растение", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
+			Assert.AreEqual("Растения", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Растению", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Растение", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Растением", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Растении", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("Растения", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("Растений", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("Растениям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("Растения", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("Растениями", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("Растениях", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]
@@ -464,6 +481,14 @@ namespace CsTests
 			Noun test1 = new Noun("Поролон", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Inanimate);
 			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
 			Assert.AreEqual("Поролоновый", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_Building()
+		{
+			Noun test1 = new Noun("Стройка", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Строительный", test2.ToString());
 		}
 	}
 
@@ -502,6 +527,13 @@ namespace CsTests
 		public void Noun_Horse()
 		{
 			Noun test1 = new Noun("конь", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
+			Assert.IsTrue(Gender.Masculine == test1.DetectGender());
+		}
+
+		[TestMethod]
+		public void Noun_Elk()
+		{
+			Noun test1 = new Noun("лось", Cases.Nominative, Number.Singular, Gender.None, Animacy.Inanimate);
 			Assert.IsTrue(Gender.Masculine == test1.DetectGender());
 		}
 	}

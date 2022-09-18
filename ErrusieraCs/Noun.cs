@@ -941,6 +941,10 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "фа$", "фовый");
 			}
+			else if (Regex.IsMatch(_word, "йка$"))
+			{
+				_word = Regex.Replace(_word, "йка$", "ительный");
+			}
 			else if (Regex.IsMatch(_word, "ка$"))
 			{
 				_word = Regex.Replace(_word, "ка$", "ачий");
@@ -983,7 +987,7 @@ namespace Errusiera
 			string _Word = ToDefault();
 			if (Regex.IsMatch(_Word, "а$") || Regex.IsMatch(_Word, "я$") || Regex.IsMatch(_Word, "ь$"))
 			{
-				if (_Word == "конь")
+				if (_Word == "конь" || _Word == "лось")
                 {
 					return Gender.Masculine;
 				} else

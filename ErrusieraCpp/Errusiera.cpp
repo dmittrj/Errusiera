@@ -743,7 +743,7 @@ Gender noun::detect_gender() {
 	if (word_gender != Gender::None) { return word_gender; }
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
-		if (pattern(_word, "012016015030")) {
+		if (pattern(_word, "012016015030") || pattern(_word, "013016019030")) {
 			return Gender::Masculine;
 		}
 		else {
@@ -1088,6 +1088,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]022001")) {
 		//фа
 		pattern(_word, "[ ]022!--001--!!++016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]011012001")) {
+		//йка
+		pattern(_word, "[ ]!--011012001--!!++010020006013030015029011++!", _word);
 	}
 	else if (pattern(_word, "[ ]012001")) {
 		//ка
