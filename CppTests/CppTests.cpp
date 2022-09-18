@@ -481,6 +481,27 @@ namespace CppTests
 			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
 			Assert::AreEqual((std::string)"Строительный", test2.to_string());
 		}
+
+		TEST_METHOD(Noun_Genius)
+		{
+			noun test1("Гений", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Гениальный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Balcony)
+		{
+			noun test1("Балкон", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Балконный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Parent)
+		{
+			noun test1("Родитель", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Родительский", test2.to_string());
+		}
 	};
 
 	TEST_CLASS(NounDetectGender)

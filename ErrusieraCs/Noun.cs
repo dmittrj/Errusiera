@@ -957,6 +957,22 @@ namespace Errusiera
 			{
 				_word += "ный";
 			}
+			else if (Regex.IsMatch(_word, "й$"))
+			{
+				_word = Regex.Replace(_word, "й$", "альный");
+			}
+			else if (Regex.IsMatch(_word, "кон$"))
+			{
+				_word += "ный";
+			}
+			else if (Regex.IsMatch(_word, "лон$"))
+			{
+				_word += "овый";
+			}
+			else if (Regex.IsMatch(_word, "ь$"))
+			{
+				_word += "ский";
+			}
 			else if (Regex.IsMatch(_word, "фа$"))
 			{
 				_word = Regex.Replace(_word, "фа$", "фовый");

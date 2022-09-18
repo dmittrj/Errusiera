@@ -507,6 +507,30 @@ namespace CsTests
 			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
 			Assert.AreEqual("Строительный", test2.ToString());
 		}
+
+		[TestMethod]
+		public void Noun_Genius()
+		{
+			Noun test1 = new Noun("Гений", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Гениальный", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_Balcony()
+		{
+			Noun test1 = new Noun("Балкон", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Балконный", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_Parent()
+		{
+			Noun test1 = new Noun("Родитель", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Родительский", test2.ToString());
+		}
 	}
 
 	[TestClass]
