@@ -446,6 +446,23 @@ namespace CsTests
 			Assert.AreEqual("Растениями", test1.ChangeCase(Cases.Instrumental));
 			Assert.AreEqual("Растениях", test1.ChangeCase(Cases.Prepositional));
 		}
+
+		[TestMethod]
+		public void Noun_Person()
+		{
+			Noun test1 = new Noun("человек", Cases.Nominative, Number.Singular, Gender.Masculine, Animacy.Animate);
+			Assert.AreEqual("человека", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("человеку", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("человека", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("человеком", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("человеке", test1.ChangeCase(Cases.Prepositional));
+			Assert.AreEqual("люди", test1.ChangeWord(Cases.Nominative, Number.Plural));
+			Assert.AreEqual("людей", test1.ChangeCase(Cases.Genetive));
+			Assert.AreEqual("людям", test1.ChangeCase(Cases.Dative));
+			Assert.AreEqual("людей", test1.ChangeCase(Cases.Accusative));
+			Assert.AreEqual("людьми", test1.ChangeCase(Cases.Instrumental));
+			Assert.AreEqual("людях", test1.ChangeCase(Cases.Prepositional));
+		}
 	}
 
 	[TestClass]

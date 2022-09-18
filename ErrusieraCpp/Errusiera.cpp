@@ -342,6 +342,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 					//стул -> стулья
 					pattern(_word, "[ ]!++030033++!", _word);
 				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> люди
+					pattern(_word, "del!++013032005010++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					//ка
 					pattern(_word, "[ ]012!--001--!!++010++!", _word);
@@ -406,6 +410,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "019020021013")) {
 					//стул -> стульев
 					pattern(_word, "[ ]!++030006003++!", _word);
+				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людей
+					pattern(_word, "del!++013032005006011++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
 					//ка
@@ -477,6 +485,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 					//стул -> стульям
 					pattern(_word, "[ ]!++030033014++!", _word);
 				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людям
+					pattern(_word, "del!++013032005033014++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++014++!", _word);
 				}
@@ -543,6 +555,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 					//стул -> стульями
 					pattern(_word, "[ ]!++030033014010++!", _word);
 				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людьми
+					pattern(_word, "del!++013032005030014010++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++014010++!", _word);
 				}
@@ -591,6 +607,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "019020021013")) {
 					//стул -> стульях
 					pattern(_word, "[ ]!++030033023++!", _word);
+				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людях
+					pattern(_word, "del!++013032005033023++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++023++!", _word);
@@ -1184,6 +1204,10 @@ bool pattern(std::string str_to_compare, std::string _pattern, std::string& chan
 				return true;
 			}
 		}
+	}
+	else if (!strcmp(_triplet, "del")) {
+		changed_string = "";
+		return pattern(str_to_compare, _pattern.substr(3), changed_string, true);
 	}
 	else if (!strcmp(_triplet, "[_]")) {
 		// All the rest letters

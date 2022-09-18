@@ -582,6 +582,10 @@ namespace Errusiera
 								{
 									_word += "ья";
 								}
+								else if (_word == "человек")
+								{
+									_word = "люди";
+								}
 								else if (Regex.IsMatch(_word, "га$"))
 								{
 									_word = Regex.Replace(_word, "га$", "ги");
@@ -655,6 +659,10 @@ namespace Errusiera
 								else if (_word == "стул")
 								{
 									_word += "ьев";
+								}
+								else if (_word == "человек")
+								{
+									_word = "людей";
 								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
@@ -734,6 +742,10 @@ namespace Errusiera
 								{
 									_word += "ьям";
 								}
+								else if (_word == "человек")
+								{
+									_word = "людям";
+								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
 									_word += "м";
@@ -800,6 +812,10 @@ namespace Errusiera
 								{
 									_word += "ьями";
 								}
+								else if (_word == "человек")
+								{
+									_word = "людьми";
+								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
 									_word += "ми";
@@ -857,6 +873,10 @@ namespace Errusiera
 								else if (_word == "стул")
 								{
 									_word += "ьях";
+								}
+								else if (_word == "человек")
+								{
+									_word = "людях";
 								}
 								else if (Regex.IsMatch(_word, "ка$"))
 								{
