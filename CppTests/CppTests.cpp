@@ -551,6 +551,62 @@ namespace CppTests
 			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
 			Assert::AreEqual((std::string)"Божий", test2.to_string());
 		}
+
+		TEST_METHOD(Noun_Fog)
+		{
+			noun test1("Туман", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Туманный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Frost)
+		{
+			noun test1("Мороз", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Морозный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Curiosity)
+		{
+			noun test1("Любопытство", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Любопытный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_List)
+		{
+			noun test1("Список", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Списочный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Quality)
+		{
+			noun test1("Качество", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Качественный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Carriage)
+		{
+			noun test1("Вагон", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Вагонный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Kitchen)
+		{
+			noun test1("Кухня", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Кухонный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Seed)
+		{
+			noun test1("Зерно", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Зерновой", test2.to_string());
+		}
 	};
 
 	TEST_CLASS(NounDetectGender)
