@@ -1109,6 +1109,14 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//й
 		pattern(_word, "[ ]!--011--!!++001013030015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]006024")) {
+		//ец
+		pattern(_word, "[ ]!--006024--!!++024016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]020")) {
+		//т
+		pattern(_word, "[ ]!++015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]012016015")) {
 		//кон
 		pattern(_word, "[ ]!++015029011++!", _word);
@@ -1117,9 +1125,17 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//лон
 		pattern(_word, "[ ]!++016003029011++!", _word);
 	}
-	else if (pattern(_word, "[ ]030")) {
-		//ь
+	else if (pattern(_word, "[ ]013030")) {
+		//ль
 		pattern(_word, "[ ]!++019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]020030")) {
+		//ть
+		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]015016025030")) {
+		//ночь
+		pattern(_word, "[ ]!--015016025030--!!++021015016025015029011++!", _word);
 	}
 	else if (pattern(_word, "[ ]022001")) {
 		//фа

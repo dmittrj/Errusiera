@@ -502,6 +502,41 @@ namespace CppTests
 			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
 			Assert::AreEqual((std::string)"Родительский", test2.to_string());
 		}
+
+		TEST_METHOD(Noun_Keyboard)
+		{
+			noun test1("Клавиатура", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Клавиатурный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Concert)
+		{
+			noun test1("Концерт", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Концертный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Memory)
+		{
+			noun test1("Память", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Памятный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Midnight)
+		{
+			noun test1("Полночь", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Полуночный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Palace)
+		{
+			noun test1("Дворец", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Дворцовый", test2.to_string());
+		}
 	};
 
 	TEST_CLASS(NounDetectGender)

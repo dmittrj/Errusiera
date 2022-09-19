@@ -7,6 +7,14 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
 
+	for (;;) {
+		std::string str1;
+		std::cin >> str1;
+		noun estr1(str1, Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
+		std::cout << estr1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine).to_string() << std::endl;
+
+	}
+
 	//These are some examples of using Errusiera
 
 	//Example 1. Enter your name
