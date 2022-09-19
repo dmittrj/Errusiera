@@ -1109,6 +1109,14 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//й
 		pattern(_word, "[ ]!--011--!!++001013030015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]012")) {
+		//к
+		pattern(_word, "[ ]!--012--!!++025006019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]004")) {
+		//г
+		pattern(_word, "[ ]!--004--!!++008010011++!", _word);
+	}
 	else if (pattern(_word, "[ ]006024")) {
 		//ец
 		pattern(_word, "[ ]!--006024--!!++024016003029011++!", _word);

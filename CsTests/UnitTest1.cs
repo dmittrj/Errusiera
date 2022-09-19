@@ -571,6 +571,22 @@ namespace CsTests
 			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
 			Assert.AreEqual("Дворцовый", test2.ToString());
 		}
+
+		[TestMethod]
+		public void Noun_Human()
+		{
+			Noun test1 = new Noun("Человек", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Человеческий", test2.ToString());
+		}
+
+		[TestMethod]
+		public void Noun_God()
+		{
+			Noun test1 = new Noun("Бог", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+			Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+			Assert.AreEqual("Божий", test2.ToString());
+		}
 	}
 
 	[TestClass]
