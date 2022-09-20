@@ -1105,17 +1105,33 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//жа
 		pattern(_word, "[_]!++015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]001011")) {
+		//ай
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]011")) {
 		//й
 		pattern(_word, "[ ]!--011--!!++001013030015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]019016012")) {
+		//сок
+		pattern(_word, "[ ]!--012--!!++025015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]016012")) {
 		//ок
-		pattern(_word, "[ ]!--012--!!++025015029011++!", _word);
+		pattern(_word, "[_]!++016003016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]010012")) {
+		//ик
+		pattern(_word, "[ ]!--010012--!!++025006019012010011++!", _word);
 	}
 	else if (pattern(_word, "[ ]012")) {
 		//к
 		pattern(_word, "[ ]!--012--!!++025006019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]001004")) {
+		//аг
+		pattern(_word, "[_]!++010025006019012010011++!", _word);
 	}
 	else if (pattern(_word, "[ ]004")) {
 		//г
@@ -1145,6 +1161,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//ль
 		pattern(_word, "[ ]!++019012010011++!", _word);
 	}
+	else if (pattern(_word, "[ ]016019020030")) {
+		//ость
+		pattern(_word, "[ ]!--016019020030--!!++029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]020030")) {
 		//ть
 		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
@@ -1161,9 +1181,25 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//йка
 		pattern(_word, "[ ]!--011012001--!!++010020006013030015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]021012001")) {
+		//ука
+		pattern(_word, "[ ]!--012001--!!++025015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]012001")) {
 		//ка
 		pattern(_word, "[ ]!--012001--!!++001025010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]003001")) {
+		//ва
+		pattern(_word, "[ ]!--001--!!++010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]024001")) {
+		//ца
+		pattern(_word, "[ ]!--024001--!!++025010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]006005001")) {
+		//еда
+		pattern(_word, "!++019028++![ ]!--001--!!++016002015029011++!", _word);
 	}
 	else if (pattern(_word, "[ ]001015")) {
 		//ан
@@ -1185,13 +1221,41 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//з
 		pattern(_word, "[_]!++015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]003015033")) {
+		//вня
+		pattern(_word, "[ ]!--015033--!!++006015019012010011++!", _word);
+	}
 	else if (pattern(_word, "[ ]015033")) {
 		//ня
 		pattern(_word, "[ ]!--015033--!!++016015015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]018016")) {
+		//ро
+		pattern(_word, "[ ]!--016--!!++006015015010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]012015016")) {
+		//кно
+		pattern(_word, "[ ]!--015016--!!++016015015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]016")) {
 		//о
 		pattern(_word, "[_]!++003016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]002")) {
+		//б
+		pattern(_word, "[_]!++015016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]018")) {
+		//р
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]023")) {
+		//х
+		pattern(_word, "[ ]!--023--!!++026010015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]030")) {
+		//ь
+		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
 	}
 	else pattern(_word, "[_]!++016003029011++!", _word);
 	adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
