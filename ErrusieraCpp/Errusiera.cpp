@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.9
+// Errusiera 1.0.10
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool noun::yo = true;
@@ -342,6 +342,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 					//стул -> стулья
 					pattern(_word, "[ ]!++030033++!", _word);
 				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> люди
+					pattern(_word, "del!++013032005010++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					//ка
 					pattern(_word, "[ ]012!--001--!!++010++!", _word);
@@ -406,6 +410,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "019020021013")) {
 					//стул -> стульев
 					pattern(_word, "[ ]!++030006003++!", _word);
+				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людей
+					pattern(_word, "del!++013032005006011++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
 					//ка
@@ -477,6 +485,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 					//стул -> стульям
 					pattern(_word, "[ ]!++030033014++!", _word);
 				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людям
+					pattern(_word, "del!++013032005033014++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++014++!", _word);
 				}
@@ -543,6 +555,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 					//стул -> стульями
 					pattern(_word, "[ ]!++030033014010++!", _word);
 				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людьми
+					pattern(_word, "del!++013032005030014010++!", _word);
+				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++014010++!", _word);
 				}
@@ -591,6 +607,10 @@ std::string noun::conjugate(Cases case_to, Number number_to) {
 				else if (pattern(_word, "019020021013")) {
 					//стул -> стульях
 					pattern(_word, "[ ]!++030033023++!", _word);
+				}
+				else if (pattern(_word, "025006013016003006012")) {
+					//человек -> людях
+					pattern(_word, "del!++013032005033023++!", _word);
 				}
 				else if (pattern(_word, "[ ]012001")) {
 					pattern(_word, "[ ]012001!++023++!", _word);
@@ -743,7 +763,7 @@ Gender noun::detect_gender() {
 	if (word_gender != Gender::None) { return word_gender; }
 	std::string _word = to_default();
 	if (pattern(_word, "[ ]001") || pattern(_word, "[ ]033") || pattern(_word, "[ ]030")) {
-		if (pattern(_word, "012016015030")) {
+		if (pattern(_word, "012016015030") || pattern(_word, "013016019030")) {
 			return Gender::Masculine;
 		}
 		else {
@@ -1085,18 +1105,159 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//жа
 		pattern(_word, "[_]!++015029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]001011")) {
+		//ай
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]011")) {
+		//й
+		pattern(_word, "[ ]!--011--!!++001013030015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]019016012")) {
+		//сок
+		pattern(_word, "[ ]!--012--!!++025015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]016012")) {
+		//ок
+		pattern(_word, "[_]!++016003016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]010012")) {
+		//ик
+		pattern(_word, "[ ]!--010012--!!++025006019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]012")) {
+		//к
+		pattern(_word, "[ ]!--012--!!++025006019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]001004")) {
+		//аг
+		pattern(_word, "[_]!++010025006019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]004")) {
+		//г
+		pattern(_word, "[ ]!--004--!!++008010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]006024")) {
+		//ец
+		pattern(_word, "[ ]!--006024--!!++024016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]020")) {
+		//т
+		pattern(_word, "[ ]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]012016015")) {
+		//кон
+		pattern(_word, "[ ]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]013016015")) {
+		//лон
+		pattern(_word, "[ ]!++016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]004016015")) {
+		//гон
+		pattern(_word, "[ ]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]013030")) {
+		//ль
+		pattern(_word, "[ ]!++019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]016019020030")) {
+		//ость
+		pattern(_word, "[ ]!--016019020030--!!++029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]020030")) {
+		//ть
+		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]015016025030")) {
+		//ночь
+		pattern(_word, "[ ]!--015016025030--!!++021015016025015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]022001")) {
 		//фа
 		pattern(_word, "[ ]022!--001--!!++016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]011012001")) {
+		//йка
+		pattern(_word, "[ ]!--011012001--!!++010020006013030015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]021012001")) {
+		//ука
+		pattern(_word, "[ ]!--012001--!!++025015029011++!", _word);
 	}
 	else if (pattern(_word, "[ ]012001")) {
 		//ка
 		pattern(_word, "[ ]!--012001--!!++001025010011++!", _word);
 	}
+	else if (pattern(_word, "[ ]003001")) {
+		//ва
+		pattern(_word, "[ ]!--001--!!++010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]024001")) {
+		//ца
+		pattern(_word, "[ ]!--024001--!!++025010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]006005001")) {
+		//еда
+		pattern(_word, "!++019028++![ ]!--001--!!++016002015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]001015")) {
+		//ан
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]001")) {
 		//а
 		pattern(_word, "[ ]!--001--!!++015029011++!", _word);
-	} else pattern(_word, "[_]!++016003029011++!", _word);
+	} 
+	else if (pattern(_word, "[ ]020019020003016")) {
+		//тство
+		pattern(_word, "[ ]!--019020003016--!!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]019020003016")) {
+		//ство
+		pattern(_word, "[ ]!--016--!!++006015015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]009")) {
+		//з
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]003015033")) {
+		//вня
+		pattern(_word, "[ ]!--015033--!!++006015019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]015033")) {
+		//ня
+		pattern(_word, "[ ]!--015033--!!++016015015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]018016")) {
+		//ро
+		pattern(_word, "[ ]!--016--!!++006015015010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]012015016")) {
+		//кно
+		pattern(_word, "[ ]!--015016--!!++016015015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]016")) {
+		//о
+		pattern(_word, "[_]!++003016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]002")) {
+		//б
+		pattern(_word, "[_]!++015016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]018")) {
+		//р
+		pattern(_word, "[_]!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]023")) {
+		//х
+		pattern(_word, "[ ]!--023--!!++026010015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]030")) {
+		//ь
+		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
+	}
+	else pattern(_word, "[_]!++016003029011++!", _word);
 	adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);
 	_adjective.change_word(_case, _number, _gender);
 	return _adjective;
@@ -1180,6 +1341,10 @@ bool pattern(std::string str_to_compare, std::string _pattern, std::string& chan
 				return true;
 			}
 		}
+	}
+	else if (!strcmp(_triplet, "del")) {
+		changed_string = "";
+		return pattern(str_to_compare, _pattern.substr(3), changed_string, true);
 	}
 	else if (!strcmp(_triplet, "[_]")) {
 		// All the rest letters
