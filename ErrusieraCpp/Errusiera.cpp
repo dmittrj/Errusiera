@@ -1,6 +1,6 @@
 #include "Errusiera.h"
 
-// Errusiera 1.0.10
+// Errusiera 1.0.11
 // Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 bool noun::yo = true;
