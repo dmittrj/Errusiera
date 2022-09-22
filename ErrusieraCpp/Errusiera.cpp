@@ -1141,6 +1141,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//ец
 		pattern(_word, "[ ]!--006024--!!++024016003029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]016020")) {
+		//от
+		pattern(_word, "[_]!++010009010018016003001015015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]020")) {
 		//т
 		pattern(_word, "[ ]!++015029011++!", _word);
@@ -1165,6 +1169,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//ость
 		pattern(_word, "[ ]!--016019020030--!!++029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]019020030")) {
+		//сть
+		pattern(_word, "[ ]!--030--!!++033015016011++!", _word);
+	}
 	else if (pattern(_word, "[ ]020030")) {
 		//ть
 		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
@@ -1176,6 +1184,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]022001")) {
 		//фа
 		pattern(_word, "[ ]022!--001--!!++016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]010012001")) {
+		//ика
+		pattern(_word, "[ ]!--012001--!!++025006019012010011++!", _word);
 	}
 	else if (pattern(_word, "[ ]011012001")) {
 		//йка
@@ -1256,6 +1268,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]030")) {
 		//ь
 		pattern(_word, "[ ]!--030--!!++015029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]014")) {
+		//м
+		pattern(_word, "[_]!++015029011++!", _word);
 	}
 	else pattern(_word, "[_]!++016003029011++!", _word);
 	adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);

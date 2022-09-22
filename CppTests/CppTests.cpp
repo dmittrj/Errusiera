@@ -719,6 +719,34 @@ namespace CppTests
 			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
 			Assert::AreEqual((std::string)"Оконный", test2.to_string());
 		}
+
+		TEST_METHOD(Noun_Wool)
+		{
+			noun test1("Шерсть", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Шерстяной", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Robot)
+		{
+			noun test1("Робот", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Роботизированный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Album)
+		{
+			noun test1("Альбом", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Альбомный", test2.to_string());
+		}
+
+		TEST_METHOD(Noun_Fantastic)
+		{
+			noun test1("Фантастика", Cases::Nominative, Number::Singular, Gender::Feminine, Animacy::Inanimate);
+			adjective test2 = test1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine);
+			Assert::AreEqual((std::string)"Фантастический", test2.to_string());
+		}
 	};
 
 	TEST_CLASS(NounDetectGender)

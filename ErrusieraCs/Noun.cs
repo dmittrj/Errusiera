@@ -993,7 +993,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ец$", "цовый");
 			}
-			else if (Regex.IsMatch(_word, "т$"))
+            else if (Regex.IsMatch(_word, "от$"))
+            {
+                _word += "изированный";
+            }
+            else if (Regex.IsMatch(_word, "т$"))
 			{
 				_word += "ный";
 			}
@@ -1017,7 +1021,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ость$", "ый");
 			}
-			else if (Regex.IsMatch(_word, "ть$"))
+            else if (Regex.IsMatch(_word, "сть$"))
+            {
+                _word = Regex.Replace(_word, "сть$", "стяной");
+            }
+            else if (Regex.IsMatch(_word, "ть$"))
 			{
 				_word = Regex.Replace(_word, "ть$", "тный");
 			}
@@ -1029,7 +1037,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "фа$", "фовый");
 			}
-			else if (Regex.IsMatch(_word, "йка$"))
+            else if (Regex.IsMatch(_word, "ика$"))
+            {
+                _word = Regex.Replace(_word, "ика$", "ический");
+            }
+            else if (Regex.IsMatch(_word, "йка$"))
 			{
 				_word = Regex.Replace(_word, "йка$", "ительный");
 			}
@@ -1109,7 +1121,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ь$", "ный");
 			}
-			else _word += "овый";
+            else if (Regex.IsMatch(_word, "м$"))
+            {
+                _word += "ный";
+            }
+            else _word += "овый";
 			Adjective _adjective = new Adjective(_word, Cases.Nominative, Number.Singular, Gender.Masculine);
 			_adjective.ChangeWord(_case, _number, _gender);
 			return _adjective;
