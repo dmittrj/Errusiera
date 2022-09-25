@@ -957,7 +957,15 @@ namespace Errusiera
 			{
 				_word += "ный";
 			}
-			else if (Regex.IsMatch(_word, "ай$"))
+            else if (Regex.IsMatch(_word, "аг$"))
+            {
+                _word = Regex.Replace(_word, "аг$", "агический");
+            }
+            else if (Regex.IsMatch(_word, "г$"))
+            {
+                _word = Regex.Replace(_word, "г$", "жий");
+            }
+            else if (Regex.IsMatch(_word, "ай$"))
 			{
 				_word = Regex.Replace(_word, "ай$", "айный");
 			}
@@ -965,7 +973,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "й$", "альный");
 			}
-			else if (Regex.IsMatch(_word, "сок$"))
+            else if (Regex.IsMatch(_word, "ик$"))
+            {
+                _word = Regex.Replace(_word, "ик$", "ческий");
+            }
+            else if (Regex.IsMatch(_word, "сок$"))
 			{
 				_word = Regex.Replace(_word, "сок$", "сочный");
 			}
@@ -973,47 +985,55 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ок$", "оковой");
 			}
-			else if (Regex.IsMatch(_word, "ик$"))
-			{
-				_word = Regex.Replace(_word, "ик$", "ческий");
-			}
-			else if (Regex.IsMatch(_word, "к$"))
+            else if (Regex.IsMatch(_word, "ск$"))
+            {
+                _word += "овой";
+            }
+            else if (Regex.IsMatch(_word, "к$"))
 			{
 				_word = Regex.Replace(_word, "к$", "ческий");
 			}
-			else if (Regex.IsMatch(_word, "аг$"))
-			{
-				_word = Regex.Replace(_word, "аг$", "агический");
-			}
-			else if (Regex.IsMatch(_word, "г$"))
-			{
-				_word = Regex.Replace(_word, "г$", "жий");
-			}
-			else if (Regex.IsMatch(_word, "ец$"))
-			{
-				_word = Regex.Replace(_word, "ец$", "цовый");
-			}
+            else if (Regex.IsMatch(_word, "гон$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "кон$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "рот$"))
+            {
+                _word += "ный";
+            }
             else if (Regex.IsMatch(_word, "от$"))
             {
                 _word += "изированный";
             }
+            else if (Regex.IsMatch(_word, "фт$"))
+            {
+                _word += "овый";
+            }
             else if (Regex.IsMatch(_word, "т$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "ец$"))
 			{
-				_word += "ный";
-			}
-			else if (Regex.IsMatch(_word, "кон$"))
-			{
-				_word += "ный";
+				_word = Regex.Replace(_word, "ец$", "цовый");
 			}
 			else if (Regex.IsMatch(_word, "лон$"))
 			{
 				_word += "овый";
 			}
-			else if (Regex.IsMatch(_word, "гон$"))
-			{
-				_word += "ный";
-			}
-			else if (Regex.IsMatch(_word, "ль$"))
+            else if (Regex.IsMatch(_word, "н$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "аль$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "ель$"))
 			{
 				_word += "ский";
 			}
@@ -1049,7 +1069,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ука$", "учный");
 			}
-			else if (Regex.IsMatch(_word, "ка$"))
+            else if (Regex.IsMatch(_word, "тка$"))
+            {
+                _word = Regex.Replace(_word, "тка$", "тчатый");
+            }
+            else if (Regex.IsMatch(_word, "ка$"))
 			{
 				_word = Regex.Replace(_word, "ка$", "ачий");
 			}
@@ -1057,7 +1081,11 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ва$", "вий");
 			}
-			else if (Regex.IsMatch(_word, "ца$"))
+            else if (Regex.IsMatch(_word, "за$"))
+            {
+                _word = Regex.Replace(_word, "за$", "зовый");
+            }
+            else if (Regex.IsMatch(_word, "ца$"))
 			{
 				_word = Regex.Replace(_word, "ца$", "чий");
 			}
@@ -1065,13 +1093,17 @@ namespace Errusiera
 			{
 				_word = "съ" + Regex.Replace(_word, "еда$", "едобный");
 			}
-			else if (Regex.IsMatch(_word, "ан$"))
+            else if (Regex.IsMatch(_word, "ма$"))
+            {
+                _word = Regex.Replace(_word, "ма$", "мальный");
+            }
+            else if (Regex.IsMatch(_word, "а$"))
+            {
+                _word = Regex.Replace(_word, "а$", "ный");
+            }
+            else if (Regex.IsMatch(_word, "ан$"))
 			{
 				_word += "ный";
-			}
-			else if (Regex.IsMatch(_word, "а$"))
-			{
-				_word = Regex.Replace(_word, "а$", "ный");
 			}
 			else if (Regex.IsMatch(_word, "тство$"))
 			{
@@ -1081,11 +1113,23 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ство$", "ственный");
 			}
-			else if (Regex.IsMatch(_word, "з$"))
+            else if (Regex.IsMatch(_word, "ноз$"))
+            {
+                _word = Regex.Replace(_word, "ноз$", "ностический");
+            }
+            else if (Regex.IsMatch(_word, "з$"))
 			{
 				_word += "ный";
 			}
-			else if (Regex.IsMatch(_word, "вня$"))
+            else if (Regex.IsMatch(_word, "ия$"))
+            {
+                _word = Regex.Replace(_word, "ия$", "ейский");
+            }
+            else if (Regex.IsMatch(_word, "ля$"))
+            {
+                _word = Regex.Replace(_word, "ля$", "льный");
+            }
+            else if (Regex.IsMatch(_word, "вня$"))
 			{
 				_word = Regex.Replace(_word, "вня$", "венский");
 			}
@@ -1093,15 +1137,31 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "ня$", "онный");
 			}
-			else if (Regex.IsMatch(_word, "ро$"))
-			{
-				_word = Regex.Replace(_word, "ро$", "ренний");
-			}
-			else if (Regex.IsMatch(_word, "кно$"))
+            else if (Regex.IsMatch(_word, "зо$"))
+            {
+                _word = Regex.Replace(_word, "зо$", "зный");
+            }
+            else if (Regex.IsMatch(_word, "ло$"))
+            {
+                _word = Regex.Replace(_word, "ло$", "льный");
+            }
+            else if (Regex.IsMatch(_word, "кно$"))
 			{
 				_word = Regex.Replace(_word, "кно$", "конный");
 			}
-			else if (Regex.IsMatch(_word, "о$"))
+            else if (Regex.IsMatch(_word, "ро$"))
+            {
+                _word = Regex.Replace(_word, "ро$", "ренний");
+            }
+            else if (Regex.IsMatch(_word, "то$"))
+            {
+                _word += "й";
+            }
+            else if (Regex.IsMatch(_word, "цо$"))
+            {
+                _word = Regex.Replace(_word, "цо$", "цевой");
+            }
+            else if (Regex.IsMatch(_word, "о$"))
 			{
 				_word += "вой";
 			}
@@ -1109,7 +1169,11 @@ namespace Errusiera
 			{
 				_word += "ной";
 			}
-			else if (Regex.IsMatch(_word, "р$"))
+            else if (Regex.IsMatch(_word, "втор$"))
+            {
+                _word += "ский";
+            }
+            else if (Regex.IsMatch(_word, "р$"))
 			{
 				_word += "ный";
 			}
@@ -1117,13 +1181,33 @@ namespace Errusiera
 			{
 				_word = Regex.Replace(_word, "х$", "шиный");
 			}
-			else if (Regex.IsMatch(_word, "ь$"))
+            else if (Regex.IsMatch(_word, "сь$"))
+            {
+                _word = Regex.Replace(_word, "сь$", "сной");
+            }
+            else if (Regex.IsMatch(_word, "ль$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "ь$"))
 			{
 				_word = Regex.Replace(_word, "ь$", "ный");
 			}
+            else if (Regex.IsMatch(_word, "л$"))
+            {
+                _word += "ьный";
+            }
             else if (Regex.IsMatch(_word, "м$"))
             {
                 _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "с$"))
+            {
+                _word += "ный";
+            }
+            else if (Regex.IsMatch(_word, "ф$"))
+            {
+                _word += "ной";
             }
             else _word += "овый";
 			Adjective _adjective = new Adjective(_word, Cases.Nominative, Number.Singular, Gender.Masculine);
