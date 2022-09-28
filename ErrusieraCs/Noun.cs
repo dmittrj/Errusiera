@@ -1236,11 +1236,39 @@ namespace Errusiera
 
 		private string ToDefault()
         {
+			if (Word[0].ToString() == Word[0].ToString().ToUpper())
+			{
+				LetterCase = LetterCases.SentenceCase;
+				Word = Word[0].ToString().ToLower() + Word[1..];
+            }
+			else
+			{
+				LetterCase = LetterCases.Lowercase;
+			}
 			if (WordNominative != "")
 			{
 				return WordNominative;
 			}
 			return WordNominative;
+		}
+
+		private string RestoreLetterCase(string _word)
+		{
+			switch (LetterCase)
+			{
+				case LetterCases.SentenceCase:
+                    if (_word[0].ToString() == _word[0].ToString().ToLower())
+                    {
+                        return _word[0].ToString().ToUpper() + _word[1..];
+                    }
+					return _word;
+				case LetterCases.Lowercase:
+                    return _word.ToLower();
+				case LetterCases.Uppercase:
+					return _word.ToUpper();
+				default:
+					return _word;
+			}
 		}
 	}
 }
