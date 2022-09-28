@@ -1,4 +1,4 @@
-﻿namespace ErrusieraCs
+﻿namespace Errusiera
 {
     /// <summary>
     /// Падежи

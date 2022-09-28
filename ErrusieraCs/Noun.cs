@@ -1,5 +1,4 @@
-﻿using ErrusieraCs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -780,7 +779,7 @@ namespace Errusiera
 			{
 				return "[Alert] " + _exception.Message + "\n";
 			}
-			return _word;
+			return RestoreLetterCase(_word);
 		}
 
 		/// <summary>
@@ -1236,10 +1235,11 @@ namespace Errusiera
 
 		private string ToDefault()
         {
+			//string _word = "";
 			if (Word[0].ToString() == Word[0].ToString().ToUpper())
 			{
 				LetterCase = LetterCases.SentenceCase;
-				Word = Word[0].ToString().ToLower() + Word[1..];
+                return Word[0].ToString().ToLower() + Word[1..];
             }
 			else
 			{
