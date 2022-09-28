@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Errusiera
 {
-	// Errusiera for C# 1.0.11
+	// Errusiera for C# 1.0.12
 	// Dmitry Balabanov | github.com/dmittrj/Errusiera
 
 
@@ -1231,7 +1231,9 @@ namespace Errusiera
 
 		public static bool Yo = true;
 
-		public LetterCases LetterCase { get; set; }
+		private LetterCases LetterCase { get; set; }
+
+		//private string[][] WordVariants { get; set; }
 
 		private string ToDefault()
         {
