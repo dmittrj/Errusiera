@@ -8,10 +8,11 @@ int main() {
 	system("chcp 1251");
 
 	for (;;) {
+		std::cout << ">>> ";
 		std::string str1;
 		std::cin >> str1;
 		noun estr1(str1, Cases::Nominative, Number::Singular, Gender::None, Animacy::Inanimate);
-		std::cout << estr1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine).to_string() << std::endl;
+		std::cout << "<<< " << estr1.build_adjective(Cases::Nominative, Number::Singular, Gender::Masculine).to_string() << std::endl;
 
 	}
 

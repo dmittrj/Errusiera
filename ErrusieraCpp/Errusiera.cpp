@@ -1101,36 +1101,60 @@ std::string noun::glue(noun _noun, Prepositions _prep) {
 
 adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	std::string _word = to_default();
-	if (pattern(_word, "[ ]008001")) {
-		//жа
+	//га
+	if (pattern(_word, "[ ]004001")) {
+		pattern(_word, "[ ]!--004001--!!++008015029011++!", _word);
+	}
+	//жа
+	else if (pattern(_word, "[ ]008001")) {
 		pattern(_word, "[_]!++015029011++!", _word);
 	}
+	//йна
+	else if (pattern(_word, "[ ]011015001")) {
+		pattern(_word, "[ ]!--011015001--!!++010015019020003006015015029011++!", _word);
+	}
+	//ппа
+	else if (pattern(_word, "[ ]017017001")) {
+		pattern(_word, "[ ]!--001--!!++016003016011++!", _word);
+	}
+	//па
+	else if (pattern(_word, "[ ]017001")) {
+		pattern(_word, "[ ]!--001--!!++016003029011++!", _word);
+	}
+	//аг
 	else if (pattern(_word, "[ ]001004")) {
-		//аг
 		pattern(_word, "[_]!++010025006019012010011++!", _word);
 	}
+	//г
 	else if (pattern(_word, "[ ]004")) {
-		//г
 		pattern(_word, "[ ]!--004--!!++008010011++!", _word);
 	}
+	//е
+	else if (pattern(_word, "[ ]010006")) {
+		pattern(_word, "[ ]!--010006--!!++029011++!", _word);
+	}
+	//ай
 	else if (pattern(_word, "[ ]001011")) {
-		//ай
 		pattern(_word, "[_]!++015029011++!", _word);
 	}
+	//й
 	else if (pattern(_word, "[ ]011")) {
-		//й
 		pattern(_word, "[ ]!--011--!!++001013030015029011++!", _word);
 	}
+	//ик
 	else if (pattern(_word, "[ ]010012")) {
-		//ик
 		pattern(_word, "[ ]!--010012--!!++025006019012010011++!", _word);
 	}
+	//сок
 	else if (pattern(_word, "[ ]019016012")) {
-		//сок
 		pattern(_word, "[ ]!--012--!!++025015029011++!", _word);
 	}
+	//ток
+	else if (pattern(_word, "[ ]020016012")) {
+		pattern(_word, "[ ]!--012--!!++025015029011++!", _word);
+	}
+	//ок
 	else if (pattern(_word, "[ ]016012")) {
-		//ок
 		pattern(_word, "[_]!++016003016011++!", _word);
 	}
 	else if (pattern(_word, "[ ]019012")) {
@@ -1140,6 +1164,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]012")) {
 		//к
 		pattern(_word, "[ ]!--012--!!++025006019012010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]004016015")) {
+		//гон
+		pattern(_word, "[ ]!++015029011++!", _word);
 	}
 	else if (pattern(_word, "[ ]018016020")) {
 		//рот
@@ -1160,10 +1188,6 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]006024")) {
 		//ец
 		pattern(_word, "[ ]!--006024--!!++024016003029011++!", _word);
-	}
-	else if (pattern(_word, "[ ]004016015")) {
-		//гон
-		pattern(_word, "[ ]!++015029011++!", _word);
 	}
 	else if (pattern(_word, "[ ]012016015")) {
 		//кон
@@ -1241,9 +1265,21 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 		//фа
 		pattern(_word, "[ ]022!--001--!!++016003029011++!", _word);
 	}
+	else if (pattern(_word, "[ ]015010024001")) {
+		//ница
+		pattern(_word, "[ ]!--024001--!!++025015029011++!", _word);
+	}
 	else if (pattern(_word, "[ ]024001")) {
 		//ца
 		pattern(_word, "[ ]!--024001--!!++025010011++!", _word);
+	}
+	else if (pattern(_word, "[ ]015001")) {
+		//на
+		pattern(_word, "[ ]!--001--!!++016003029011++!", _word);
+	}
+	else if (pattern(_word, "[ ]019001")) {
+		//са
+		pattern(_word, "[ ]!--001--!!++010011++!", _word);
 	}
 	else if (pattern(_word, "[ ]001")) {
 		//а
@@ -1356,6 +1392,10 @@ adjective noun::build_adjective(Cases _case, Number _number, Gender _gender) {
 	else if (pattern(_word, "[ ]022")) {
 		//ф
 		pattern(_word, "[_]!++015016011++!", _word);
+	}
+	else if (pattern(_word, "[ ]005")) {
+		//д
+		pattern(_word, "[ ]!--005--!!++008010011++!", _word);
 	}
 	else pattern(_word, "[_]!++016003029011++!", _word);
 	adjective _adjective(_word, Cases::Nominative, Number::Singular, Gender::Masculine);

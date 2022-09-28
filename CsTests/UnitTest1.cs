@@ -1043,6 +1043,118 @@ namespace CsTests
             Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
             Assert.AreEqual("Алкогольный", test2.ToString());
         }
+
+        [TestMethod]
+        public void Noun_Flower()
+        {
+            Noun test1 = new Noun("Цветок", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Цветочный", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Experience()
+        {
+            Noun test1 = new Noun("Опыт", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Опытный", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Hospital()
+        {
+            Noun test1 = new Noun("Больница", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Больничный", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Rubber()
+        {
+            Noun test1 = new Noun("Резина", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Резиновый", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Camel()
+        {
+            Noun test1 = new Noun("Верблюд", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Верблюжий", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Book()
+        {
+            Noun test1 = new Noun("Книга", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Книжный", test2.ToString());
+        }
+
+        //[TestMethod]
+        //public void Noun_Sand()
+        //{
+        //    Noun test1 = new Noun("Песок", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+        //    Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+        //    Assert.AreEqual("Песчаный", test2.ToString());
+        //}
+
+        [TestMethod]
+        public void Noun_Fox()
+        {
+            Noun test1 = new Noun("Лиса", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Лисий", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Mystery()
+        {
+            Noun test1 = new Noun("Тайна", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Таинственный", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Rose()
+        {
+            Noun test1 = new Noun("Роза", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Розовый", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Dirt()
+        {
+            Noun test1 = new Noun("Грязь", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Грязный", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Opening()
+        {
+            Noun test1 = new Noun("Открытие", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Открытый", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Lamp()
+        {
+            Noun test1 = new Noun("Лампа", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Ламповый", test2.ToString());
+        }
+
+        [TestMethod]
+        public void Noun_Group()
+        {
+            Noun test1 = new Noun("Группа", Cases.Nominative, Number.Singular, Gender.Feminine, Animacy.Inanimate);
+            Adjective test2 = test1.BuildAdjective(Cases.Nominative, Number.Singular, Gender.Masculine);
+            Assert.AreEqual("Групповой", test2.ToString());
+        }
     }
 
 	[TestClass]
